@@ -1,0 +1,22 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scenes/interface/dialog_container.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/interface/hud.gd" type="Script" id=2]
+[ext_resource path="res://scenes/interface/shopping/shopping_container.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/interface/player_interface/inventory_container.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/interface/shopping/sell_container.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/interface/player_interface/stats_container.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/interface/player_interface/bar_container.tscn" type="PackedScene" id=7]
+
+[node name="Interface" type="CanvasLayer" groups=["hud"]]
+pause_mode = 2
+script = ExtResource( 2 )
+dialog_container = ExtResource( 1 )
+shopping_container = ExtResource( 3 )
+sell_shopping_container = ExtResource( 5 )
+
+[node name="InventoryContainer" parent="." instance=ExtResource( 4 )]
+
+[node name="StatsContainer" parent="." groups=["stats_hud"] instance=ExtResource( 6 )]
+
+[node name="BarContainer" parent="." groups=["bar_container"] instance=ExtResource( 7 )]
