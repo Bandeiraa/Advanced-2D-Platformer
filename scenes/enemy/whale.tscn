@@ -434,8 +434,8 @@ tracks/2/keys = {
 scale = Vector2( 0.5, 0.5 )
 collision_layer = 8
 script = ExtResource( 3 )
-damage = 5
-speed = 50
+damage = 3
+speed = 60
 enemy_exp = 3
 gravity_speed = 350
 proximity_threshold = 15
@@ -460,7 +460,7 @@ shape = SubResource( 4 )
 
 [node name="CollisionArea" parent="." index="3"]
 visible = false
-health = 15
+health = 12
 
 [node name="Collision" parent="CollisionArea" index="0"]
 position = Vector2( 1, 3 )

@@ -90,7 +90,7 @@ func verify_stat(stat: String) -> void:
 			apply_weight(2, "Mana")
 			
 		"AttackContainer":
-			apply_weight(2, "Attack")
+			apply_weight(3, "Attack")
 			
 		"MagicAttackContainer":
 			apply_weight(3, "Magic Attack")

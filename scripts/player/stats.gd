@@ -5,11 +5,11 @@ onready var invencibility_timer: Timer = get_node("Timer")
 
 var shielding: bool = false
 
-var base_health: int = 35
-var base_mana: int = 15
-var base_attack: int = 3
-var base_magic_attack: int = 5
-var base_defense: int = 2
+var base_health: int = 15
+var base_mana: int = 10
+var base_attack: int = 1
+var base_magic_attack: int = 3
+var base_defense: int = 1
 
 var current_mana: int
 var current_health: int
@@ -18,15 +18,15 @@ var current_exp: int = 0
 
 var level: int = 1
 var level_dict: Dictionary = {
-	"1": 15,
-	"2": 23,
-	"3": 29,
-	"4": 36,
-	"5": 43,
-	"6": 50,
-	"7": 57,
-	"8": 64,
-	"9": 71
+	"1": 25,
+	"2": 33,
+	"3": 49,
+	"4": 66,
+	"5": 93,
+	"6": 135,
+	"7": 186,
+	"8": 251,
+	"9": 356
 }
 
 export(float) var invencibility_time

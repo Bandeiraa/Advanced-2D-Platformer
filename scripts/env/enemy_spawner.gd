@@ -10,15 +10,18 @@ export(float) var spawn_cooldown
 export(int) var left_gap_position
 export(int) var right_gap_position
 
+export(bool) var can_respawn
+
 func _ready() -> void:
 	randomize()
-	spawn_timer.start(spawn_cooldown)
-	
-	
-func on_timer_timeout() -> void:
 	spawn_enemy()
 	
 	
+func on_timer_timeout() -> void:
+	if can_respawn:
+		spawn_enemy()
+		
+		
 func spawn_enemy() -> void:
 	var random_enemy_index: int = randi() % enemies_list.size()
 	var enemy_list: Array = enemies_list[random_enemy_index]
