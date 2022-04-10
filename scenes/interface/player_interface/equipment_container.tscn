@@ -1,0 +1,98 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/interface/intentory/item_background/type_1.png" type="Texture" id=1]
+[ext_resource path="res://assets/item/consumable/+1_health_potion.png" type="Texture" id=2]
+[ext_resource path="res://assets/font/bit_potion.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/item/consumable/+4_health_potion.png" type="Texture" id=4]
+[ext_resource path="res://assets/item/consumable/health_potion.png" type="Texture" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 8
+font_data = ExtResource( 3 )
+
+[node name="EquipmentContainer" type="Control"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = -49.0
+margin_right = 49.0
+margin_bottom = -5.0
+rect_min_size = Vector2( 44, 44 )
+
+[node name="ConsumableBackgroundTexture" type="TextureRect" parent="."]
+margin_top = 12.0
+margin_right = 20.0
+margin_bottom = 32.0
+texture = ExtResource( 1 )
+
+[node name="Item" type="TextureRect" parent="ConsumableBackgroundTexture"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -8.0
+margin_top = -8.0
+margin_right = 8.0
+margin_bottom = 8.0
+rect_min_size = Vector2( 16, 16 )
+texture = ExtResource( 2 )
+expand = true
+
+[node name="Amount" type="Label" parent="ConsumableBackgroundTexture"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -6.0
+margin_top = -8.0
+margin_right = -2.0
+margin_bottom = -1.0
+rect_min_size = Vector2( 4, 0 )
+custom_fonts/font = SubResource( 1 )
+text = "9"
+align = 2
+valign = 1
+
+[node name="VContainer" type="VBoxContainer" parent="."]
+margin_left = 24.0
+margin_right = 44.0
+margin_bottom = 44.0
+
+[node name="WeaponBackgroundTexture" type="TextureRect" parent="VContainer"]
+margin_right = 20.0
+margin_bottom = 20.0
+texture = ExtResource( 1 )
+
+[node name="Item" type="TextureRect" parent="VContainer/WeaponBackgroundTexture"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -8.0
+margin_top = -8.0
+margin_right = 8.0
+margin_bottom = 8.0
+rect_min_size = Vector2( 16, 16 )
+texture = ExtResource( 4 )
+expand = true
+
+[node name="ArmorBackgroundTexture" type="TextureRect" parent="VContainer"]
+margin_top = 24.0
+margin_right = 20.0
+margin_bottom = 44.0
+texture = ExtResource( 1 )
+
+[node name="Item" type="TextureRect" parent="VContainer/ArmorBackgroundTexture"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -8.0
+margin_top = -8.0
+margin_right = 8.0
+margin_bottom = 8.0
+rect_min_size = Vector2( 16, 16 )
+texture = ExtResource( 5 )
+expand = true
