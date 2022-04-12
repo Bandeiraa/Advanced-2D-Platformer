@@ -6,6 +6,11 @@ onready var animation: AnimationPlayer = get_node("Animation")
 onready var equipment_background: TextureRect = get_node("VContainer/ArmorBackgroundTexture")
 onready var equipment_item: TextureRect = equipment_background.get_node("Item")
 
+var equipment_dictionary: Dictionary = {}
+var equipment_name: String = ""
+var equipment_type: String = ""
+var equipment_price: int
+
 onready var consumable_background: TextureRect = get_node("ConsumableBackgroundTexture")
 onready var consumable_item: TextureRect = consumable_background.get_node("Item")
 onready var consumable_amount: Label = consumable_background.get_node("Amount")
@@ -41,7 +46,7 @@ func update_consumable_slot(item_texture: StreamTexture, item_info: Array) -> vo
 			
 			return
 			
-	elif item_info[1] != "":
+	elif consumable_item_name != "": #item_info[1] != "":
 		get_tree().call_group(
 			"inventory",
 			"update_slot",
@@ -67,9 +72,31 @@ func update_consumable_slot(item_texture: StreamTexture, item_info: Array) -> vo
 	
 	
 func update_equipment_slot(item_texture: StreamTexture, item_info: Array) -> void:
+	if equipment_name != "":
+		get_tree().call_group(
+			"inventory",
+			"update_slot",
+			equipment_name,
+			equipment_item.texture,
+			[
+				equipment_type,
+				equipment_dictionary,
+				equipment_price,
+				1
+			]
+		)
+		
+		reset_equipment()
+		
 	equipment_item.texture = item_texture
-	print(item_info)
+	equipment_name = item_info[0]
+	equipment_type = item_info[1]
+	equipment_dictionary = item_info[2]
+	equipment_price = item_info[3]
+	
 	equipment_item.show()
+	
+	get_tree().call_group("stats_hud", "update_bonus_stats", equipment_dictionary, false)
 	
 	
 func _process(_delta: float) -> void:
@@ -112,3 +139,14 @@ func reset() -> void:
 	consumable_item_type_value = 0
 	consumable_amount.hide()
 	consumable_item.texture = null
+	
+	
+func reset_equipment() -> void:
+	equipment_name = ""
+	equipment_type = ""
+	equipment_price = 0
+	
+	equipment_item.texture = null
+	get_tree().call_group("stats_hud", "update_bonus_stats", equipment_dictionary, true)
+	
+	equipment_dictionary = {}

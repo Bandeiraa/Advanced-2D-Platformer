@@ -49,7 +49,8 @@ func _ready() -> void:
 			100,
 			"Equipment",
 			{
-				"Attack": 3
+				"Health": 5,
+				"Attack": 1
 			},
 			30
 		]

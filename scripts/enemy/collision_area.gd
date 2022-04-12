@@ -11,7 +11,8 @@ func _ready() -> void:
 	
 	
 func on_collision_area_entered(area) -> void:
-	var player_attack: int = area.get_parent().get_node("Stats").base_attack
+	var player_stats: Node = area.get_parent().get_node("Stats")
+	var player_attack: int = player_stats.base_attack + player_stats.bonus_attack
 	update_health(player_attack)
 	
 	

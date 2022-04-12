@@ -134,7 +134,7 @@ checkpoint_spawn_position = Vector2( 576, 292 )
 list = [ "This is a Checkpoint... Basically, if you interact with one of them... The next time you die, you will spawn in the last saved checkpoint." ]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 619, 292 )
+position = Vector2( 670, 259 )
 
 [node name="EnemiesSpawnerList" type="Node2D" parent="."]
 

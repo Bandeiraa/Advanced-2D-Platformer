@@ -11,8 +11,17 @@ var base_attack: int = 10
 var base_magic_attack: int = 3
 var base_defense: int = 1
 
+var bonus_health: int = 0
+var bonus_mana: int = 0
+var bonus_attack: int = 0
+var bonus_magic_attack: int = 0
+var bonus_defense: int = 0
+
 var current_mana: int
 var current_health: int
+
+var max_mana: int
+var max_health: int
 
 var current_exp: int = 0
 
@@ -36,9 +45,14 @@ export(NodePath) onready var player_ref = get_node(player_ref) as KinematicBody2
 
 func _ready() -> void:
 	update_stats_hud()
-	current_mana = base_mana
-	current_health = base_health
-	get_tree().call_group("bar_container", "init_bar", current_health, current_mana, level_dict[str(level)])
+	
+	current_mana = base_mana + bonus_mana
+	max_mana = current_mana
+	
+	current_health = base_health + bonus_health
+	max_health = current_health
+	
+	get_tree().call_group("bar_container", "init_bar", max_health, max_mana, level_dict[str(level)])
 	
 	
 func update_stats(stat: String) -> void:
@@ -47,20 +61,53 @@ func update_stats(stat: String) -> void:
 			base_attack += 1
 			
 		"Mana":
+			max_mana += 1
 			base_mana += 1
 			current_mana += 1
-			get_tree().call_group("bar_container", "increase_max_value", "Mana", base_mana, current_mana)
+			get_tree().call_group("bar_container", "increase_max_value", "Mana", max_mana, current_mana)
 			
 		"Health":
+			max_health += 1
 			base_health += 1
 			current_health += 1
-			get_tree().call_group("bar_container", "increase_max_value", "Health", base_health, current_health)
+			get_tree().call_group("bar_container", "increase_max_value", "Health", max_health, current_health)
 			
 		"Magic Attack":
 			base_magic_attack += 1
 			
 		"Defense":
 			base_defense += 1
+			
+	update_stats_hud()
+	
+	
+func update_bonus_stats(stat: String, value: int, reset: bool) -> void:
+	match stat:
+		"Health":
+			if reset:
+				bonus_health = 0
+				current_health -= value
+			else:
+				bonus_health = value
+				current_health += bonus_health
+				
+			max_health = bonus_health + base_health
+			get_tree().call_group("bar_container", "increase_max_value", "Health", max_health, current_health)
+			
+		"Mana":
+			bonus_mana = value
+			max_mana += bonus_mana
+			current_mana += bonus_mana
+			get_tree().call_group("bar_container", "increase_max_value", "Mana", max_mana, current_mana)
+			
+		"Attack":
+			bonus_attack = value
+			
+		"Magic Attack":
+			bonus_magic_attack = value
+			
+		"Defense":
+			bonus_defense = value
 			
 	update_stats_hud()
 	
@@ -75,6 +122,13 @@ func update_stats_hud() -> void:
 			base_attack,
 			base_magic_attack,
 			base_defense
+		],
+		[
+			bonus_health,
+			bonus_mana,
+			bonus_attack,
+			bonus_magic_attack,
+			bonus_defense
 		]
 	)
 	
@@ -95,8 +149,8 @@ func update_exp(value: int) -> void:
 		
 		
 func on_level_up() -> void:
-	current_mana = base_mana
-	current_health = base_health
+	current_mana = base_mana + bonus_mana
+	current_health = base_health + bonus_health
 	get_tree().call_group("bar_container", "update_bar", "ManaBar", current_mana)
 	get_tree().call_group("bar_container", "update_bar", "HealthBar", current_health)
 	
@@ -124,7 +178,10 @@ func update_health(type: String, value: int) -> void:
 	
 func verify_shield(value: int) -> void:
 	if shielding:
-		var damage = abs(base_defense - value)
+		if (base_defense + bonus_defense) > value:
+			return
+			 
+		var damage = abs((base_defense + bonus_defense) - value)
 		if damage > 0:
 			current_health -= damage
 	else:
