@@ -67,13 +67,6 @@ func update_consumable_slot(item_texture: StreamTexture, item_info: Array) -> vo
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("click") and can_click:
 		if item_amount > 0:
-			
-			item_amount -= 1
-			if item_amount == 0:
-				reset()
-				
-			consumable_amount.text = str(item_amount)
-			
 			match item_type:
 				"Health":
 					get_tree().call_group("player_stats", "update_health", "Increase", item_type_value)
@@ -83,6 +76,12 @@ func _process(_delta: float) -> void:
 					get_tree().call_group("player_stats", "update_mana", "Increase", item_type_value)
 					get_tree().call_group("player", "spawn_effect", "res://scenes/env/potion_effect.tscn")
 					
+			item_amount -= 1
+			if item_amount == 0:
+				reset()
+				
+			consumable_amount.text = str(item_amount)
+			
 			return
 			
 		reset()

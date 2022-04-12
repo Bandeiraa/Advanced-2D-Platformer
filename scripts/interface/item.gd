@@ -1,6 +1,7 @@
 extends TextureRect
 
 signal empty_slot
+signal item_clicked
 
 onready var item_texture: TextureRect = get_node("ItemTexture")
 onready var item_amount: Label = get_node("Amount")
@@ -56,25 +57,29 @@ func update_item(item: String, item_image: StreamTexture, item_info: Array) -> v
 		
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("click") and can_click and item_name != "":
-		if item_type == "Health" or item_type == "Mana":
-			get_tree().call_group(
-				"equipment_container", 
-				"update_consumable_slot", 
-				item_texture.texture, 
-				[
-					amount,
-					item_name,
-					item_type,
-					type_value,
-					sell_price
-				]
-			)
-			
-			update_slot()
-			
+		emit_signal("item_clicked", item_index)
+		
 		modulate.a = 0.2
 		yield(get_tree().create_timer(0.1), "timeout")
 		modulate.a = 0.5
+		
+		
+func equip_item() -> void:
+	if item_type == "Health" or item_type == "Mana":
+		get_tree().call_group(
+			"equipment_container", 
+			"update_consumable_slot", 
+			item_texture.texture, 
+			[
+				amount,
+				item_name,
+				item_type,
+				type_value,
+				sell_price
+			]
+		)
+		
+		update_slot()
 		
 	elif item_type == "Resource":
 		return

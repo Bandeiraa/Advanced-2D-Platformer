@@ -340,10 +340,8 @@ anims/show_container = SubResource( 5 )
 [node name="BackButton" type="TextureButton" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = -38.0
-margin_right = 28.0
-margin_bottom = -10.0
-rect_min_size = Vector2( 28, 28 )
+margin_left = 159.0
+margin_top = -174.0
+margin_right = 173.0
+margin_bottom = -160.0
 texture_normal = ExtResource( 8 )
-expand = true

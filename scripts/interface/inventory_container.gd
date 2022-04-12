@@ -4,7 +4,15 @@ class_name InventoryContainer
 onready var slot_container: GridContainer = get_node("VContainer/Background/SlotContainer")
 onready var animation: AnimationPlayer = get_node("Animation")
 
+onready var aux_container: TextureRect = get_node("Container")
+onready var aux_animation: AnimationPlayer = aux_container.get_node("Animation")
+onready var aux_h_container: HBoxContainer = aux_container.get_node("HContainer")
+
+var current_state: String
+var can_click: bool = false
 var is_visible: bool = false
+
+var item_index: int
 
 var slot_list: Array = [
 	"",
@@ -37,8 +45,13 @@ var slot_list: Array = [
 ]
 
 func _ready() -> void:
+	for icon in aux_h_container.get_children():
+		icon.connect("mouse_exited", self, "mouse_interaction", ["exited", icon])
+		icon.connect("mouse_entered", self, "mouse_interaction", ["entered", icon])
+		
 	for children in slot_container.get_children():
 		children.connect("empty_slot", self, "empty_slot")
+		children.connect("item_clicked", self, "on_item_clicked")
 		
 		
 func update_slot(item_name: String, item_image: StreamTexture, item_info: Array) -> void:
@@ -77,5 +90,41 @@ func empty_slot(index: int) -> void:
 	
 	
 func reset() -> void:
+	item_index = -1
+	can_click = false
+	current_state = ""
+	aux_animation.play("hide_container")
 	for children in slot_container.get_children():
 		children.reset()
+		
+		
+func on_item_clicked(index: int) -> void:
+	aux_animation.play("show_container")
+	item_index = index
+	
+	
+func mouse_interaction(state: String, object: TextureRect) -> void:
+	match state:
+		"entered":
+			can_click = true
+			object.modulate.a = .5
+			current_state = object.name
+			
+		"exited":
+			current_state = ""
+			can_click = false
+			object.modulate.a = 1.0
+			
+			
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("click") and can_click and current_state != "":
+		match current_state:
+			"Equip":
+				slot_container.get_child(item_index).equip_item()
+				
+			"Delete":
+				slot_container.get_child(item_index).update_slot()
+				
+		item_index = -1
+		current_state = ""
+		aux_animation.play("hide_container")
