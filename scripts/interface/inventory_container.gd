@@ -57,12 +57,12 @@ func _ready() -> void:
 func update_slot(item_name: String, item_image: StreamTexture, item_info: Array) -> void:
 	var existing_item_index: int = slot_list.find(item_name)
 	if existing_item_index != -1:
-		if slot_container.get_child(existing_item_index).amount < 9:
-			var slot_amount: int = slot_container.get_child(existing_item_index).amount
-			var current_amount: int = slot_amount + item_info[3]
+		var item_slot: TextureRect = slot_container.get_child(existing_item_index)
+		if item_slot.amount < 9 and item_slot.item_type != "Equipment":
+			var current_amount: int = item_slot.amount + item_info[3]
 			if current_amount > 9:
 				var leftover: int = current_amount - 9
-				item_info[3] = 9 - slot_amount
+				item_info[3] = 9 - item_slot.amount
 				slot_container.get_child(existing_item_index).update_item(item_name, item_image, item_info)
 				item_info[3] = leftover
 				update_slot(item_name, item_image, item_info)
@@ -73,7 +73,8 @@ func update_slot(item_name: String, item_image: StreamTexture, item_info: Array)
 			
 	var aux_item_index: int = slot_list.find_last(item_name)
 	if aux_item_index != -1:
-		if slot_container.get_child(aux_item_index).amount < 9:
+		var item_slot: TextureRect = slot_container.get_child(aux_item_index)
+		if item_slot.amount < 9 and item_slot.item_type != "Equipment":
 			slot_container.get_child(aux_item_index).update_item(item_name, item_image, item_info)
 			return
 			

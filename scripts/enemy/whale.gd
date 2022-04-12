@@ -24,7 +24,7 @@ func _ready() -> void:
 			"res://assets/item/resource/whale/whale_mouth.png",
 			45,
 			"Resource",
-			0,
+			{},
 			2
 		],
 		
@@ -32,7 +32,7 @@ func _ready() -> void:
 			"res://assets/item/resource/whale/whale_eye.png",
 			15,
 			"Resource",
-			0,
+			{},
 			8
 		],
 		
@@ -40,7 +40,17 @@ func _ready() -> void:
 			"res://assets/item/resource/whale/whale_tail.png",
 			3,
 			"Resource",
-			0,
+			{},
 			25
+		],
+		
+		"Whale Mask": [
+			"res://assets/item/equipment/whale_mask.png",
+			100,
+			"Equipment",
+			{
+				"Attack": 3
+			},
+			30
 		]
 	}

@@ -14,6 +14,8 @@ var amount: int = 0
 
 var can_click: bool = false
 
+var item_dictionary: Dictionary = {}
+
 var item_name: String = ""
 var item_type: String
 
@@ -41,17 +43,33 @@ func on_mouse_exited() -> void:
 	
 func update_item(item: String, item_image: StreamTexture, item_info: Array) -> void:
 	item_type = item_info[0]
-	type_value = item_info[1]
+	match item_type:
+		"Equipment":
+			amount = 1
+			item_dictionary = item_info[1]
+			
+		"Resource":
+			amount += item_info[3]
+			type_value = 0
+			
+		"Health":
+			amount += item_info[3]
+			type_value = item_info[1]
+			
+		"Mana":
+			amount += item_info[3]
+			type_value = item_info[1]
+			
 	sell_price = item_info[2]
-	
-	amount += item_info[3]
 	
 	item_name = item
 	item_amount.text = str(amount)
 	item_texture.texture = item_image
 	
-	if amount != 0:
+	if amount != 0 and item_type != "Equipment":
 		item_amount.show()
+		item_texture.show()
+	elif item_type == "Equipment":
 		item_texture.show()
 		
 		
@@ -79,12 +97,25 @@ func equip_item() -> void:
 			]
 		)
 		
-		update_slot()
+	elif item_type == "Equipment":
+		get_tree().call_group(
+			"equipment_container",
+			"update_equipment_slot",
+			item_texture.texture,
+			[
+				item_name,
+				item_type,
+				item_dictionary,
+				sell_price
+			]
+		)
 		
 	elif item_type == "Resource":
 		return
 		
-		
+	update_slot()
+	
+	
 func update_slot() -> void:
 	item_amount.hide()
 	item_texture.hide()

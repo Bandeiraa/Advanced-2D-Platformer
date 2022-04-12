@@ -81,5 +81,5 @@ func spawn_item_probability() -> void:
 		var random_number: int = randi() % 100 + 1
 		if random_number <= drop_list[key][1]:
 			var item_texture: StreamTexture = load(drop_list[key][0])
-			var item_info: Array = [drop_list[key][2], drop_list[key][3], drop_list[key][4]]
+			var item_info: Array = [drop_list[key][2], drop_list[key][3], drop_list[key][4], 1]
 			get_tree().call_group("inventory", "update_slot", key, item_texture, item_info)
