@@ -39,11 +39,11 @@ func on_mouse_exited() -> void:
 	
 	
 func update_item(item: String, item_image: StreamTexture, item_info: Array) -> void:
-	amount += 1
-	
 	item_type = item_info[0]
 	type_value = item_info[1]
 	sell_price = item_info[2]
+	
+	amount += item_info[3]
 	
 	item_name = item
 	item_amount.text = str(amount)
@@ -56,37 +56,48 @@ func update_item(item: String, item_image: StreamTexture, item_info: Array) -> v
 		
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("click") and can_click and item_name != "":
-		match item_type:
-			"Health":
-				get_tree().call_group("player_stats", "update_health", "Increase", type_value)
-				
-			"Mana":
-				get_tree().call_group("player_stats", "update_mana", "Increase", type_value)
-				
-			"Resource":
-				return
-				
-		update_amount(1)
-		
+		if item_type == "Health" or item_type == "Mana":
+			get_tree().call_group(
+				"equipment_container", 
+				"update_consumable_slot", 
+				item_texture.texture, 
+				[
+					amount,
+					item_name,
+					item_type,
+					type_value,
+					sell_price
+				]
+			)
+			
+			update_slot()
+			
 		modulate.a = 0.2
 		yield(get_tree().create_timer(0.1), "timeout")
 		modulate.a = 0.5
 		
+	elif item_type == "Resource":
+		return
 		
-func update_amount(amount_value: int) -> void:
-	amount -= amount_value
-	item_amount.text = str(amount)
+		
+func update_slot() -> void:
+	item_amount.hide()
+	item_texture.hide()
 	
-	if amount == 0:
-		item_amount.hide()
-		item_texture.hide()
-		
-		item_name = ""
-		item_type = ""
-		type_value = 0
-		sell_price = 0
-		
-		emit_signal("empty_slot", item_index)
+	amount = 0
+	
+	item_name = ""
+	item_type = ""
+	type_value = 0
+	sell_price = 0
+
+	emit_signal("empty_slot", item_index)
+	
+	
+func update_amount(value: int) -> void:
+	var new_amount: int = amount - value
+	if new_amount == 0:
+		update_slot()
 		
 		
 func reset() -> void:

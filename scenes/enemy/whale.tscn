@@ -451,9 +451,6 @@ visible = false
 position = Vector2( 0, 3 )
 shape = SubResource( 3 )
 
-[node name="DetectionArea" parent="." index="2"]
-visible = false
-
 [node name="Collision" parent="DetectionArea" index="0"]
 position = Vector2( 0, 3 )
 shape = SubResource( 4 )
@@ -486,7 +483,6 @@ anims/kill = SubResource( 11 )
 anims/run = SubResource( 5 )
 
 [node name="FloorRay" parent="." index="6"]
-visible = false
 position = Vector2( -33, 0 )
 enabled = true
 cast_to = Vector2( 0, 30 )

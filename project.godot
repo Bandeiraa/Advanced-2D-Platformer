@@ -34,6 +34,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/interface/dialog_container.gd"
 }, {
+"base": "AnimatedSprite",
+"class": "EffectTemplate",
+"language": "GDScript",
+"path": "res://scripts/env/effect_template.gd"
+}, {
 "base": "Control",
 "class": "EnemyHealthBar",
 "language": "GDScript",
@@ -53,6 +58,11 @@ _global_script_classes=[ {
 "class": "EnemyTexture",
 "language": "GDScript",
 "path": "res://scripts/enemy/enemy_texture_template.gd"
+}, {
+"base": "Control",
+"class": "EquipmentContainer",
+"language": "GDScript",
+"path": "res://scripts/interface/equipment_container.gd"
 }, {
 "base": "Node2D",
 "class": "GameLevel",
@@ -145,10 +155,12 @@ _global_script_class_icons={
 "CollisionArea": "",
 "DetectionArea": "",
 "DialogContainer": "",
+"EffectTemplate": "",
 "EnemyHealthBar": "",
 "EnemySpawner": "",
 "EnemyTemplate": "",
 "EnemyTexture": "",
+"EquipmentContainer": "",
 "GameLevel": "",
 "InitialCheckpoint": "",
 "InitialSign": "",

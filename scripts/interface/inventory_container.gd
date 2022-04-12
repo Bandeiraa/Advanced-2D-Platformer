@@ -45,6 +45,16 @@ func update_slot(item_name: String, item_image: StreamTexture, item_info: Array)
 	var existing_item_index: int = slot_list.find(item_name)
 	if existing_item_index != -1:
 		if slot_container.get_child(existing_item_index).amount < 9:
+			var slot_amount: int = slot_container.get_child(existing_item_index).amount
+			var current_amount: int = slot_amount + item_info[3]
+			if current_amount > 9:
+				var leftover: int = current_amount - 9
+				item_info[3] = 9 - slot_amount
+				slot_container.get_child(existing_item_index).update_item(item_name, item_image, item_info)
+				item_info[3] = leftover
+				update_slot(item_name, item_image, item_info)
+				return
+				
 			slot_container.get_child(existing_item_index).update_item(item_name, item_image, item_info)
 			return
 			
