@@ -92,19 +92,20 @@ tile_data = PoolIntArray( 393186, 0, 0, 393187, 0, 1, 393188, 0, 1, 393189, 0, 2
 tile_set = ExtResource( 8 )
 cell_size = Vector2( 16, 16 )
 format = 1
+tile_data = PoolIntArray( 2818122, 2, 0, 2818124, 2, 0, 2818129, 2, 0 )
 
 [node name="NormalSizeDecoration" type="TileMap" parent="LevelDesign/Decoration"]
 tile_set = ExtResource( 4 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( 327658, 5, 0, 327664, 3, 0, 327666, 3, 0, 327668, 3, 0, 327678, 5, 0, 262144, 2, 0, 262146, 2, 0, 262196, 3, 0, 262203, 3, 0, 524306, 7, 0 )
+tile_data = PoolIntArray( 327658, 5, 0, 327664, 3, 0, 327666, 3, 0, 327668, 3, 0, 327678, 5, 0, 262144, 2, 0, 262146, 2, 0, 262196, 3, 0, 262203, 3, 0, 524306, 7, 0, 1376292, 3, 0, 1376294, 3, 0, 1376296, 3, 0, 1376298, 3, 0, 1376299, 3, 0 )
 
 [node name="SmallSizeDecorationFront" type="TileMap" parent="LevelDesign/Decoration"]
 z_index = 10
 tile_set = SubResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( 589826, 0, 0, 589830, 0, 0, 589835, 2, 0, 1245226, 0, 0, 1245230, 1, 0 )
+tile_data = PoolIntArray( 589826, 0, 0, 589830, 0, 0, 589835, 2, 0, 1245226, 0, 0, 1245230, 1, 0, 2818134, 1, 0, 2818138, 1, 0, 2818139, 0, 0 )
 
 [node name="Interactable" type="Node2D" parent="LevelDesign"]
 
@@ -134,7 +135,7 @@ checkpoint_spawn_position = Vector2( 576, 292 )
 list = [ "This is a Checkpoint... Basically, if you interact with one of them... The next time you die, you will spawn in the last saved checkpoint." ]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 670, 259 )
+position = Vector2( 1741, 110 )
 
 [node name="EnemiesSpawnerList" type="Node2D" parent="."]
 
@@ -151,6 +152,14 @@ enemies_list = [ [ "res://scenes/enemy/whale.tscn", -11.5 ], [ "res://scenes/ene
 spawn_cooldown = 5.0
 left_gap_position = -130
 right_gap_position = 155
+can_respawn = true
+
+[node name="EnemySpawner3" parent="EnemiesSpawnerList" instance=ExtResource( 16 )]
+position = Vector2( 1308, 704 )
+enemies_list = [ [ "res://scenes/enemy/whale.tscn", -11.5 ], [ "res://scenes/enemy/crabby.tscn", -11.5 ] ]
+spawn_cooldown = 5.0
+left_gap_position = -150
+right_gap_position = 150
 can_respawn = true
 
 [node name="Background" parent="." instance=ExtResource( 2 )]

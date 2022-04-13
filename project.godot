@@ -104,6 +104,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/interface/item_container.gd"
 }, {
+"base": "TextureRect",
+"class": "LeftSellContainer",
+"language": "GDScript",
+"path": "res://scripts/interface/sell_container/left_container.gd"
+}, {
 "base": "Camera2D",
 "class": "LevelCamera",
 "language": "GDScript",
@@ -113,6 +118,11 @@ _global_script_classes=[ {
 "class": "Player",
 "language": "GDScript",
 "path": "res://scripts/player/player.gd"
+}, {
+"base": "TextureRect",
+"class": "RightSellContainer",
+"language": "GDScript",
+"path": "res://scripts/interface/sell_container/right_container.gd"
 }, {
 "base": "Control",
 "class": "SellContainer",
@@ -179,8 +189,10 @@ _global_script_class_icons={
 "InteractableTemplate": "",
 "InventoryContainer": "",
 "ItemContainer": "",
+"LeftSellContainer": "",
 "LevelCamera": "",
 "Player": "",
+"RightSellContainer": "",
 "SellContainer": "",
 "SellItemContainer": "",
 "Shopping": "",

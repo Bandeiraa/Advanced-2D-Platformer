@@ -468,7 +468,7 @@ scale = Vector2( 0.8, 0.8 )
 collision_layer = 8
 script = ExtResource( 8 )
 damage = 6
-speed = 45
+speed = 55
 enemy_exp = 5
 gravity_speed = 350
 proximity_threshold = 20
@@ -485,6 +485,7 @@ position = Vector2( 1, 4.5 )
 shape = SubResource( 6 )
 
 [node name="Collision" parent="DetectionArea" index="0"]
+visible = false
 position = Vector2( 0, -2.5 )
 scale = Vector2( 1, 1 )
 shape = SubResource( 7 )

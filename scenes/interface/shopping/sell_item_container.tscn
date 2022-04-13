@@ -7,50 +7,53 @@
 
 [node name="ItemContainer" type="HBoxContainer"]
 visible = false
-margin_right = 56.0
+margin_right = 52.0
 margin_bottom = 16.0
-rect_min_size = Vector2( 72, 32 )
 script = ExtResource( 4 )
 
-[node name="LeftContainer" type="VBoxContainer" parent="."]
-margin_right = 16.0
-margin_bottom = 32.0
+[node name="LeftVContainer" type="VBoxContainer" parent="."]
+margin_right = 14.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 14, 16 )
+custom_constants/separation = 0
 
-[node name="Margin" type="Control" parent="LeftContainer"]
-margin_right = 16.0
-margin_bottom = 7.0
-rect_min_size = Vector2( 0, 7 )
+[node name="Margin" type="Control" parent="LeftVContainer"]
+margin_right = 14.0
+margin_bottom = 1.0
+rect_min_size = Vector2( 0, 1 )
 
-[node name="Minos" type="TextureButton" parent="LeftContainer"]
-margin_top = 11.0
-margin_right = 16.0
-margin_bottom = 27.0
-rect_min_size = Vector2( 16, 16 )
+[node name="Minos" type="TextureButton" parent="LeftVContainer"]
+margin_top = 1.0
+margin_right = 14.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 14, 14 )
 texture_normal = ExtResource( 3 )
 expand = true
 
 [node name="ItemIcon" type="TextureRect" parent="."]
-margin_left = 20.0
-margin_right = 52.0
-margin_bottom = 32.0
-rect_min_size = Vector2( 32, 32 )
+margin_left = 18.0
+margin_right = 34.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
 texture = ExtResource( 1 )
 expand = true
 
-[node name="RightContainer" type="VBoxContainer" parent="."]
-margin_left = 56.0
-margin_right = 72.0
-margin_bottom = 32.0
+[node name="RightVContainer" type="VBoxContainer" parent="."]
+margin_left = 38.0
+margin_right = 52.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 14, 16 )
+custom_constants/separation = 0
 
-[node name="Margin" type="Control" parent="RightContainer"]
-margin_right = 16.0
-margin_bottom = 7.0
-rect_min_size = Vector2( 0, 7 )
+[node name="Margin" type="Control" parent="RightVContainer"]
+margin_right = 14.0
+margin_bottom = 1.0
+rect_min_size = Vector2( 0, 1 )
 
-[node name="Plus" type="TextureButton" parent="RightContainer"]
-margin_top = 11.0
-margin_right = 16.0
-margin_bottom = 27.0
-rect_min_size = Vector2( 16, 16 )
+[node name="Plus" type="TextureButton" parent="RightVContainer"]
+margin_top = 1.0
+margin_right = 14.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 14, 14 )
 texture_normal = ExtResource( 2 )
 expand = true

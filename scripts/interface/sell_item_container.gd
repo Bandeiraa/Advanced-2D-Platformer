@@ -5,8 +5,8 @@ signal reset
 
 onready var item_icon: TextureRect = get_node("ItemIcon")
 onready var buttons_list: Array = [
-	get_node("LeftContainer/Minos"),
-	get_node("RightContainer/Plus")
+	get_node("LeftVContainer/Minos"),
+	get_node("RightVContainer/Plus")
 ]
 
 onready var item_index: int = get_index()
