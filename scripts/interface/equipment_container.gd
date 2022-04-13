@@ -44,8 +44,9 @@ func update_consumable_slot(item_texture: StreamTexture, item_info: Array) -> vo
 				]
 			)
 			
-			return
-			
+		consumable_amount.text = str(consumable_item_amount)
+		return
+		
 	elif consumable_item_name != "": #item_info[1] != "":
 		get_tree().call_group(
 			"inventory",

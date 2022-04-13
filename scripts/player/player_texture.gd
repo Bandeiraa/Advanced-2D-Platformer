@@ -1,6 +1,7 @@
 extends Sprite
 
-signal aux_camera
+#signal aux_camera
+signal game_over
 
 var shield_off: bool = true
 var crouching_off: bool = true
@@ -121,5 +122,6 @@ func on_animation_finished(anim_name: String) -> void:
 				animation.play("crouch")
 				
 		"dead":
-			emit_signal("aux_camera", player_ref.get_node("LevelCamera").global_position)
-			player_ref.queue_free()
+			emit_signal("game_over")
+			#emit_signal("aux_camera", player_ref.get_node("LevelCamera").global_position)
+			#player_ref.queue_free()

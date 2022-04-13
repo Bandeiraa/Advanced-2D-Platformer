@@ -33,12 +33,13 @@ func spawn_sell_shop(interactable) -> void:
 	
 	
 func _process(_delta: float) -> void:
-	show_inventory()
-	show_stats()
-	
-	
+	if can_show_container:
+		show_inventory()
+		show_stats()
+		
+		
 func show_inventory() -> void:
-	if Input.is_action_just_pressed("inventory") and can_show_container:
+	if Input.is_action_just_pressed("inventory"):
 		hide_equipment_container()
 		
 		inventory_container.is_visible = !inventory_container.is_visible
@@ -56,7 +57,7 @@ func show_inventory() -> void:
 			
 			
 func show_stats() -> void:
-	if Input.is_action_just_pressed("stats") and can_show_container:
+	if Input.is_action_just_pressed("stats"):
 		hide_equipment_container()
 		
 		stats_container.is_visible = !stats_container.is_visible

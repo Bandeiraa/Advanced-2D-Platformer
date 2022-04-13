@@ -1,5 +1,5 @@
 extends EnemyTexture
-class_name WhaleTexture
+class_name CrabbyTexture
 
 func animate(velocity: Vector2) -> void:
 	if enemy_ref.can_attack or enemy_ref.can_hit or enemy_ref.can_die:
@@ -19,7 +19,7 @@ func action_behavior() -> void:
 		enemy_ref.can_attack = false
 		
 	elif enemy_ref.can_attack:
-		animation.play("attack")
+		animation.play("attack" + enemy_ref.attack_animation_suffix)
 		
 		
 func move_behavior(velocity: Vector2) -> void:
@@ -31,7 +31,11 @@ func move_behavior(velocity: Vector2) -> void:
 		
 func on_animation_finished(anim_name: String) -> void:
 	match anim_name:
-		"attack":
+		"attack_left":
+			enemy_ref.can_attack = false
+			enemy_ref.set_physics_process(true)
+			
+		"attack_right":
 			enemy_ref.can_attack = false
 			enemy_ref.set_physics_process(true)
 			

@@ -147,7 +147,7 @@ right_gap_position = 125
 
 [node name="EnemySpawner2" parent="EnemiesSpawnerList" instance=ExtResource( 16 )]
 position = Vector2( 772, 320 )
-enemies_list = [ [ "res://scenes/enemy/whale.tscn", -11.5 ] ]
+enemies_list = [ [ "res://scenes/enemy/whale.tscn", -11.5 ], [ "res://scenes/enemy/crabby.tscn", -11.5 ] ]
 spawn_cooldown = 5.0
 left_gap_position = -130
 right_gap_position = 155
