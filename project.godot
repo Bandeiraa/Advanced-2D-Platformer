@@ -262,6 +262,7 @@ config/icon="res://icon.png"
 
 GlobalInfo="*res://scripts/management/global_info.gd"
 TransitionScreen="*res://scenes/env/transition_screen.tscn"
+DataManagement="*res://scripts/management/data_management.gd"
 
 [display]
 

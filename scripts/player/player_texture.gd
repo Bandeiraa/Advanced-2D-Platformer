@@ -24,8 +24,17 @@ func _ready() -> void:
 	
 	
 func define_initial_texture() -> void:
+	var file = File.new()
+	if file.file_exists("user://save.dat"):
+		DataManagement.load_data()
+		texture = load(DataManagement.data_dictionary["player_texture"])
+		print("Skin carregada: " + DataManagement.data_dictionary["player_texture"])
+		return
+		
 	var random_int: int = randi() % skins_list.size()
 	texture = load(skins_list[random_int])
+	DataManagement.data_dictionary["player_texture"] = skins_list[random_int]
+	DataManagement.save_data()
 	
 	
 func animate(velocity: Vector2) -> void:
