@@ -177,7 +177,7 @@ func update_health(type: String, value: int) -> void:
 	match type:
 		"Increase":
 			current_health += value
-			if current_health >= base_health:
+			if current_health >= base_health + bonus_health:
 				current_health = base_health
 				
 		"Decrease":

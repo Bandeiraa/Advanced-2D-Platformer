@@ -94,6 +94,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/interactable/initial/initial_checkpoint.gd"
 }, {
+"base": "Control",
+"class": "InitialScreen",
+"language": "GDScript",
+"path": "res://scripts/game_menu/initial_screen.gd"
+}, {
 "base": "InteractableTemplate",
 "class": "InitialSign",
 "language": "GDScript",
@@ -222,6 +227,7 @@ _global_script_class_icons={
 "EquipmentContainer": "",
 "GameLevel": "",
 "InitialCheckpoint": "",
+"InitialScreen": "",
 "InitialSign": "",
 "InteractableTemplate": "",
 "InventoryContainer": "",
@@ -249,7 +255,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Advanced Platformer"
-run/main_scene="res://scenes/management/level.tscn"
+run/main_scene="res://scenes/interface/game_screen/initial_screen.tscn"
 config/icon="res://icon.png"
 
 [autoload]
