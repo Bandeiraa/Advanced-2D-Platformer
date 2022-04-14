@@ -40,13 +40,24 @@ func _ready() -> void:
 		
 		"Crabby Belt": [
 			"res://assets/item/equipment/crabby_belt.png",
-			3,
+			5,
 			"Equipment",
 			{
-				"Defense": 1,
+				"Health": 3,
 				"Attack": 1
 			},
 			35
+		],
+		
+		"Crabby Axe": [
+			"res://assets/item/equipment/crabby_axe.png",
+			2,
+			"Weapon",
+			{
+				"Attack": 3,
+				"Defense": 1
+			},
+			85
 		]
 	}
 	

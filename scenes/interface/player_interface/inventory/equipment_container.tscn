@@ -1,7 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/interface/intentory/item_background/type_1.png" type="Texture" id=1]
+[ext_resource path="res://scripts/interface/inventory/consumable_container.gd" type="Script" id=2]
 [ext_resource path="res://assets/font/bit_potion.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://scripts/interface/inventory/armor_container.gd" type="Script" id=4]
+[ext_resource path="res://scripts/interface/inventory/weapon_container.gd" type="Script" id=5]
 [ext_resource path="res://scripts/interface/inventory/equipment_container.gd" type="Script" id=6]
 
 [sub_resource type="DynamicFont" id=1]
@@ -106,6 +109,7 @@ margin_top = 12.0
 margin_right = 20.0
 margin_bottom = 32.0
 texture = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="Item" type="TextureRect" parent="ConsumableBackgroundTexture"]
 anchor_left = 0.5
@@ -144,6 +148,7 @@ margin_bottom = 44.0
 margin_right = 20.0
 margin_bottom = 20.0
 texture = ExtResource( 1 )
+script = ExtResource( 5 )
 
 [node name="Item" type="TextureRect" parent="VContainer/WeaponBackgroundTexture"]
 anchor_left = 0.5
@@ -162,6 +167,7 @@ margin_top = 24.0
 margin_right = 20.0
 margin_bottom = 44.0
 texture = ExtResource( 1 )
+script = ExtResource( 4 )
 
 [node name="Item" type="TextureRect" parent="VContainer/ArmorBackgroundTexture"]
 anchor_left = 0.5
@@ -180,5 +186,5 @@ anims/RESET = SubResource( 3 )
 anims/hide_container = SubResource( 4 )
 anims/show_container = SubResource( 2 )
 
-[connection signal="mouse_entered" from="ConsumableBackgroundTexture" to="." method="on_mouse_entered"]
-[connection signal="mouse_exited" from="ConsumableBackgroundTexture" to="." method="on_mouse_exited"]
+[connection signal="mouse_entered" from="ConsumableBackgroundTexture" to="ConsumableBackgroundTexture" method="on_mouse_entered"]
+[connection signal="mouse_exited" from="ConsumableBackgroundTexture" to="ConsumableBackgroundTexture" method="on_mouse_exited"]

@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "TextureRect",
+"class": "ArmorContainer",
+"language": "GDScript",
+"path": "res://scripts/interface/inventory/armor_container.gd"
+}, {
 "base": "Control",
 "class": "BarContainer",
 "language": "GDScript",
@@ -23,6 +28,11 @@ _global_script_classes=[ {
 "class": "CollisionArea",
 "language": "GDScript",
 "path": "res://scripts/enemy/template/collision_area.gd"
+}, {
+"base": "TextureRect",
+"class": "ConsumableContainer",
+"language": "GDScript",
+"path": "res://scripts/interface/inventory/consumable_container.gd"
 }, {
 "base": "EnemyTemplate",
 "class": "Crabby",
@@ -159,6 +169,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/interface/stats/stats_container.gd"
 }, {
+"base": "TextureRect",
+"class": "WeaponContainer",
+"language": "GDScript",
+"path": "res://scripts/interface/inventory/weapon_container.gd"
+}, {
 "base": "EnemyTemplate",
 "class": "Whale",
 "language": "GDScript",
@@ -170,9 +185,11 @@ _global_script_classes=[ {
 "path": "res://scripts/enemy/whale/whale_texture.gd"
 } ]
 _global_script_class_icons={
+"ArmorContainer": "",
 "BarContainer": "",
 "Checkpoint": "",
 "CollisionArea": "",
+"ConsumableContainer": "",
 "Crabby": "",
 "CrabbyTexture": "",
 "DetectionArea": "",
@@ -200,6 +217,7 @@ _global_script_class_icons={
 "Sign": "",
 "Stats": "",
 "StatsContainer": "",
+"WeaponContainer": "",
 "Whale": "",
 "WhaleTexture": ""
 }

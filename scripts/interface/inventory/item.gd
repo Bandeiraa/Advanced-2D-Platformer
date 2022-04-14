@@ -48,6 +48,10 @@ func update_item(item: String, item_image: StreamTexture, item_info: Array) -> v
 			amount = 1
 			item_dictionary = item_info[1]
 			
+		"Weapon":
+			amount = 1
+			item_dictionary = item_info[1]
+			
 		"Resource":
 			amount += item_info[3]
 			type_value = 0
@@ -66,10 +70,10 @@ func update_item(item: String, item_image: StreamTexture, item_info: Array) -> v
 	item_amount.text = str(amount)
 	item_texture.texture = item_image
 	
-	if amount != 0 and item_type != "Equipment":
+	if amount != 0 and item_type != "Equipment" and item_type != "Weapon":
 		item_amount.show()
 		item_texture.show()
-	elif item_type == "Equipment":
+	elif item_type == "Equipment" or item_type == "Weapon":
 		item_texture.show()
 		
 		
@@ -86,7 +90,7 @@ func equip_item() -> void:
 	if item_type == "Health" or item_type == "Mana":
 		get_tree().call_group(
 			"equipment_container", 
-			"update_consumable_slot", 
+			"consumable_slot", 
 			item_texture.texture, 
 			[
 				amount,
@@ -100,7 +104,20 @@ func equip_item() -> void:
 	elif item_type == "Equipment":
 		get_tree().call_group(
 			"equipment_container",
-			"update_equipment_slot",
+			"armor_slot",
+			item_texture.texture,
+			[
+				item_name,
+				item_type,
+				item_dictionary,
+				sell_price
+			]
+		)
+		
+	elif item_type == "Weapon":
+		get_tree().call_group(
+			"equipment_container",
+			"weapon_slot",
 			item_texture.texture,
 			[
 				item_name,

@@ -46,12 +46,12 @@ func _ready() -> void:
 		
 		"Whale Mask": [
 			"res://assets/item/equipment/whale_mask.png",
-			1,
+			3,
 			"Equipment",
 			{
-				"Health": 5,
-				"Attack": 1
+				"Mana": 5,
+				"Magic Attack": 3
 			},
-			45
+			55
 		]
 	}

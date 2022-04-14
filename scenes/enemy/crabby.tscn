@@ -487,7 +487,6 @@ shape = SubResource( 6 )
 [node name="Collision" parent="DetectionArea" index="0"]
 visible = false
 position = Vector2( 0, -2.5 )
-scale = Vector2( 1, 1 )
 shape = SubResource( 7 )
 
 [node name="CollisionArea" parent="." index="3"]

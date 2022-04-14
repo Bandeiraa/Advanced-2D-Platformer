@@ -120,6 +120,7 @@ func update_stats(stats_list: Array, bonus_stats_list: Array) -> void:
 			target_bonus_stat_text.text = str(bonus_stats_list[index])
 		else:
 			target_stat_text.text = str(stats_list[index])
+			target_bonus_stat_text.text = ""
 			
 			
 func reset() -> void:
@@ -146,4 +147,5 @@ func update_avaliable_points() -> void:
 	
 func update_bonus_stats(bonus_dict: Dictionary, state: bool):
 	for key in bonus_dict.keys():
+		print(key + " " + str(bonus_dict[key]))
 		get_tree().call_group("player_stats", "update_bonus_stats", key, bonus_dict[key], state)

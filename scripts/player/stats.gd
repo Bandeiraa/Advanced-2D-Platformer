@@ -7,7 +7,7 @@ var shielding: bool = false
 
 var base_health: int = 15
 var base_mana: int = 10
-var base_attack: int = 1
+var base_attack: int = 10
 var base_magic_attack: int = 3
 var base_defense: int = 1
 
@@ -85,30 +85,44 @@ func update_bonus_stats(stat: String, value: int, reset: bool) -> void:
 	match stat:
 		"Health":
 			if reset:
-				bonus_health = 0
+				bonus_health -= value
 				current_health -= value
 			else:
-				bonus_health = value
+				bonus_health += value
 				current_health += bonus_health
 				
 			max_health = bonus_health + base_health
 			get_tree().call_group("bar_container", "increase_max_value", "Health", max_health, current_health)
 			
 		"Mana":
-			bonus_mana = value
-			max_mana += bonus_mana
-			current_mana += bonus_mana
+			if reset:
+				bonus_mana -= value
+				current_mana -= value
+			else:
+				bonus_mana += value
+				current_mana += bonus_mana
+				
+			max_mana = bonus_mana + base_mana
 			get_tree().call_group("bar_container", "increase_max_value", "Mana", max_mana, current_mana)
 			
 		"Attack":
-			bonus_attack = value
-			
+			if reset:
+				bonus_attack -= value
+			else:
+				bonus_attack += value
+				
 		"Magic Attack":
-			bonus_magic_attack = value
-			
+			if reset:
+				bonus_magic_attack -= value
+			else:
+				bonus_magic_attack += value
+				
 		"Defense":
-			bonus_defense = value
-			
+			if reset:
+				bonus_defense -= value
+			else:
+				bonus_defense += value
+				
 	update_stats_hud()
 	
 	
