@@ -10,4 +10,5 @@ func _ready() -> void:
 		
 func _physics_process(delta: float) -> void:
 	for index in get_child_count():
-		get_child(index).motion_offset.x -= delta * layer_speed[index]
+		if get_child(index) is ParallaxLayer:
+			get_child(index).motion_offset.x -= delta * layer_speed[index]

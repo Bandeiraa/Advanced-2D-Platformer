@@ -1,17 +1,112 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://resources/floor.tres" type="TileSet" id=1]
 [ext_resource path="res://resources/normal_size_decoration.tres" type="TileSet" id=2]
 [ext_resource path="res://scenes/env/background.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/font/thaleah_fat.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://scripts/game_menu/initial_screen.gd" type="Script" id=5]
+[ext_resource path="res://scenes/env/dawn_mask.tscn" type="PackedScene" id=6]
 
 [sub_resource type="DynamicFont" id=2]
 size = 32
 font_data = ExtResource( 4 )
 
+[sub_resource type="DynamicFont" id=5]
+size = 8
+font_data = ExtResource( 4 )
+
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 4 )
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("GameName:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ButtonsContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("GameName:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("MadeBy:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "show_container"
+tracks/0/type = "value"
+tracks/0/path = NodePath("GameName:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ButtonsContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MadeBy:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="InitialScreen" type="Control"]
 anchor_right = 1.0
@@ -42,6 +137,7 @@ can_process = true
 [node name="GameMenu" type="CanvasLayer" parent="."]
 
 [node name="GameName" type="Label" parent="GameMenu"]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 168.0
@@ -53,7 +149,25 @@ custom_fonts/font = SubResource( 2 )
 text = "Dawn Forest"
 valign = 1
 
+[node name="MadeBy" type="Label" parent="GameMenu"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -59.5
+margin_top = -10.0
+margin_right = 59.5
+margin_bottom = -2.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_fonts/font = SubResource( 5 )
+text = "Made By DevBandeira - Version 0.1"
+valign = 1
+
 [node name="ButtonsContainer" type="VBoxContainer" parent="GameMenu"]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 15.0
 margin_top = 40.0
 margin_right = 70.0
@@ -133,3 +247,11 @@ custom_constants/shadow_offset_y = 1
 custom_fonts/font = SubResource( 1 )
 text = "Quit"
 valign = 1
+
+[node name="Animation" type="AnimationPlayer" parent="GameMenu"]
+anims/RESET = SubResource( 4 )
+anims/show_container = SubResource( 3 )
+
+[node name="Mask" parent="." instance=ExtResource( 6 )]
+
+[connection signal="animation_finished" from="GameMenu/Animation" to="." method="on_animation_finished"]
