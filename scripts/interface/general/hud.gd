@@ -12,7 +12,7 @@ export(PackedScene) var shopping_container
 export(PackedScene) var sell_shopping_container
 
 func spawn_dialog(interactable, dialog_dict: Dictionary) -> void:
-	var dialog: DialogContainer = dialog_container.instance()
+	var dialog = dialog_container.instance()
 	var _finished: bool = dialog.connect("finished", interactable, "on_dialog_finished")
 	dialog.dialog_list = dialog_dict
 	hide_containers()

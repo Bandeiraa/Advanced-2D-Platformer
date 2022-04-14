@@ -1,0 +1,25 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scripts/interface/general/hud.gd" type="Script" id=1]
+[ext_resource path="res://scenes/interface/player_interface/inventory/equipment_container.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/interface/shopping/buy_container/shopping_container.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/interface/player_interface/stats/stats_container.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/interface/general/dialog_container.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/interface/shopping/sell_container/sell_container.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/interface/player_interface/stats/bar_container.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/interface/player_interface/inventory/inventory_container.tscn" type="PackedScene" id=8]
+
+[node name="Interface" type="CanvasLayer" groups=["hud"]]
+pause_mode = 2
+script = ExtResource( 1 )
+dialog_container = ExtResource( 5 )
+shopping_container = ExtResource( 3 )
+sell_shopping_container = ExtResource( 6 )
+
+[node name="InventoryContainer" parent="." instance=ExtResource( 8 )]
+
+[node name="StatsContainer" parent="." groups=["stats_hud"] instance=ExtResource( 4 )]
+
+[node name="BarContainer" parent="." groups=["bar_container"] instance=ExtResource( 7 )]
+
+[node name="EquipmentContainer" parent="." groups=["equipment_container"] instance=ExtResource( 2 )]

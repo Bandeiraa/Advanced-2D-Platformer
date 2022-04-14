@@ -62,7 +62,7 @@ tracks/0/keys = {
 modulate = Color( 1, 1, 1, 0 )
 frames = SubResource( 1 )
 animation = "animation"
-frame = 2
+frame = 1
 playing = true
 
 [node name="Animation" type="AnimationPlayer" parent="."]

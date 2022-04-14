@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://scripts/interactable/interactable_template.gd" type="Script" id=1]
-[ext_resource path="res://scenes/env/dialog_icon.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/interactable/initial/interactable_template.gd" type="Script" id=1]
+[ext_resource path="res://scenes/effect/dialog_icon.tscn" type="PackedScene" id=2]
 
 [node name="InteractableTemplate" type="Area2D"]
 collision_layer = 0

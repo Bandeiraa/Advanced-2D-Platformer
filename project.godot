@@ -12,17 +12,17 @@ _global_script_classes=[ {
 "base": "Control",
 "class": "BarContainer",
 "language": "GDScript",
-"path": "res://scripts/interface/bar_container.gd"
+"path": "res://scripts/interface/stats/bar_container.gd"
 }, {
 "base": "InteractableTemplate",
 "class": "Checkpoint",
 "language": "GDScript",
-"path": "res://scripts/interactable/checkpoint.gd"
+"path": "res://scripts/interactable/general/checkpoint.gd"
 }, {
 "base": "Area2D",
 "class": "CollisionArea",
 "language": "GDScript",
-"path": "res://scripts/enemy/collision_area.gd"
+"path": "res://scripts/enemy/template/collision_area.gd"
 }, {
 "base": "EnemyTemplate",
 "class": "Crabby",
@@ -37,12 +37,12 @@ _global_script_classes=[ {
 "base": "Area2D",
 "class": "DetectionArea",
 "language": "GDScript",
-"path": "res://scripts/enemy/detection_area.gd"
+"path": "res://scripts/enemy/template/detection_area.gd"
 }, {
 "base": "Control",
 "class": "DialogContainer",
 "language": "GDScript",
-"path": "res://scripts/interface/dialog_container.gd"
+"path": "res://scripts/interface/general/dialog_container.gd"
 }, {
 "base": "AnimatedSprite",
 "class": "EffectTemplate",
@@ -52,7 +52,7 @@ _global_script_classes=[ {
 "base": "Control",
 "class": "EnemyHealthBar",
 "language": "GDScript",
-"path": "res://scripts/enemy/enemy_health_bar.gd"
+"path": "res://scripts/enemy/template/enemy_health_bar.gd"
 }, {
 "base": "Node2D",
 "class": "EnemySpawner",
@@ -62,17 +62,17 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "EnemyTemplate",
 "language": "GDScript",
-"path": "res://scripts/enemy/enemy_template.gd"
+"path": "res://scripts/enemy/template/enemy_template.gd"
 }, {
 "base": "Sprite",
 "class": "EnemyTexture",
 "language": "GDScript",
-"path": "res://scripts/enemy/enemy_texture_template.gd"
+"path": "res://scripts/enemy/template/enemy_texture_template.gd"
 }, {
 "base": "Control",
 "class": "EquipmentContainer",
 "language": "GDScript",
-"path": "res://scripts/interface/equipment_container.gd"
+"path": "res://scripts/interface/inventory/equipment_container.gd"
 }, {
 "base": "Node2D",
 "class": "GameLevel",
@@ -82,27 +82,27 @@ _global_script_classes=[ {
 "base": "InteractableTemplate",
 "class": "InitialCheckpoint",
 "language": "GDScript",
-"path": "res://scripts/interactable/initial_checkpoint.gd"
+"path": "res://scripts/interactable/initial/initial_checkpoint.gd"
 }, {
 "base": "InteractableTemplate",
 "class": "InitialSign",
 "language": "GDScript",
-"path": "res://scripts/interactable/initial_sign.gd"
+"path": "res://scripts/interactable/initial/initial_sign.gd"
 }, {
 "base": "Area2D",
 "class": "InteractableTemplate",
 "language": "GDScript",
-"path": "res://scripts/interactable/interactable_template.gd"
+"path": "res://scripts/interactable/initial/interactable_template.gd"
 }, {
 "base": "Control",
 "class": "InventoryContainer",
 "language": "GDScript",
-"path": "res://scripts/interface/inventory_container.gd"
+"path": "res://scripts/interface/inventory/inventory_container.gd"
 }, {
 "base": "HBoxContainer",
 "class": "ItemContainer",
 "language": "GDScript",
-"path": "res://scripts/interface/item_container.gd"
+"path": "res://scripts/interface/buy_container/item_container.gd"
 }, {
 "base": "TextureRect",
 "class": "LeftSellContainer",
@@ -127,27 +127,27 @@ _global_script_classes=[ {
 "base": "Control",
 "class": "SellContainer",
 "language": "GDScript",
-"path": "res://scripts/interface/sell_container.gd"
+"path": "res://scripts/interface/sell_container/sell_container.gd"
 }, {
 "base": "HBoxContainer",
 "class": "SellItemContainer",
 "language": "GDScript",
-"path": "res://scripts/interface/sell_item_container.gd"
+"path": "res://scripts/interface/sell_container/sell_item_container.gd"
 }, {
 "base": "InteractableTemplate",
 "class": "Shopping",
 "language": "GDScript",
-"path": "res://scripts/interactable/shop.gd"
+"path": "res://scripts/interactable/general/shop.gd"
 }, {
 "base": "Control",
 "class": "ShoppingContainer",
 "language": "GDScript",
-"path": "res://scripts/interface/shopping_container.gd"
+"path": "res://scripts/interface/buy_container/shopping_container.gd"
 }, {
 "base": "InteractableTemplate",
 "class": "Sign",
 "language": "GDScript",
-"path": "res://scripts/interactable/sign.gd"
+"path": "res://scripts/interactable/general/sign.gd"
 }, {
 "base": "Node",
 "class": "Stats",
@@ -157,12 +157,12 @@ _global_script_classes=[ {
 "base": "Control",
 "class": "StatsContainer",
 "language": "GDScript",
-"path": "res://scripts/interface/stats_container.gd"
+"path": "res://scripts/interface/stats/stats_container.gd"
 }, {
 "base": "EnemyTemplate",
 "class": "Whale",
 "language": "GDScript",
-"path": "res://scripts/enemy/whale.gd"
+"path": "res://scripts/enemy/whale/whale.gd"
 }, {
 "base": "EnemyTexture",
 "class": "WhaleTexture",
@@ -212,8 +212,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
-GlobalInfo="*res://scripts/env/global_info.gd"
-TransitionScreen="*res://scenes/management/transition_screen.tscn"
+GlobalInfo="*res://scripts/management/global_info.gd"
+TransitionScreen="*res://scenes/env/transition_screen.tscn"
 
 [display]
 

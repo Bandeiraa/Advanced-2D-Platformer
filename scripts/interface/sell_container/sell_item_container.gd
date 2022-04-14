@@ -36,19 +36,19 @@ func on_button_pressed(button: TextureButton) -> void:
 	match button.name:
 		"Minos":
 			if current_selected_item > 0:
+				reset(button)
 				current_selected_item -= 1
 				if current_selected_item == 0:
 					emit_signal("reset", -1, [current_selected_item, item_price, item_icon.texture])
-				else:
-					emit_signal("reset", item_index, [current_selected_item, item_price, item_icon.texture])
-				
-				reset(button)
+					return
+					
+				emit_signal("reset", item_index, [current_selected_item, item_price, item_icon.texture])
 				
 		"Plus":
 			if current_selected_item < total_amount:
+				reset(button)
 				current_selected_item += 1
 				emit_signal("reset", item_index, [current_selected_item, item_price, item_icon.texture])
-				reset(button)
 				
 				
 func reset(button: TextureButton) -> void:

@@ -133,6 +133,7 @@ func update_slot() -> void:
 func update_amount(value: int) -> void:
 	var new_amount: int = amount - value
 	item_amount.text = str(new_amount)
+	amount = new_amount
 	if new_amount == 0:
 		update_slot()
 		

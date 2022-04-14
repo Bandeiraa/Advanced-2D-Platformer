@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/interface/stats/bar/health_bar.png" type="Texture" id=2]
 [ext_resource path="res://assets/interface/stats/bar/mana_bar_background.png" type="Texture" id=3]
 [ext_resource path="res://assets/interface/stats/bar/mana_bar.png" type="Texture" id=4]
-[ext_resource path="res://scripts/interface/bar_container.gd" type="Script" id=5]
+[ext_resource path="res://scripts/interface/stats/bar_container.gd" type="Script" id=5]
 [ext_resource path="res://assets/interface/stats/bar/exp_bar_background.png" type="Texture" id=6]
 [ext_resource path="res://assets/interface/stats/bar/exp_bar.png" type="Texture" id=7]
 

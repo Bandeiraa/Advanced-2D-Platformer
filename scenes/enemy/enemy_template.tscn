@@ -1,12 +1,12 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://scripts/enemy/enemy_template.gd" type="Script" id=1]
-[ext_resource path="res://scripts/enemy/detection_area.gd" type="Script" id=2]
-[ext_resource path="res://scripts/enemy/enemy_texture_template.gd" type="Script" id=3]
-[ext_resource path="res://scripts/enemy/collision_area.gd" type="Script" id=4]
-[ext_resource path="res://assets/enemy/enemy_health_bar_background.png" type="Texture" id=5]
-[ext_resource path="res://assets/enemy/health_bar.png" type="Texture" id=6]
-[ext_resource path="res://scripts/enemy/enemy_health_bar.gd" type="Script" id=7]
+[ext_resource path="res://scripts/enemy/template/enemy_template.gd" type="Script" id=1]
+[ext_resource path="res://scripts/enemy/template/detection_area.gd" type="Script" id=2]
+[ext_resource path="res://scripts/enemy/template/enemy_texture_template.gd" type="Script" id=3]
+[ext_resource path="res://scripts/enemy/template/collision_area.gd" type="Script" id=4]
+[ext_resource path="res://assets/enemy/general/enemy_health_bar_background.png" type="Texture" id=5]
+[ext_resource path="res://assets/enemy/general/health_bar.png" type="Texture" id=6]
+[ext_resource path="res://scripts/enemy/template/enemy_health_bar.gd" type="Script" id=7]
 
 [node name="EnemyTemplate" type="KinematicBody2D"]
 script = ExtResource( 1 )
