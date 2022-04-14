@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://resources/floor.tres" type="TileSet" id=1]
 [ext_resource path="res://resources/normal_size_decoration.tres" type="TileSet" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/font/thaleah_fat.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://scripts/game_menu/initial_screen.gd" type="Script" id=5]
 [ext_resource path="res://scenes/env/dawn_mask.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/env/light.tscn" type="PackedScene" id=7]
 
 [sub_resource type="DynamicFont" id=2]
 size = 32
@@ -106,6 +107,62 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:texture_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.2 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "light_strength"
+length = 10.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.5, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:texture_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.2, 0.4 ]
 }
 
 [node name="InitialScreen" type="Control"]
@@ -253,5 +310,13 @@ anims/RESET = SubResource( 4 )
 anims/show_container = SubResource( 3 )
 
 [node name="Mask" parent="." instance=ExtResource( 6 )]
+
+[node name="Light" parent="." instance=ExtResource( 7 )]
+position = Vector2( 233, 126 )
+
+[node name="Animation" type="AnimationPlayer" parent="Light"]
+autoplay = "light_strength"
+anims/RESET = SubResource( 7 )
+anims/light_strength = SubResource( 6 )
 
 [connection signal="animation_finished" from="GameMenu/Animation" to="." method="on_animation_finished"]
