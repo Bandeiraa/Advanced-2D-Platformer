@@ -25,8 +25,6 @@ func on_dialog_finished() -> void:
 	dialog_icon_animation.play("show_container")
 	get_tree().call_group("hud", "normal_state")
 	
-	GlobalInfo.checkpoint = true
-	GlobalInfo.checkpoint_position = checkpoint_spawn_position
 	DataManagement.data_dictionary["checkpoint"] = true
 	DataManagement.data_dictionary["player_position"] = checkpoint_spawn_position
 	DataManagement.save_data()

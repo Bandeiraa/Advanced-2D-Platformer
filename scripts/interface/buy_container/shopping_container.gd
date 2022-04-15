@@ -61,4 +61,4 @@ func on_button_pressed(button: TextureButton) -> void:
 			
 			
 func _process(_delta: float) -> void:
-	gold_amount.text = str(GlobalInfo.player_gold)
+	gold_amount.text = str(DataManagement.data_dictionary["player_gold"])

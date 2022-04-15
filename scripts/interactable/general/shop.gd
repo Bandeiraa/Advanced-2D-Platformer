@@ -14,8 +14,54 @@ var dialog_list: Dictionary = {
 }
 
 var shop_list: Dictionary = {
-	"Heal Potion": ["res://assets/item/consumable/health_potion.png", 5, "Health", 5, 3], #Image Path | Price | Type | Value | Sell Price
-	"Mana Potion": ["res://assets/item/consumable/mana_potion.png", 15, "Mana", 5, 10]
+	"Heal Potion": [
+		"res://assets/item/consumable/health_potion.png", 
+		5, 
+		"Health", 
+		5, 
+		2
+	],
+	 
+	"Mana Potion": [
+		"res://assets/item/consumable/mana_potion.png", 
+		15, 
+		"Mana", 
+		5, 
+		5
+	],
+	
+	"Crabby Belt": [
+			"res://assets/item/equipment/crabby_belt.png",
+			90,
+			"Equipment",
+			{
+				"Health": 3,
+				"Attack": 1
+			},
+			30
+		],
+		
+	"Crabby Axe": [
+			"res://assets/item/equipment/crabby_axe.png",
+			120,
+			"Weapon",
+			{
+				"Attack": 3,
+				"Defense": 1
+			},
+			40
+		],
+		
+	"Whale Mask": [
+			"res://assets/item/equipment/whale_mask.png",
+			90,
+			"Equipment",
+			{
+				"Mana": 5,
+				"Magic Attack": 3
+			},
+			30
+		]
 }
 
 func interactable_action() -> void:

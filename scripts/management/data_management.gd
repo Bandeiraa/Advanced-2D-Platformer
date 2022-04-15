@@ -4,6 +4,7 @@ var save_path: String = "user://save.dat"
 
 var data_dictionary = {
 	"checkpoint": false,
+	"player_gold": 0,
 	"player_texture": "",
 	"player_position": Vector2(-882, 132)
 }

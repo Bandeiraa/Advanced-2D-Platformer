@@ -38,8 +38,9 @@ func mouse_interaction(state: String) -> void:
 			
 func _process(_delta: float) -> void:
 	var can_click_condition: bool = Input.is_action_just_pressed("click") and can_click
-	if can_click_condition and (GlobalInfo.player_gold >= price):
-		GlobalInfo.player_gold -= price
+	if can_click_condition and (DataManagement.data_dictionary["player_gold"] >= price):
+		DataManagement.data_dictionary["player_gold"] -= price
+		DataManagement.save_data()
 		get_tree().call_group("inventory", "update_slot", item_name.text, item_texture.texture, item_info)
 		
 		modulate.a = 0.2

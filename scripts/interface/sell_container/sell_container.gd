@@ -44,7 +44,8 @@ func on_button_pressed(button: TextureButton) -> void:
 			var inventory_container: GridContainer = hud_ref.get_node("InventoryContainer").slot_container
 			inventory_container.get_child(current_item_index).update_amount(sell_item_amount)
 			right_container.update_slot_amount(current_item_index, sell_item_amount)
-			GlobalInfo.player_gold += sell_value
+			DataManagement.data_dictionary["player_gold"] += sell_value
+			DataManagement.save_data()
 			sell_value = 0
 			
 		"BackButton":

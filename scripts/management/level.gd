@@ -9,20 +9,7 @@ var can_process_height: bool = true
 var current_level_path: String = "res://scenes/management/level.tscn"
 
 func _ready() -> void:
-	if GlobalInfo.checkpoint:
-		player.global_position = GlobalInfo.checkpoint_position
-		
 	var _game_over: bool = player.get_node("Texture").connect("game_over", self, "on_game_over")
-	#var _aux_camera: bool = player.get_node("Texture").connect("aux_camera", self, "aux_camera")
-	
-	
-func aux_camera(player_position: Vector2) -> void:
-	can_process_height = false
-	var camera: Camera2D = Camera2D.new()
-	add_child(camera)
-	camera.limit_top = 0
-	camera.current = true
-	camera.global_position = player_position
 	
 	
 func on_game_over() -> void:

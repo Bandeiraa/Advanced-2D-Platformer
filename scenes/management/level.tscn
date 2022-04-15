@@ -98,7 +98,7 @@ tile_data = PoolIntArray( 2818122, 2, 0, 2818124, 2, 0, 2818129, 2, 0 )
 tile_set = ExtResource( 4 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( 327658, 5, 0, 327664, 3, 0, 327666, 3, 0, 327668, 3, 0, 327678, 5, 0, 262144, 2, 0, 262146, 2, 0, 262196, 3, 0, 262203, 3, 0, 524306, 7, 0, 1376292, 3, 0, 1376294, 3, 0, 1376296, 3, 0, 1376298, 3, 0, 1376299, 3, 0 )
+tile_data = PoolIntArray( 196659, 7, 0, 327658, 5, 0, 327664, 3, 0, 327666, 3, 0, 327668, 3, 0, 327678, 5, 0, 262144, 2, 0, 262146, 2, 0, 262196, 3, 0, 262203, 3, 0, 524306, 7, 0, 1376292, 3, 0, 1376294, 3, 0, 1376296, 3, 0, 1376298, 3, 0, 1376299, 3, 0 )
 
 [node name="SmallSizeDecorationFront" type="TileMap" parent="LevelDesign/Decoration"]
 z_index = 10
@@ -133,6 +133,10 @@ position = Vector2( 592, 300 )
 script = ExtResource( 15 )
 checkpoint_spawn_position = Vector2( 576, 292 )
 list = [ "This is a Checkpoint... Basically, if you interact with one of them... The next time you die, you will spawn in the last saved checkpoint." ]
+
+[node name="Checkpoint" parent="LevelDesign/Interactable" instance=ExtResource( 14 )]
+position = Vector2( 1648, 140 )
+checkpoint_spawn_position = Vector2( 1648, 140 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( -882, 132 )
