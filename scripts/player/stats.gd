@@ -40,6 +40,8 @@ var level_dict: Dictionary = {
 
 export(float) var invencibility_time
 
+export(PackedScene) var floating_text
+
 export(NodePath) onready var collision_area = get_node(collision_area) as Area2D
 export(NodePath) onready var player_ref = get_node(player_ref) as KinematicBody2D
 
@@ -177,6 +179,7 @@ func update_health(type: String, value: int) -> void:
 	match type:
 		"Increase":
 			current_health += value
+			spawn_floating_text("+", "Heal", value)
 			if current_health >= max_health:
 				current_health = max_health
 				
@@ -199,18 +202,22 @@ func verify_shield(value: int) -> void:
 		var damage = abs((base_defense + bonus_defense) - value)
 		if damage > 0:
 			current_health -= damage
+			spawn_floating_text("-", "Damage", damage)
 	else:
 		current_health -= value
+		spawn_floating_text("-", "Damage", value)
 		
 		
 func update_mana(type: String, value: int) -> void:
 	match type:
 		"Increase":
 			current_mana += value
+			spawn_floating_text("+", "Mana", value)
 			if current_mana >= base_mana:
 				current_mana = base_mana
 				
 		"Decrease":
+			spawn_floating_text("-", "Mana", value)
 			current_mana -= value
 			
 	get_tree().call_group("bar_container", "update_bar", "ManaBar", current_mana)
@@ -235,3 +242,13 @@ func on_collision_area_entered(area):
 		
 func on_invencibility_timer_timeout() -> void:
 	collision_area.set_deferred("monitoring", true)
+	
+	
+func spawn_floating_text(type_sign: String, type: String, value: int) -> void:
+	var text: FloatText = floating_text.instance()
+	text.rect_global_position = player_ref.global_position
+	get_tree().root.call_deferred("add_child", text)
+	
+	text.type = type
+	text.value = value
+	text.type_sign = type_sign
