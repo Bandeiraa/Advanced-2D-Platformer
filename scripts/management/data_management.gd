@@ -3,8 +3,9 @@ extends Node
 var save_path: String = "user://save.dat"
 
 var data_dictionary = {
+	"checkpoint": false,
 	"player_texture": "",
-	"player_position": ""
+	"player_position": Vector2(-882, 132)
 }
 
 func save_data() -> void:

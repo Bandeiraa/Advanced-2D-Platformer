@@ -6,20 +6,12 @@ signal game_over
 var shield_off: bool = true
 var crouching_off: bool = true
 
-var skins_list: Array = [
-	"res://assets/player/char_blue.png", #default
-	"res://assets/player/char_green.png",
-	"res://assets/player/char_purple.png",
-	"res://assets/player/char_red.png"
-]
-
 var sufix: String = "_right"
 
 export(NodePath) onready var animation = get_node(animation) as AnimationPlayer
 export(NodePath) onready var player_ref = get_node(player_ref) as KinematicBody2D
 
 func _ready() -> void:
-	randomize()
 	define_initial_texture()
 	
 	
@@ -29,14 +21,8 @@ func define_initial_texture() -> void:
 		DataManagement.load_data()
 		texture = load(DataManagement.data_dictionary["player_texture"])
 		print("Skin carregada: " + DataManagement.data_dictionary["player_texture"])
-		return
 		
-	var random_int: int = randi() % skins_list.size()
-	texture = load(skins_list[random_int])
-	DataManagement.data_dictionary["player_texture"] = skins_list[random_int]
-	DataManagement.save_data()
-	
-	
+		
 func animate(velocity: Vector2) -> void:
 	verify_position(velocity)
 	

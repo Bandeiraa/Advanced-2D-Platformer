@@ -135,7 +135,7 @@ checkpoint_spawn_position = Vector2( 576, 292 )
 list = [ "This is a Checkpoint... Basically, if you interact with one of them... The next time you die, you will spawn in the last saved checkpoint." ]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 417, 41 )
+position = Vector2( -882, 132 )
 
 [node name="EnemiesSpawnerList" type="Node2D" parent="."]
 
@@ -145,14 +145,6 @@ enemies_list = [ [ "res://scenes/enemy/whale.tscn", -11.5 ] ]
 spawn_cooldown = 2.0
 left_gap_position = -108
 right_gap_position = 125
-
-[node name="EnemySpawner2" parent="EnemiesSpawnerList" instance=ExtResource( 16 )]
-position = Vector2( 772, 320 )
-enemies_list = [ [ "res://scenes/enemy/whale.tscn", -11.5 ], [ "res://scenes/enemy/crabby.tscn", -11.5 ] ]
-spawn_cooldown = 5.0
-left_gap_position = -130
-right_gap_position = 155
-can_respawn = true
 
 [node name="EnemySpawner3" parent="EnemiesSpawnerList" instance=ExtResource( 16 )]
 position = Vector2( 1308, 704 )

@@ -95,6 +95,11 @@ _global_script_classes=[ {
 "path": "res://scripts/interactable/initial/initial_checkpoint.gd"
 }, {
 "base": "Control",
+"class": "InitialContainer",
+"language": "GDScript",
+"path": "res://scripts/game_menu/initial_container.gd"
+}, {
+"base": "Control",
 "class": "InitialScreen",
 "language": "GDScript",
 "path": "res://scripts/game_menu/initial_screen.gd"
@@ -143,6 +148,11 @@ _global_script_classes=[ {
 "class": "RightSellContainer",
 "language": "GDScript",
 "path": "res://scripts/interface/sell_container/right_container.gd"
+}, {
+"base": "Control",
+"class": "SelectCharacter",
+"language": "GDScript",
+"path": "res://scripts/game_menu/select_character.gd"
 }, {
 "base": "Control",
 "class": "SellContainer",
@@ -227,6 +237,7 @@ _global_script_class_icons={
 "EquipmentContainer": "",
 "GameLevel": "",
 "InitialCheckpoint": "",
+"InitialContainer": "",
 "InitialScreen": "",
 "InitialSign": "",
 "InteractableTemplate": "",
@@ -237,6 +248,7 @@ _global_script_class_icons={
 "Player": "",
 "PointsInfo": "",
 "RightSellContainer": "",
+"SelectCharacter": "",
 "SellContainer": "",
 "SellItemContainer": "",
 "Shopping": "",

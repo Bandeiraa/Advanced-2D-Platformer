@@ -9,9 +9,10 @@ var can_interact: bool = true
 
 func on_body_entered(body: Player) -> void:
 	player_ref = body
-	dialog_icon_animation.play("show_container")
-	
-	
+	if can_interact:
+		dialog_icon_animation.play("show_container")
+		
+		
 func on_body_exited(_body: Player) -> void:
 	player_ref = null
 	if dialog_icon.modulate.a != 0:

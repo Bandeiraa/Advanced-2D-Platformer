@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://resources/floor.tres" type="TileSet" id=1]
 [ext_resource path="res://resources/normal_size_decoration.tres" type="TileSet" id=2]
@@ -7,22 +7,27 @@
 [ext_resource path="res://scripts/game_menu/initial_screen.gd" type="Script" id=5]
 [ext_resource path="res://scenes/env/dawn_mask.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/env/light.tscn" type="PackedScene" id=7]
+[ext_resource path="res://resources/blue_char.tres" type="Texture" id=8]
+[ext_resource path="res://resources/red_char.tres" type="Texture" id=9]
+[ext_resource path="res://resources/green_char.tres" type="Texture" id=10]
+[ext_resource path="res://resources/purple_char.tres" type="Texture" id=11]
+[ext_resource path="res://scripts/game_menu/initial_container.gd" type="Script" id=12]
+[ext_resource path="res://scripts/game_menu/select_character.gd" type="Script" id=13]
 
 [sub_resource type="DynamicFont" id=2]
 size = 32
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=5]
-size = 8
+[sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=10]
 font_data = ExtResource( 4 )
 
 [sub_resource type="Animation" id=4]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("GameName:modulate")
+tracks/0/path = NodePath("InitialContainer/GameName:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -34,7 +39,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("ButtonsContainer:modulate")
+tracks/1/path = NodePath("InitialContainer/ButtonsContainer:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -46,7 +51,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("GameName:visible")
+tracks/2/path = NodePath("InitialContainer/GameName:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -58,7 +63,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("MadeBy:modulate")
+tracks/3/path = NodePath("HContainer:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -69,11 +74,170 @@ tracks/3/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("InitialContainer/ButtonsContainer:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("InitialContainer/GameName:rect_position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 10, 10 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("SelectCharacter/CharacterSelectContainer:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("SelectCharacter/CharacterSelectContainer:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("SelectCharacter/Text:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("SelectCharacter/Text:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "character_select"
+tracks/0/type = "value"
+tracks/0/path = NodePath("InitialContainer/ButtonsContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("InitialContainer/ButtonsContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("InitialContainer/GameName:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 10, 10 ), Vector2( 76, 10 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("SelectCharacter/CharacterSelectContainer:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("SelectCharacter/CharacterSelectContainer:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("SelectCharacter/Text:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("SelectCharacter/Text:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "show_container"
 tracks/0/type = "value"
-tracks/0/path = NodePath("GameName:modulate")
+tracks/0/path = NodePath("InitialContainer/GameName:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -85,7 +249,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("ButtonsContainer:modulate")
+tracks/1/path = NodePath("InitialContainer/ButtonsContainer:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -97,7 +261,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("MadeBy:modulate")
+tracks/2/path = NodePath("HContainer:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -108,6 +272,22 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("InitialContainer/ButtonsContainer:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="DynamicFont" id=5]
+size = 8
+font_data = ExtResource( 4 )
 
 [sub_resource type="Animation" id=7]
 length = 0.001
@@ -165,9 +345,15 @@ tracks/1/keys = {
 "values": [ 0.2, 0.4 ]
 }
 
+[sub_resource type="Environment" id=8]
+background_mode = 4
+glow_enabled = true
+glow_hdr_threshold = 1.5
+
 [node name="InitialScreen" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 script = ExtResource( 5 )
 
 [node name="ScreenDesign" type="Node2D" parent="."]
@@ -193,12 +379,19 @@ can_process = true
 
 [node name="GameMenu" type="CanvasLayer" parent="."]
 
-[node name="GameName" type="Label" parent="GameMenu"]
+[node name="InitialContainer" type="Control" parent="GameMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 12 )
+animation = NodePath("../Animation")
+
+[node name="GameName" type="Label" parent="GameMenu/InitialContainer"]
 modulate = Color( 1, 1, 1, 0 )
 margin_left = 10.0
 margin_top = 10.0
-margin_right = 168.0
-margin_bottom = 30.0
+margin_right = 178.0
+margin_bottom = 40.0
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 3
 custom_constants/shadow_offset_y = 3
@@ -206,32 +399,16 @@ custom_fonts/font = SubResource( 2 )
 text = "Dawn Forest"
 valign = 1
 
-[node name="MadeBy" type="Label" parent="GameMenu"]
-modulate = Color( 1, 1, 1, 0 )
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -59.5
-margin_top = -10.0
-margin_right = 59.5
-margin_bottom = -2.0
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 1
-custom_constants/shadow_offset_y = 1
-custom_fonts/font = SubResource( 5 )
-text = "Made By DevBandeira - Version 0.1"
-valign = 1
-
-[node name="ButtonsContainer" type="VBoxContainer" parent="GameMenu"]
+[node name="ButtonsContainer" type="VBoxContainer" parent="GameMenu/InitialContainer"]
+visible = false
 modulate = Color( 1, 1, 1, 0 )
 margin_left = 15.0
 margin_top = 40.0
-margin_right = 70.0
-margin_bottom = 60.0
+margin_right = 85.0
+margin_bottom = 100.0
 custom_constants/separation = 0
 
-[node name="Play" type="Button" parent="GameMenu/ButtonsContainer"]
+[node name="Play" type="Button" parent="GameMenu/InitialContainer/ButtonsContainer"]
 margin_right = 70.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 70, 20 )
@@ -239,7 +416,7 @@ focus_mode = 0
 enabled_focus_mode = 0
 flat = true
 
-[node name="Text" type="Label" parent="GameMenu/ButtonsContainer/Play"]
+[node name="Text" type="Label" parent="GameMenu/InitialContainer/ButtonsContainer/Play"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -255,7 +432,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Play Game"
 valign = 1
 
-[node name="Options" type="Button" parent="GameMenu/ButtonsContainer"]
+[node name="Options" type="Button" parent="GameMenu/InitialContainer/ButtonsContainer"]
 margin_top = 20.0
 margin_right = 70.0
 margin_bottom = 40.0
@@ -264,7 +441,7 @@ focus_mode = 0
 enabled_focus_mode = 0
 flat = true
 
-[node name="Text" type="Label" parent="GameMenu/ButtonsContainer/Options"]
+[node name="Text" type="Label" parent="GameMenu/InitialContainer/ButtonsContainer/Options"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -280,7 +457,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Options"
 valign = 1
 
-[node name="Quit" type="Button" parent="GameMenu/ButtonsContainer"]
+[node name="Quit" type="Button" parent="GameMenu/InitialContainer/ButtonsContainer"]
 margin_top = 40.0
 margin_right = 70.0
 margin_bottom = 60.0
@@ -289,7 +466,7 @@ focus_mode = 0
 enabled_focus_mode = 0
 flat = true
 
-[node name="Text" type="Label" parent="GameMenu/ButtonsContainer/Quit"]
+[node name="Text" type="Label" parent="GameMenu/InitialContainer/ButtonsContainer/Quit"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -305,18 +482,227 @@ custom_fonts/font = SubResource( 1 )
 text = "Quit"
 valign = 1
 
+[node name="SelectCharacter" type="Control" parent="GameMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 13 )
+
+[node name="CharacterSelectContainer" type="HBoxContainer" parent="GameMenu/SelectCharacter"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -118.0
+margin_top = -40.0
+margin_right = 118.0
+margin_bottom = 40.0
+
+[node name="Blue" type="VBoxContainer" parent="GameMenu/SelectCharacter/CharacterSelectContainer"]
+margin_right = 56.0
+margin_bottom = 80.0
+
+[node name="Texture" type="TextureRect" parent="GameMenu/SelectCharacter/CharacterSelectContainer/Blue"]
+margin_right = 56.0
+margin_bottom = 56.0
+texture = ExtResource( 8 )
+
+[node name="Blue" type="Button" parent="GameMenu/SelectCharacter/CharacterSelectContainer/Blue"]
+margin_top = 60.0
+margin_right = 56.0
+margin_bottom = 80.0
+focus_mode = 0
+enabled_focus_mode = 0
+flat = true
+
+[node name="Text" type="Label" parent="GameMenu/SelectCharacter/CharacterSelectContainer/Blue/Blue"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -7.5
+margin_right = 20.0
+margin_bottom = 7.5
+custom_fonts/font = SubResource( 10 )
+text = "Blue"
+align = 1
+valign = 1
+
+[node name="Red" type="VBoxContainer" parent="GameMenu/SelectCharacter/CharacterSelectContainer"]
+margin_left = 60.0
+margin_right = 116.0
+margin_bottom = 80.0
+
+[node name="Texture" type="TextureRect" parent="GameMenu/SelectCharacter/CharacterSelectContainer/Red"]
+margin_right = 56.0
+margin_bottom = 56.0
+texture = ExtResource( 9 )
+
+[node name="Red" type="Button" parent="GameMenu/SelectCharacter/CharacterSelectContainer/Red"]
+margin_top = 60.0
+margin_right = 56.0
+margin_bottom = 80.0
+focus_mode = 0
+enabled_focus_mode = 0
+flat = true
+
+[node name="Text" type="Label" parent="GameMenu/SelectCharacter/CharacterSelectContainer/Red/Red"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -7.5
+margin_right = 20.0
+margin_bottom = 7.5
+custom_fonts/font = SubResource( 10 )
+text = "Red"
+align = 1
+valign = 1
+
+[node name="Green" type="VBoxContainer" parent="GameMenu/SelectCharacter/CharacterSelectContainer"]
+margin_left = 120.0
+margin_right = 176.0
+margin_bottom = 80.0
+
+[node name="Texture" type="TextureRect" parent="GameMenu/SelectCharacter/CharacterSelectContainer/Green"]
+margin_right = 56.0
+margin_bottom = 56.0
+texture = ExtResource( 10 )
+
+[node name="Green" type="Button" parent="GameMenu/SelectCharacter/CharacterSelectContainer/Green"]
+margin_top = 60.0
+margin_right = 56.0
+margin_bottom = 80.0
+focus_mode = 0
+enabled_focus_mode = 0
+flat = true
+
+[node name="Text" type="Label" parent="GameMenu/SelectCharacter/CharacterSelectContainer/Green/Green"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -7.5
+margin_right = 20.0
+margin_bottom = 7.5
+custom_fonts/font = SubResource( 10 )
+text = "Green"
+align = 1
+valign = 1
+
+[node name="Purple" type="VBoxContainer" parent="GameMenu/SelectCharacter/CharacterSelectContainer"]
+margin_left = 180.0
+margin_right = 236.0
+margin_bottom = 80.0
+
+[node name="Texture" type="TextureRect" parent="GameMenu/SelectCharacter/CharacterSelectContainer/Purple"]
+margin_right = 56.0
+margin_bottom = 56.0
+texture = ExtResource( 11 )
+
+[node name="Purple" type="Button" parent="GameMenu/SelectCharacter/CharacterSelectContainer/Purple"]
+margin_top = 60.0
+margin_right = 56.0
+margin_bottom = 80.0
+focus_mode = 0
+enabled_focus_mode = 0
+flat = true
+
+[node name="Text" type="Label" parent="GameMenu/SelectCharacter/CharacterSelectContainer/Purple/Purple"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -24.0
+margin_top = -7.5
+margin_right = 24.0
+margin_bottom = 7.5
+custom_fonts/font = SubResource( 10 )
+text = "Purple"
+align = 1
+valign = 1
+
+[node name="Text" type="Label" parent="GameMenu/SelectCharacter"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -96.0
+margin_top = -37.0
+margin_right = 96.0
+margin_bottom = -22.0
+custom_fonts/font = SubResource( 10 )
+text = "Please Select a Character"
+align = 1
+valign = 1
+
 [node name="Animation" type="AnimationPlayer" parent="GameMenu"]
 anims/RESET = SubResource( 4 )
+anims/character_select = SubResource( 9 )
 anims/show_container = SubResource( 3 )
+
+[node name="HContainer" type="HBoxContainer" parent="GameMenu"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -58.5
+margin_top = -11.0
+margin_right = 58.5
+margin_bottom = -3.0
+custom_constants/separation = 2
+
+[node name="MadeBy" type="Label" parent="GameMenu/HContainer"]
+margin_right = 27.0
+margin_bottom = 8.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_fonts/font = SubResource( 5 )
+text = "Made By"
+align = 1
+valign = 1
+
+[node name="Dev" type="Label" parent="GameMenu/HContainer"]
+margin_left = 29.0
+margin_right = 71.0
+margin_bottom = 8.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_fonts/font = SubResource( 5 )
+text = "DevBandeira"
+valign = 1
+
+[node name="Version" type="Label" parent="GameMenu/HContainer"]
+margin_left = 73.0
+margin_right = 117.0
+margin_bottom = 8.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_fonts/font = SubResource( 5 )
+text = "- Version 0.1"
+valign = 1
 
 [node name="Mask" parent="." instance=ExtResource( 6 )]
 
 [node name="Light" parent="." instance=ExtResource( 7 )]
 position = Vector2( 233, 126 )
+color = Color( 2, 1, 1, 1 )
 
 [node name="Animation" type="AnimationPlayer" parent="Light"]
 autoplay = "light_strength"
 anims/RESET = SubResource( 7 )
 anims/light_strength = SubResource( 6 )
+
+[node name="GlowEnv" type="WorldEnvironment" parent="."]
+environment = SubResource( 8 )
 
 [connection signal="animation_finished" from="GameMenu/Animation" to="." method="on_animation_finished"]

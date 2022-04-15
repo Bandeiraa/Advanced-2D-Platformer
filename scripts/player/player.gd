@@ -21,6 +21,7 @@ var attacking: bool = false
 var defending: bool = false
 var crouching: bool = false
 
+var dialog_on: bool = false
 var not_on_wall: bool = true
 var can_track_input: bool = true
 
@@ -34,10 +35,18 @@ export(int) var wall_impulse_speed
 
 export(NodePath) onready var stats_ref = get_node(stats_ref) as Node
 
+func _ready() -> void:
+	var file = File.new()
+	if file.file_exists("user://save.dat"):
+		position = DataManagement.data_dictionary["player_position"]
+		
+		
 func _physics_process(delta: float) -> void:
-	horizontal_movement_env()
-	vertical_movement_env()
-	actions_env()
+	if not dialog_on:
+		horizontal_movement_env()
+		vertical_movement_env()
+		actions_env()
+		
 	gravity(delta)
 	velocity = move_and_slide(velocity, Vector2.UP)
 	player_sprite.animate(velocity)
@@ -132,8 +141,8 @@ func next_to_wall() -> bool:
 		
 		
 func reset(state: bool) -> void:
-	set_physics_process(state)
-	animation.play("idle")
+	velocity.x = 0
+	dialog_on = state
 	
 	landing = false
 	on_wall = false
