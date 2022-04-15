@@ -12,6 +12,7 @@ var gravity: Vector2 = Vector2.UP
 var type: String = ""
 var type_sign: String = ""
 
+export(Color) var exp_color
 export(Color) var heal_color
 export(Color) var mana_color
 export(Color) var damage_color
@@ -25,6 +26,9 @@ func _ready() -> void:
 func floating_text() -> void:
 	text = type_sign + str(value)
 	match type:
+		"Exp":
+			modulate = exp_color
+			
 		"Heal":
 			modulate = heal_color
 			

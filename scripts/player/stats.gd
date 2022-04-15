@@ -151,6 +151,7 @@ func update_stats_hud() -> void:
 	
 func update_exp(value: int) -> void:
 	current_exp += value
+	spawn_floating_text("+", "Exp", value)
 	get_tree().call_group("bar_container", "update_bar", "ExpBar", current_exp)
 	
 	if current_exp >= level_dict[str(level)] and level < 9:
@@ -247,8 +248,9 @@ func on_invencibility_timer_timeout() -> void:
 func spawn_floating_text(type_sign: String, type: String, value: int) -> void:
 	var text: FloatText = floating_text.instance()
 	text.rect_global_position = player_ref.global_position
-	get_tree().root.call_deferred("add_child", text)
 	
 	text.type = type
 	text.value = value
 	text.type_sign = type_sign
+	
+	get_tree().root.call_deferred("add_child", text)

@@ -19,6 +19,7 @@ func on_collision_area_entered(area) -> void:
 func update_health(damage: int) -> void:
 	health -= damage
 	enemy_bar.update_bar(health)
+	enemy_ref.spawn_floating_text("-", "Damage", damage)
 	
 	if health <= 0: 
 		enemy_ref.can_die = true

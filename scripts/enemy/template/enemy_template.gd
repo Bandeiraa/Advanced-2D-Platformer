@@ -3,6 +3,8 @@ class_name EnemyTemplate
 
 signal kill
 
+const FLOATING_TEXT: PackedScene = preload("res://scenes/env/floating_text.tscn")
+
 onready var texture: Sprite = get_node("Texture")
 onready var floor_ray: RayCast2D = get_node("FloorRay")
 onready var animation: AnimationPlayer = get_node("Animation")
@@ -85,3 +87,14 @@ func spawn_item_probability() -> void:
 			var item_texture: StreamTexture = load(drop_list[key][0])
 			var item_info: Array = [drop_list[key][2], drop_list[key][3], drop_list[key][4], 1]
 			get_tree().call_group("inventory", "update_slot", key, item_texture, item_info)
+			
+			
+func spawn_floating_text(type_sign: String, type: String, value: int) -> void:
+	var text: FloatText = FLOATING_TEXT.instance()
+	text.rect_global_position = global_position
+	
+	text.type = type
+	text.value = value
+	text.type_sign = type_sign
+	
+	get_tree().root.call_deferred("add_child", text)
