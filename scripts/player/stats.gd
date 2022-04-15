@@ -62,12 +62,20 @@ func _ready() -> void:
 	
 	
 func persist_data() -> void:
-	print(DataManagement.data_dictionary["base_stats"])
+	level = DataManagement.data_dictionary["level"]
+	current_exp = DataManagement.data_dictionary["current_exp"]
+	
 	base_health = DataManagement.data_dictionary["base_stats"][0]
 	base_mana = DataManagement.data_dictionary["base_stats"][1]
 	base_attack = DataManagement.data_dictionary["base_stats"][2]
 	base_magic_attack = DataManagement.data_dictionary["base_stats"][3]
 	base_defense = DataManagement.data_dictionary["base_stats"][4]
+	
+	bonus_health = DataManagement.data_dictionary["bonus_stats"][0]
+	bonus_mana = DataManagement.data_dictionary["bonus_stats"][1]
+	bonus_attack = DataManagement.data_dictionary["bonus_stats"][2]
+	bonus_magic_attack = DataManagement.data_dictionary["bonus_stats"][3]
+	bonus_defense = DataManagement.data_dictionary["bonus_stats"][4]
 	
 	
 func update_stats(stat: String) -> void:
@@ -190,15 +198,18 @@ func update_exp(value: int) -> void:
 		current_exp = leftover
 		on_level_up()
 		level += 1
+		DataManagement.data_dictionary["level"] = level
 		
 	elif current_exp >= level_dict[str(level)] and level == 9:
 		current_exp = level_dict[str(level)]
 		
-		
+	DataManagement.data_dictionary["current_exp"] = current_exp
+	DataManagement.save_data()
+	
+	
 func on_level_up() -> void:
 	current_mana = base_mana + bonus_mana
 	current_health = base_health + bonus_health
-	
 	get_tree().call_group("stats_hud", "update_avaliable_points")
 	get_tree().call_group("bar_container", "update_bar", "ManaBar", current_mana)
 	get_tree().call_group("bar_container", "update_bar", "HealthBar", current_health)

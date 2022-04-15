@@ -3,11 +3,13 @@ extends Node
 var save_path: String = "user://save.dat"
 
 var data_dictionary = {
-	"checkpoint": false,
+	"level": 1,
+	"current_exp": 0,
 	"player_gold": 0,
+	"base_stats": [15, 10, 10, 3, 1],
+	"bonus_stats": [0, 0, 0, 0, 0],
+	"checkpoint": false,
 	"player_texture": "",
-	"base_stats": [],
-	"bonus_stats": [],
 	"player_position": Vector2(-882, 132)
 }
 
