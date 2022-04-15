@@ -5,9 +5,13 @@ var save_path: String = "user://save.dat"
 var data_dictionary = {
 	"level": 1,
 	"current_exp": 0,
+	
+	"base_stats": [],
+	"armor_container": [],
+	"weapon_container": [],
+	"consumable_container": [],
+	
 	"player_gold": 0,
-	"base_stats": [15, 10, 10, 3, 1],
-	"bonus_stats": [0, 0, 0, 0, 0],
 	"checkpoint": false,
 	"player_texture": "",
 	"player_position": Vector2(-882, 132)

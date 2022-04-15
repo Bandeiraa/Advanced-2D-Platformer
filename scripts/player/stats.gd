@@ -64,20 +64,16 @@ func _ready() -> void:
 func persist_data() -> void:
 	level = DataManagement.data_dictionary["level"]
 	current_exp = DataManagement.data_dictionary["current_exp"]
+	get_tree().call_group("bar_container", "update_bar", "ExpBar", current_exp)
 	
-	base_health = DataManagement.data_dictionary["base_stats"][0]
-	base_mana = DataManagement.data_dictionary["base_stats"][1]
-	base_attack = DataManagement.data_dictionary["base_stats"][2]
-	base_magic_attack = DataManagement.data_dictionary["base_stats"][3]
-	base_defense = DataManagement.data_dictionary["base_stats"][4]
-	
-	bonus_health = DataManagement.data_dictionary["bonus_stats"][0]
-	bonus_mana = DataManagement.data_dictionary["bonus_stats"][1]
-	bonus_attack = DataManagement.data_dictionary["bonus_stats"][2]
-	bonus_magic_attack = DataManagement.data_dictionary["bonus_stats"][3]
-	bonus_defense = DataManagement.data_dictionary["bonus_stats"][4]
-	
-	
+	if not DataManagement.data_dictionary["base_stats"].empty():
+		base_health = DataManagement.data_dictionary["base_stats"][0]
+		base_mana = DataManagement.data_dictionary["base_stats"][1]
+		base_attack = DataManagement.data_dictionary["base_stats"][2]
+		base_magic_attack = DataManagement.data_dictionary["base_stats"][3]
+		base_defense = DataManagement.data_dictionary["base_stats"][4]
+		
+		
 func update_stats(stat: String) -> void:
 	match stat:
 		"Attack":

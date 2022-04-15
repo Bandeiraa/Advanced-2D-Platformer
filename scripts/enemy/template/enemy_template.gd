@@ -86,7 +86,7 @@ func spawn_item_probability() -> void:
 		var random_number: int = randi() % 100 + 1
 		if random_number <= drop_list[key][1]:
 			var item_texture: StreamTexture = load(drop_list[key][0])
-			var item_info: Array = [drop_list[key][2], drop_list[key][3], drop_list[key][4], 1]
+			var item_info: Array = [drop_list[key][0], drop_list[key][2], drop_list[key][3], drop_list[key][4], 1]
 			spawn_physic_item(key, item_texture, item_info)
 			
 			
@@ -98,7 +98,6 @@ func spawn_floating_text(type_sign: String, type: String, value: int) -> void:
 	text.type = type
 	text.value = value
 	text.type_sign = type_sign
-	
 	
 	
 func spawn_physic_item(key: String, item_texture: StreamTexture, item_info: Array) -> void:

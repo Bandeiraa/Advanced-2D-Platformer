@@ -18,6 +18,7 @@ var item_dictionary: Dictionary = {}
 
 var item_name: String = ""
 var item_type: String
+var item_image_path: String
 
 var texture_list: Array = [
 	"res://assets/interface/intentory/item_background/type_1.png",
@@ -42,29 +43,31 @@ func on_mouse_exited() -> void:
 	
 	
 func update_item(item: String, item_image: StreamTexture, item_info: Array) -> void:
-	item_type = item_info[0]
+	item_image_path = item_info[0]
+	item_type = item_info[1]
+	
 	match item_type:
 		"Equipment":
 			amount = 1
-			item_dictionary = item_info[1]
+			item_dictionary = item_info[2]
 			
 		"Weapon":
 			amount = 1
-			item_dictionary = item_info[1]
+			item_dictionary = item_info[2]
 			
 		"Resource":
-			amount += item_info[3]
+			amount += item_info[4]
 			type_value = 0
 			
 		"Health":
-			amount += item_info[3]
-			type_value = item_info[1]
+			amount += item_info[4]
+			type_value = item_info[2]
 			
 		"Mana":
-			amount += item_info[3]
-			type_value = item_info[1]
+			amount += item_info[4]
+			type_value = item_info[2]
 			
-	sell_price = item_info[2]
+	sell_price = item_info[3]
 	
 	item_name = item
 	item_amount.text = str(amount)
@@ -120,6 +123,7 @@ func equip_item() -> void:
 			"weapon_slot",
 			item_texture.texture,
 			[
+				item_image_path,
 				item_name,
 				item_type,
 				item_dictionary,
@@ -141,6 +145,8 @@ func update_slot() -> void:
 	
 	item_name = ""
 	item_type = ""
+	item_image_path = ""
+	
 	type_value = 0
 	sell_price = 0
 
