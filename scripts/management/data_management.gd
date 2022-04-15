@@ -6,6 +6,8 @@ var data_dictionary = {
 	"checkpoint": false,
 	"player_gold": 0,
 	"player_texture": "",
+	"base_stats": [],
+	"bonus_stats": [],
 	"player_position": Vector2(-882, 132)
 }
 

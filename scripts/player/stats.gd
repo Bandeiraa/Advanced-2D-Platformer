@@ -46,6 +46,10 @@ export(NodePath) onready var collision_area = get_node(collision_area) as Area2D
 export(NodePath) onready var player_ref = get_node(player_ref) as KinematicBody2D
 
 func _ready() -> void:
+	var file = File.new()
+	if file.file_exists(DataManagement.save_path):
+		persist_data()
+		
 	update_stats_hud()
 	
 	current_mana = base_mana + bonus_mana
@@ -55,6 +59,15 @@ func _ready() -> void:
 	max_health = current_health
 	
 	get_tree().call_group("bar_container", "init_bar", max_health, max_mana, level_dict[str(level)])
+	
+	
+func persist_data() -> void:
+	print(DataManagement.data_dictionary["base_stats"])
+	base_health = DataManagement.data_dictionary["base_stats"][0]
+	base_mana = DataManagement.data_dictionary["base_stats"][1]
+	base_attack = DataManagement.data_dictionary["base_stats"][2]
+	base_magic_attack = DataManagement.data_dictionary["base_stats"][3]
+	base_defense = DataManagement.data_dictionary["base_stats"][4]
 	
 	
 func update_stats(stat: String) -> void:
@@ -147,6 +160,24 @@ func update_stats_hud() -> void:
 			bonus_defense
 		]
 	)
+	
+	DataManagement.data_dictionary["base_stats"] = [
+		base_health,
+		base_mana,
+		base_attack,
+		base_magic_attack,
+		base_defense
+	]
+	
+	DataManagement.data_dictionary["bonus_stats"] = [
+		bonus_health,
+		bonus_mana,
+		bonus_attack,
+		bonus_magic_attack,
+		bonus_defense
+	]
+	
+	DataManagement.save_data()
 	
 	
 func update_exp(value: int) -> void:
