@@ -4,6 +4,7 @@ class_name EnemyTemplate
 signal kill
 
 const FLOATING_TEXT: PackedScene = preload("res://scenes/env/floating_text.tscn")
+const PHYSIC_ITEM: PackedScene = preload("res://scenes/interactable/physic_item.tscn")
 
 onready var texture: Sprite = get_node("Texture")
 onready var floor_ray: RayCast2D = get_node("FloorRay")
@@ -86,15 +87,22 @@ func spawn_item_probability() -> void:
 		if random_number <= drop_list[key][1]:
 			var item_texture: StreamTexture = load(drop_list[key][0])
 			var item_info: Array = [drop_list[key][2], drop_list[key][3], drop_list[key][4], 1]
-			get_tree().call_group("inventory", "update_slot", key, item_texture, item_info)
+			spawn_physic_item(key, item_texture, item_info)
 			
 			
 func spawn_floating_text(type_sign: String, type: String, value: int) -> void:
 	var text: FloatText = FLOATING_TEXT.instance()
-	text.rect_global_position = global_position
+	get_tree().root.call_deferred("add_child", text)
 	
+	text.rect_global_position = global_position
 	text.type = type
 	text.value = value
 	text.type_sign = type_sign
 	
-	get_tree().root.call_deferred("add_child", text)
+	
+	
+func spawn_physic_item(key: String, item_texture: StreamTexture, item_info: Array) -> void:
+	var item: PhysicItem = PHYSIC_ITEM.instance()
+	get_tree().root.call_deferred("add_child", item)
+	item.global_position = global_position
+	item.update_item_info(key, item_texture, item_info)

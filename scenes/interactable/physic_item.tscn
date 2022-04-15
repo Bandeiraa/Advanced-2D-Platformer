@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/interactable/general/physic_item.gd" type="Script" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 16.0
+
+[node name="PhysicItem" type="RigidBody2D"]
+collision_layer = 0
+script = ExtResource( 2 )
+
+[node name="ItemCollision" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="ItemTexture" type="Sprite" parent="."]
+scale = Vector2( 0.5, 0.5 )
+
+[node name="InteractionArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="Collision" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource( 2 )
+
+[node name="Notifier2D" type="VisibilityNotifier2D" parent="."]
+
+[connection signal="body_entered" from="InteractionArea" to="." method="on_body_entered"]
+[connection signal="body_exited" from="InteractionArea" to="." method="on_body_exited"]
+[connection signal="screen_exited" from="Notifier2D" to="." method="on_screen_exited"]

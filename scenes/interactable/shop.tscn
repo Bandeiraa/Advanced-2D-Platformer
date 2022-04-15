@@ -80,6 +80,7 @@ shape = SubResource( 5 )
 
 [node name="DialogIcon" parent="." index="4"]
 position = Vector2( 7, 22 )
+frame = 1
 
 [connection signal="body_entered" from="PhysicCollision/PlayerAreaCollision" to="PhysicCollision" method="on_body_entered"]
 [connection signal="body_exited" from="PhysicCollision/PlayerAreaCollision" to="PhysicCollision" method="on_body_exited"]
