@@ -98,10 +98,9 @@ func populate_inventory() -> void:
 		slot_item_info[index] = DataManagement.data_dictionary["aux_inventory"][index]
 		if DataManagement.data_dictionary["inventory"][index] != "":
 			var slot_info_list: Array = slot_item_info[index][2]
-			
-			update_slot(
+			slot_container.get_child(index).update_item(
 				slot_list[index], 
-				load(slot_info_list[0]),
+				load(slot_info_list[0]), 
 				slot_info_list
 			)
 			
@@ -135,11 +134,6 @@ func update_slot(item_name: String, item_image: StreamTexture, item_info: Array)
 		if slot.item_name == "":
 			slot_list[index] = item_name
 			slot_item_info[index] = [item_name, item_image, item_info]
-			
-			DataManagement.data_dictionary["inventory"][index] = item_name
-			DataManagement.data_dictionary["aux_inventory"][index] = [item_name, item_image, item_info]
-			DataManagement.save_data()
-			
 			slot.update_item(item_name, item_image, item_info)
 			return
 			

@@ -467,7 +467,7 @@ tracks/2/keys = {
 scale = Vector2( 0.8, 0.8 )
 collision_layer = 8
 script = ExtResource( 8 )
-damage = 6
+damage = 1
 speed = 55
 enemy_exp = 5
 gravity_speed = 350
@@ -498,7 +498,6 @@ position = Vector2( 1, 1.5 )
 shape = SubResource( 8 )
 
 [node name="Collision" parent="AttackArea" index="0"]
-visible = false
 position = Vector2( 2, 5.5 )
 shape = SubResource( 10 )
 disabled = true

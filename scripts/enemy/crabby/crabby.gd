@@ -11,7 +11,7 @@ func _ready() -> void:
 			15,                                               #Drop Probability
 			"Health",                                         #Type
 			5,                                                #Value
-			3                                                 #Sell Price
+			2                                                 #Sell Price
 		], 
 		
 		"Mana Potion": [
@@ -19,7 +19,7 @@ func _ready() -> void:
 			8, 
 			"Mana", 
 			5, 
-			10
+			5
 		],
 		
 		"Crabby Eye": [
@@ -27,7 +27,7 @@ func _ready() -> void:
 			35,
 			"Resource",
 			{},
-			2
+			3
 		],
 		
 		"Crabby Pincers": [
@@ -35,7 +35,7 @@ func _ready() -> void:
 			10,
 			"Resource",
 			{},
-			10
+			7
 		],
 		
 		"Crabby Belt": [
@@ -46,7 +46,7 @@ func _ready() -> void:
 				"Health": 3,
 				"Attack": 1
 			},
-			35
+			30
 		],
 		
 		"Crabby Axe": [
@@ -57,7 +57,7 @@ func _ready() -> void:
 				"Attack": 3,
 				"Defense": 1
 			},
-			85
+			40
 		]
 	}
 	

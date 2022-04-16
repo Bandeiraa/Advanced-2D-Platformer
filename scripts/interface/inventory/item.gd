@@ -73,6 +73,23 @@ func update_item(item: String, item_image: StreamTexture, item_info: Array) -> v
 	item_amount.text = str(amount)
 	item_texture.texture = item_image
 	
+	print("Sell price: " + str(sell_price))
+	
+	DataManagement.data_dictionary["inventory"][item_index] = item_name
+	DataManagement.data_dictionary["aux_inventory"][item_index] = [
+		item_name, 
+		item_image, 
+		[
+			item_image_path,
+			item_type,
+			item_info[2],
+			sell_price,
+			amount
+		]
+	]
+	
+	DataManagement.save_data()
+	
 	if amount != 0 and item_type != "Equipment" and item_type != "Weapon":
 		item_amount.show()
 		item_texture.show()

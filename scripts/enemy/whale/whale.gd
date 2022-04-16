@@ -33,7 +33,7 @@ func _ready() -> void:
 			15,
 			"Resource",
 			{},
-			8
+			6
 		],
 		
 		"Whale Tail": [
@@ -52,6 +52,6 @@ func _ready() -> void:
 				"Mana": 5,
 				"Magic Attack": 3
 			},
-			55
+			30
 		]
 	}

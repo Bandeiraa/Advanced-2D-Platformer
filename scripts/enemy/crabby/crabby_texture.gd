@@ -41,10 +41,12 @@ func on_animation_finished(anim_name: String) -> void:
 			
 		"hit":
 			enemy_ref.can_hit = false
+			enemy_ref.can_attack = false
 			enemy_ref.set_physics_process(true)
 			
 		"dead":
 			enemy_ref.kill_enemy()
+			enemy_ref.can_attack = false
 			
 		"kill":
 			enemy_ref.queue_free()

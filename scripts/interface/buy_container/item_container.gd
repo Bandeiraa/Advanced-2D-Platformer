@@ -22,7 +22,7 @@ func update_container(container_name: String, container_info: Array) -> void:
 	item_texture.texture = load(container_info[0])
 	item_price.text = str(container_info[1]) + " Gold Coins"
 	price = container_info[1]
-	item_info = [container_info[2], container_info[3], container_info[4], 1]
+	item_info = [container_info[0], container_info[2], container_info[3], container_info[4], 1]
 	
 	
 func mouse_interaction(state: String) -> void:
