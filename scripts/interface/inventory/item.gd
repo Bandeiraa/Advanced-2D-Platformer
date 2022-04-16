@@ -96,6 +96,7 @@ func equip_item() -> void:
 			"consumable_slot", 
 			item_texture.texture, 
 			[
+				item_image_path,
 				amount,
 				item_name,
 				item_type,

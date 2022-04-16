@@ -7,6 +7,7 @@ var weapon_dictionary: Dictionary = {}
 var weapon_name: String = ""
 var weapon_type: String = ""
 var weapon_texture_path: String = ""
+
 var weapon_price: int
 
 func _ready() -> void:
