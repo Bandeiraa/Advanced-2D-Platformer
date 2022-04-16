@@ -19,5 +19,11 @@ func on_game_over() -> void:
 	
 func _process(_delta: float) -> void:
 	if can_process_height and player.global_position.y > level_height.global_position.y:
+		DataManagement.data_dictionary["armor_container"] = []
+		DataManagement.data_dictionary["weapon_container"] = []
+		DataManagement.data_dictionary["consumable_container"] = []
+		DataManagement.data_dictionary["current_health"] = player.stats.base_health
+		DataManagement.save_data()
+		
 		TransitionScreen.fade_in(current_level_path)
 		can_process_height = false

@@ -10,12 +10,19 @@ var dialog_list: Dictionary = {
 export(Array, String, MULTILINE) var list
 
 func _ready() -> void:
+	DataManagement.load_data()
+	if DataManagement.data_dictionary["sign_checkpoint"]:
+		can_interact = false
+		
 	dialog_list["dialog"] = list
 	
 	
 func on_dialog_finished() -> void:
 	player_ref.reset(false)
-	#dialog_icon_animation.play("show_container")
+	
+	DataManagement.data_dictionary["sign_checkpoint"] = true
+	DataManagement.save_data()
+	
 	get_tree().call_group("hud", "normal_state")
 	
 	

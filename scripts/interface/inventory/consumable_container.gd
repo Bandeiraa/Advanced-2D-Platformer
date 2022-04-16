@@ -94,6 +94,17 @@ func _process(_delta: float) -> void:
 			if consumable_item_amount == 0:
 				reset()
 				
+			DataManagement.data_dictionary["consumable_container"] = [
+				consumable_texture_path,
+				consumable_item_amount,
+				consumable_item_name,
+				consumable_item_type,
+				consumable_item_type_value,
+				consumable_item_price
+			]
+			
+			DataManagement.save_data()
+			
 			consumable_amount.text = str(consumable_item_amount)
 			
 			return

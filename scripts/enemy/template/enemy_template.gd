@@ -44,6 +44,9 @@ func move_behavior() -> void:
 		elif floor_collision() and not can_attack:
 			velocity.x = direction.x * speed 
 			
+		else:
+			velocity.x = 0
+			
 		return
 		
 	velocity.x = 0

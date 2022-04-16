@@ -486,7 +486,6 @@ anims/kill = SubResource( 11 )
 anims/run = SubResource( 5 )
 
 [node name="FloorRay" parent="." index="6"]
-visible = false
 position = Vector2( -33, 0 )
 enabled = true
 cast_to = Vector2( 0, 30 )

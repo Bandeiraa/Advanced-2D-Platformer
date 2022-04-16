@@ -7,7 +7,7 @@ var shielding: bool = false
 
 var base_health: int = 15
 var base_mana: int = 10
-var base_attack: int = 10
+var base_attack: int = 1
 var base_magic_attack: int = 3
 var base_defense: int = 1
 
@@ -50,21 +50,26 @@ func _ready() -> void:
 	if file.file_exists(DataManagement.save_path):
 		persist_data()
 		
+	if DataManagement.data_dictionary["current_health"] == 0:
+		current_mana = base_mana + bonus_mana
+		max_mana = current_mana
+		
+		current_health = base_health + bonus_health
+		max_health = current_health
+		
+		get_tree().call_group("bar_container", "init_bar", max_health, max_mana, level_dict[str(level)])
+		
 	update_stats_hud()
-	
-	current_mana = base_mana + bonus_mana
-	max_mana = current_mana
-	
-	current_health = base_health + bonus_health
-	max_health = current_health
-	
-	get_tree().call_group("bar_container", "init_bar", max_health, max_mana, level_dict[str(level)])
+	DataManagement.data_dictionary["current_health"] = current_health
+	DataManagement.save_data()
 	
 	
 func persist_data() -> void:
+	DataManagement.load_data()
+	
 	level = DataManagement.data_dictionary["level"]
 	current_exp = DataManagement.data_dictionary["current_exp"]
-	get_tree().call_group("bar_container", "update_bar", "ExpBar", current_exp)
+	get_tree().call_group("bar_container", "reset_exp_bar", level_dict[str(level)], current_exp)
 	
 	if not DataManagement.data_dictionary["base_stats"].empty():
 		base_health = DataManagement.data_dictionary["base_stats"][0]
@@ -72,6 +77,12 @@ func persist_data() -> void:
 		base_attack = DataManagement.data_dictionary["base_stats"][2]
 		base_magic_attack = DataManagement.data_dictionary["base_stats"][3]
 		base_defense = DataManagement.data_dictionary["base_stats"][4]
+		
+		max_mana = base_mana
+		max_health = base_health
+		
+		current_health = DataManagement.data_dictionary["current_health"]
+		get_tree().call_group("bar_container", "increase_max_value", "Health", max_health, current_health)
 		
 		
 func update_stats(stat: String) -> void:
@@ -89,6 +100,9 @@ func update_stats(stat: String) -> void:
 			max_health += 1
 			base_health += 1
 			current_health += 1
+			DataManagement.data_dictionary["current_health"] = current_health
+			DataManagement.save_data()
+			
 			get_tree().call_group("bar_container", "increase_max_value", "Health", max_health, current_health)
 			
 		"Magic Attack":
@@ -218,10 +232,20 @@ func update_health(type: String, value: int) -> void:
 			verify_shield(value)
 			if current_health <= 0:
 				player_ref.dead = true
+				
+				DataManagement.data_dictionary["armor_container"] = []
+				DataManagement.data_dictionary["weapon_container"] = []
+				DataManagement.data_dictionary["consumable_container"] = []
+				DataManagement.data_dictionary["current_health"] = base_health
+				DataManagement.save_data()
+				
 			else:
 				player_ref.on_hit = true
 				player_ref.attacking = false
 				
+	DataManagement.data_dictionary["current_health"] = current_health
+	DataManagement.save_data()
+	
 	get_tree().call_group("bar_container", "update_bar", "HealthBar", current_health)
 	
 	
@@ -234,6 +258,7 @@ func verify_shield(value: int) -> void:
 		if damage > 0:
 			current_health -= damage
 			spawn_floating_text("-", "Damage", damage)
+			
 	else:
 		current_health -= value
 		spawn_floating_text("-", "Damage", value)
@@ -254,15 +279,6 @@ func update_mana(type: String, value: int) -> void:
 	get_tree().call_group("bar_container", "update_bar", "ManaBar", current_mana)
 	
 	
-func _process(_delta) -> void:
-	if Input.is_action_just_pressed("click"):
-		#update_exp(15)
-		#update_health("Decrease", 15)
-		#update_health("Increase", 5)
-		#update_mana("Decrease", 3)
-		pass
-		
-		
 func on_collision_area_entered(area):
 	if area.name == "AttackArea":
 		var enemy_ref: KinematicBody2D = area.get_parent()
