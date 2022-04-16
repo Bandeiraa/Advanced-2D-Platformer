@@ -40,7 +40,7 @@ func _ready() -> void:
 		
 		"Crabby Belt": [
 			"res://assets/item/equipment/crabby_belt.png",
-			100, #old value = 5
+			5, #old value = 5
 			"Equipment",
 			{
 				"Health": 3,
@@ -51,7 +51,7 @@ func _ready() -> void:
 		
 		"Crabby Axe": [
 			"res://assets/item/equipment/crabby_axe.png",
-			100, #Old value = 2
+			2, #Old value = 2
 			"Weapon",
 			{
 				"Attack": 3,

@@ -1,6 +1,8 @@
 extends RigidBody2D
 class_name PhysicItem
 
+const COLLECT_EFFECT: PackedScene = preload("res://scenes/effect/collect_item.tscn")
+
 onready var sprite: Sprite = get_node("ItemTexture")
 
 var player_ref: KinematicBody2D = null
@@ -49,4 +51,12 @@ func on_body_exited(_body: Player) -> void:
 func _process(_delta: float) -> void:
 	if player_ref != null and Input.is_action_just_pressed("interact"):
 		get_tree().call_group("inventory", "update_slot", item_name, item_texture, item_info_list)
+		spawn_effect()
 		queue_free()
+		
+		
+func spawn_effect() -> void:
+	var effect: EffectTemplate = COLLECT_EFFECT.instance()
+	effect.global_position = global_position
+	get_tree().root.call_deferred("add_child", effect)
+	effect.play_effect()
