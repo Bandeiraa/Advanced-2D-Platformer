@@ -66,7 +66,6 @@ func _ready() -> void:
 	
 func persist_data() -> void:
 	DataManagement.load_data()
-	
 	level = DataManagement.data_dictionary["level"]
 	current_exp = DataManagement.data_dictionary["current_exp"]
 	get_tree().call_group("bar_container", "reset_exp_bar", level_dict[str(level)], current_exp)
@@ -212,6 +211,10 @@ func update_exp(value: int) -> void:
 func on_level_up() -> void:
 	current_mana = base_mana + bonus_mana
 	current_health = base_health + bonus_health
+	
+	DataManagement.data_dictionary["current_health"] = current_health
+	DataManagement.save_data()
+	
 	get_tree().call_group("stats_hud", "update_avaliable_points")
 	get_tree().call_group("bar_container", "update_bar", "ManaBar", current_mana)
 	get_tree().call_group("bar_container", "update_bar", "HealthBar", current_health)
@@ -231,21 +234,22 @@ func update_health(type: String, value: int) -> void:
 		"Decrease":
 			verify_shield(value)
 			if current_health <= 0:
-				player_ref.dead = true
-				
 				DataManagement.data_dictionary["armor_container"] = []
 				DataManagement.data_dictionary["weapon_container"] = []
 				DataManagement.data_dictionary["consumable_container"] = []
 				DataManagement.data_dictionary["current_health"] = base_health
 				DataManagement.save_data()
 				
+				player_ref.dead = true
+				
 			else:
 				player_ref.on_hit = true
 				player_ref.attacking = false
 				
-	DataManagement.data_dictionary["current_health"] = current_health
-	DataManagement.save_data()
-	
+	if not player_ref.dead:
+		DataManagement.data_dictionary["current_health"] = current_health
+		DataManagement.save_data()
+		
 	get_tree().call_group("bar_container", "update_bar", "HealthBar", current_health)
 	
 	

@@ -91,9 +91,7 @@ func _process(_delta: float) -> void:
 					get_tree().call_group("player", "spawn_effect", "res://scenes/effect/potion_effect.tscn")
 					
 			consumable_item_amount -= 1
-			if consumable_item_amount == 0:
-				reset()
-				
+			
 			DataManagement.data_dictionary["consumable_container"] = [
 				consumable_texture_path,
 				consumable_item_amount,
@@ -105,6 +103,9 @@ func _process(_delta: float) -> void:
 			
 			DataManagement.save_data()
 			
+			if consumable_item_amount == 0:
+				reset()
+				
 			consumable_amount.text = str(consumable_item_amount)
 			
 			return

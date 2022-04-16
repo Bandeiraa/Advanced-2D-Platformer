@@ -1,6 +1,5 @@
 extends Sprite
 
-#signal aux_camera
 signal game_over
 
 var shield_off: bool = true
@@ -100,11 +99,9 @@ func on_animation_finished(anim_name: String) -> void:
 			
 		"attack_left":
 			player_ref.attacking = false
-			#player_ref.set_physics_process(true)
 			
 		"attack_right":
 			player_ref.attacking = false
-			#player_ref.set_physics_process(true)
 			
 		"hit":
 			player_ref.on_hit = false
@@ -118,5 +115,3 @@ func on_animation_finished(anim_name: String) -> void:
 				
 		"dead":
 			emit_signal("game_over")
-			#emit_signal("aux_camera", player_ref.get_node("LevelCamera").global_position)
-			#player_ref.queue_free()
