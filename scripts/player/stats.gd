@@ -251,6 +251,7 @@ func update_health(type: String, value: int) -> void:
 				DataManagement.save_data()
 				
 				player_ref.dead = true
+				get_tree().call_group("inventory", "reset_inventory")
 				
 			else:
 				player_ref.on_hit = true

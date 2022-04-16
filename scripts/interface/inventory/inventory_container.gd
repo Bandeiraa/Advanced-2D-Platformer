@@ -152,6 +152,11 @@ func empty_slot(index: int) -> void:
 	DataManagement.save_data()
 	
 	
+func reset_inventory() -> void:
+	for index in slot_list.size():
+		empty_slot(index)
+		
+		
 func reset() -> void:
 	item_index = -1
 	can_click = false

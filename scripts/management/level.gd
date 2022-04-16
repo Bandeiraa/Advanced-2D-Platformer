@@ -19,6 +19,7 @@ func on_game_over() -> void:
 	
 func _process(_delta: float) -> void:
 	if can_process_height and player.global_position.y > level_height.global_position.y:
+		get_tree().call_group("inventory", "reset_inventory")
 		DataManagement.data_dictionary["armor_container"] = []
 		DataManagement.data_dictionary["weapon_container"] = []
 		DataManagement.data_dictionary["consumable_container"] = []

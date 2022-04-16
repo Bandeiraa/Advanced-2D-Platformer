@@ -313,10 +313,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -60.0
-margin_top = 20.0
-margin_right = 60.0
-margin_bottom = 80.0
+margin_left = 100.0
+margin_top = 110.0
+margin_right = 220.0
+margin_bottom = 170.0
 texture = ExtResource( 6 )
 
 [node name="Animation" type="AnimationPlayer" parent="Container"]
