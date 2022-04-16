@@ -110,6 +110,7 @@ func equip_item() -> void:
 			"armor_slot",
 			item_texture.texture,
 			[
+				item_image_path,
 				item_name,
 				item_type,
 				item_dictionary,

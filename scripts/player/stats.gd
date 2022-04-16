@@ -173,14 +173,6 @@ func update_stats_hud() -> void:
 		base_defense
 	]
 	
-	DataManagement.data_dictionary["bonus_stats"] = [
-		bonus_health,
-		bonus_mana,
-		bonus_attack,
-		bonus_magic_attack,
-		bonus_defense
-	]
-	
 	DataManagement.save_data()
 	
 	

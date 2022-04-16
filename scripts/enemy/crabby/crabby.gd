@@ -40,7 +40,7 @@ func _ready() -> void:
 		
 		"Crabby Belt": [
 			"res://assets/item/equipment/crabby_belt.png",
-			5,
+			100, #old value = 5
 			"Equipment",
 			{
 				"Health": 3,
