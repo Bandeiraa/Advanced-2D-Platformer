@@ -23,6 +23,7 @@ func _process(_delta: float) -> void:
 		DataManagement.data_dictionary["weapon_container"] = []
 		DataManagement.data_dictionary["consumable_container"] = []
 		DataManagement.data_dictionary["current_health"] = player.stats.base_health
+		DataManagement.data_dictionary["current_mana"] = player.stats.base_mana
 		DataManagement.save_data()
 		
 		TransitionScreen.fade_in(current_level_path)

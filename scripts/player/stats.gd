@@ -80,7 +80,10 @@ func persist_data() -> void:
 		max_mana = base_mana
 		max_health = base_health
 		
+		current_mana = DataManagement.data_dictionary["current_mana"]
 		current_health = DataManagement.data_dictionary["current_health"]
+		
+		get_tree().call_group("bar_container", "increase_max_value", "Mana", max_mana, current_mana)
 		get_tree().call_group("bar_container", "increase_max_value", "Health", max_health, current_health)
 		
 		
@@ -93,6 +96,9 @@ func update_stats(stat: String) -> void:
 			max_mana += 1
 			base_mana += 1
 			current_mana += 1
+			DataManagement.data_dictionary["current_mana"] = current_mana
+			DataManagement.save_data()
+			
 			get_tree().call_group("bar_container", "increase_max_value", "Mana", max_mana, current_mana)
 			
 		"Health":
@@ -212,6 +218,7 @@ func on_level_up() -> void:
 	current_mana = base_mana + bonus_mana
 	current_health = base_health + bonus_health
 	
+	DataManagement.data_dictionary["current_mana"] = current_mana
 	DataManagement.data_dictionary["current_health"] = current_health
 	DataManagement.save_data()
 	
@@ -238,6 +245,7 @@ func update_health(type: String, value: int) -> void:
 				DataManagement.data_dictionary["weapon_container"] = []
 				DataManagement.data_dictionary["consumable_container"] = []
 				DataManagement.data_dictionary["current_health"] = base_health
+				DataManagement.data_dictionary["current_mana"] = base_mana
 				DataManagement.save_data()
 				
 				player_ref.dead = true
@@ -280,6 +288,10 @@ func update_mana(type: String, value: int) -> void:
 			spawn_floating_text("-", "Mana", value)
 			current_mana -= value
 			
+	if not player_ref.dead:
+		DataManagement.data_dictionary["current_mana"] = current_mana
+		DataManagement.save_data()
+		
 	get_tree().call_group("bar_container", "update_bar", "ManaBar", current_mana)
 	
 	

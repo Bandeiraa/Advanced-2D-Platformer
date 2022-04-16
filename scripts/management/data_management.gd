@@ -7,6 +7,7 @@ var data_dictionary = {
 	"player_gold": 0,
 	"current_exp": 0,
 	"stats_points": 0,
+	"current_mana": 0,
 	"current_health": 0,
 	
 	"base_stats": [],
