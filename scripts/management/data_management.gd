@@ -10,6 +10,9 @@ var data_dictionary = {
 	"current_mana": 0,
 	"current_health": 0,
 	
+	"inventory": [],
+	"aux_inventory": [],
+	
 	"base_stats": [],
 	"armor_container": [],
 	"weapon_container": [],

@@ -14,6 +14,36 @@ var is_visible: bool = false
 
 var item_index: int
 
+var slot_item_info: Array = [
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	""
+]
+
 var slot_list: Array = [
 	"",
 	"",
@@ -45,6 +75,14 @@ var slot_list: Array = [
 ]
 
 func _ready() -> void:
+	DataManagement.load_data()
+	if DataManagement.data_dictionary["inventory"].empty():
+		DataManagement.data_dictionary["inventory"] = slot_list
+		DataManagement.data_dictionary["aux_inventory"] = slot_item_info
+		DataManagement.save_data()
+		
+	populate_inventory()
+	
 	for icon in aux_h_container.get_children():
 		icon.connect("mouse_exited", self, "mouse_interaction", ["exited", icon])
 		icon.connect("mouse_entered", self, "mouse_interaction", ["entered", icon])
@@ -54,6 +92,20 @@ func _ready() -> void:
 		children.connect("item_clicked", self, "on_item_clicked")
 		
 		
+func populate_inventory() -> void:
+	for index in DataManagement.data_dictionary["inventory"].size():
+		slot_list[index] = DataManagement.data_dictionary["inventory"][index]
+		slot_item_info[index] = DataManagement.data_dictionary["aux_inventory"][index]
+		if DataManagement.data_dictionary["inventory"][index] != "":
+			var slot_info_list: Array = slot_item_info[index][2]
+			
+			update_slot(
+				slot_list[index], 
+				load(slot_info_list[0]),
+				slot_info_list
+			)
+			
+			
 func update_slot(item_name: String, item_image: StreamTexture, item_info: Array) -> void:
 	var existing_item_index: int = slot_list.find(item_name)
 	if existing_item_index != -1:
@@ -82,12 +134,22 @@ func update_slot(item_name: String, item_image: StreamTexture, item_info: Array)
 		var slot: TextureRect = slot_container.get_child(index)
 		if slot.item_name == "":
 			slot_list[index] = item_name
+			slot_item_info[index] = [item_name, item_image, item_info]
+			
+			DataManagement.data_dictionary["inventory"][index] = item_name
+			DataManagement.data_dictionary["aux_inventory"][index] = [item_name, item_image, item_info]
+			DataManagement.save_data()
+			
 			slot.update_item(item_name, item_image, item_info)
 			return
 			
 			
 func empty_slot(index: int) -> void:
 	slot_list[index] = ""
+	slot_item_info[index] = ""
+	DataManagement.data_dictionary["inventory"][index] = ""
+	DataManagement.data_dictionary["aux_inventory"][index] = ""
+	DataManagement.save_data()
 	
 	
 func reset() -> void:

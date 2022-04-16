@@ -60,6 +60,8 @@ func _ready() -> void:
 		get_tree().call_group("bar_container", "init_bar", max_health, max_mana, level_dict[str(level)])
 		
 	update_stats_hud()
+	
+	DataManagement.data_dictionary["current_mana"] = current_mana
 	DataManagement.data_dictionary["current_health"] = current_health
 	DataManagement.save_data()
 	
