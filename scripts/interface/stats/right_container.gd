@@ -8,6 +8,10 @@ var stats_points: int = 0
 export(NodePath) onready var points_info = get_node(points_info) as TextureRect
 
 func _ready() -> void:
+	var file = File.new()
+	if file.file_exists(DataManagement.save_path):
+		stats_points = DataManagement.data_dictionary["stats_points"]
+		
 	points_info.update_text_value(str(stats_points))
 	for children in v_container.get_children():
 		var button: TextureButton = children.get_node("Plus")
@@ -50,6 +54,8 @@ func apply_weight(weight: int, stat: String) -> void:
 		stats_points -= weight
 		points_info.update_text_value(str(stats_points))
 		get_tree().call_group("player_stats", "update_stats", stat)
+		DataManagement.data_dictionary["stats_points"] = stats_points
+		DataManagement.save_data()  
 		
 		
 func reset() -> void:
@@ -62,4 +68,6 @@ func reset() -> void:
 			
 func update_avaliable_points(value: int) -> void:
 	stats_points += value
+	DataManagement.data_dictionary["stats_points"] = stats_points
+	DataManagement.save_data()
 	points_info.update_text_value(str(stats_points))

@@ -5,6 +5,7 @@ var save_path: String = "user://save.dat"
 var data_dictionary = {
 	"level": 1,
 	"current_exp": 0,
+	"stats_points": 0,
 	
 	"base_stats": [],
 	"armor_container": [],
