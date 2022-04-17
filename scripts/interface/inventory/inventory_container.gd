@@ -110,7 +110,7 @@ func update_slot(item_name: String, item_image: StreamTexture, item_info: Array)
 	if existing_item_index != -1:
 		var item_slot: TextureRect = slot_container.get_child(existing_item_index)
 		if item_slot.amount < 9 and item_slot.item_type != "Equipment" and item_slot.item_type != "Weapon":
-			var current_amount: int = item_slot.amount + item_info[3]
+			var current_amount: int = item_slot.amount + item_info[4]
 			if current_amount > 9:
 				var leftover: int = current_amount - 9
 				item_info[3] = 9 - item_slot.amount

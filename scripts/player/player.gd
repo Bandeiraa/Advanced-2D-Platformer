@@ -166,6 +166,7 @@ func spawn_effect(effect_path: String) -> void:
 	
 	
 func spawn_spell() -> void:
-	var spell = SPELL.instance()
+	var spell: FireSpell = SPELL.instance()
+	spell.spell_damage = stats.base_magic_attack + stats.bonus_magic_attack
 	spell.global_position = global_position + spell_offset
 	get_tree().root.call_deferred("add_child", spell)

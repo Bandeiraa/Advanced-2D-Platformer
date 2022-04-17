@@ -461,6 +461,7 @@ shape = SubResource( 4 )
 [node name="CollisionArea" parent="." index="3"]
 visible = false
 health = 12
+invulnerability_timer = 0.8
 
 [node name="Collision" parent="CollisionArea" index="0"]
 position = Vector2( 1, 3 )

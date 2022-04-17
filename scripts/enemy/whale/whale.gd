@@ -9,15 +9,15 @@ func _ready() -> void:
 			20,                                               #Drop Probability
 			"Health",                                         #Type
 			5,                                                #Value
-			3                                                 #Sell Price
+			2                                                 #Sell Price
 		], 
 		
 		"Mana Potion": [
 			"res://assets/item/consumable/mana_potion.png", 
-			5, 
+			15, 
 			"Mana", 
 			5, 
-			10
+			5
 		],
 		
 		"Whale Mouth": [
@@ -30,7 +30,7 @@ func _ready() -> void:
 		
 		"Whale Eye": [
 			"res://assets/item/resource/whale/whale_eye.png",
-			15,
+			100, #15
 			"Resource",
 			{},
 			6
@@ -38,7 +38,7 @@ func _ready() -> void:
 		
 		"Whale Tail": [
 			"res://assets/item/resource/whale/whale_tail.png",
-			3,
+			100, #3
 			"Resource",
 			{},
 			25

@@ -77,10 +77,8 @@ func verify_position() -> void:
 			
 func kill_enemy() -> void:
 	animation.play("kill")
-	if player_ref != null:
-		player_ref.stats.update_exp(enemy_exp)
-		spawn_item_probability()
-		
+	get_tree().call_group("player_stats", "update_exp", enemy_exp)
+	spawn_item_probability()
 	emit_signal("kill")
 	
 	

@@ -491,6 +491,7 @@ shape = SubResource( 7 )
 
 [node name="CollisionArea" parent="." index="3"]
 health = 8
+invulnerability_timer = 1.2
 
 [node name="Collision" parent="CollisionArea" index="0"]
 visible = false
