@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/effect/fire_ball_2.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/effect/fire_ball_3.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/effect/fire_ball_1.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scripts/player/fire_spell.gd" type="Script" id=4]
+
+[node name="SpellArea" type="Area2D"]
+script = ExtResource( 4 )
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+
+[node name="FireBall2" parent="." instance=ExtResource( 1 )]
+emitting = false
+one_shot = true
+
+[node name="FireBall3" parent="." instance=ExtResource( 2 )]
+emitting = false
+one_shot = true
+
+[node name="FireBall1" parent="." instance=ExtResource( 3 )]
+emitting = false
+one_shot = true
