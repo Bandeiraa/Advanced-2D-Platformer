@@ -11,7 +11,7 @@ onready var collision_area: Area2D = get_node("CollisionArea")
 onready var animation: AnimationPlayer = get_node("Animation")
 
 var velocity: Vector2
-var spell_offset: Vector2
+var spell_offset: Vector2 = Vector2(100, -50)
 
 var direction: int = 1
 var jump_count: int = 0
@@ -167,5 +167,5 @@ func spawn_effect(effect_path: String) -> void:
 	
 func spawn_spell() -> void:
 	var spell = SPELL.instance()
-	spell.global_position = global_position + Vector2(100, -50)#spell_offset
+	spell.global_position = global_position + spell_offset
 	get_tree().root.call_deferred("add_child", spell)

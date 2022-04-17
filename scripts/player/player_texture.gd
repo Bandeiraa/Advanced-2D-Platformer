@@ -86,6 +86,7 @@ func verify_position(velocity: Vector2) -> void:
 		sufix = "_right"
 		position = Vector2.ZERO
 		player_ref.direction = -1
+		player_ref.spell_offset = Vector2(100, -50)
 		player_ref.wall_ray.cast_to = Vector2(5.5, 0)
 		player_ref.collision_area.position = Vector2(1, 0)
 	elif velocity.x < 0:
@@ -93,6 +94,7 @@ func verify_position(velocity: Vector2) -> void:
 		sufix = "_left"
 		position = Vector2(-2, 0)
 		player_ref.direction = 1
+		player_ref.spell_offset = Vector2(-100, -50)
 		player_ref.wall_ray.cast_to = Vector2(-7.5, 0)
 		player_ref.collision_area.position = Vector2(3, 0)
 		

@@ -10,7 +10,7 @@ particles_anim_v_frames = 1
 particles_anim_loop = true
 
 [sub_resource type="Curve" id=3]
-_data = [ Vector2( 0, 0.509091 ), 0.0, 0.0, 0, 0, Vector2( 0.491892, 0.690909 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.491892, 0.690909 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="CurveTexture" id=4]
 curve = SubResource( 3 )
@@ -21,7 +21,7 @@ emission_box_extents = Vector3( 40, 1, 1 )
 flag_disable_z = true
 direction = Vector3( 0, 1, 0 )
 spread = 0.0
-gravity = Vector3( 0, 20, 0 )
+gravity = Vector3( 0, 50, 0 )
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 angle = -90.0
@@ -30,5 +30,6 @@ anim_speed = 3.0
 
 [node name="FireBall3" instance=ExtResource( 1 )]
 material = SubResource( 5 )
+lifetime = 2.0
 process_material = SubResource( 6 )
 texture = ExtResource( 2 )
