@@ -45,4 +45,4 @@ shape = SubResource( 1 )
 [node name="DialogIcon" parent="." index="3"]
 position = Vector2( 5, -35 )
 frames = SubResource( 6 )
-frame = 0
+frame = 3

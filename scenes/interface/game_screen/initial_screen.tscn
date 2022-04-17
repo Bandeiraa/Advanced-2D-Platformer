@@ -1,8 +1,8 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://resources/floor.tres" type="TileSet" id=1]
 [ext_resource path="res://resources/normal_size_decoration.tres" type="TileSet" id=2]
-[ext_resource path="res://scenes/env/background.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scripts/env/background.gd" type="Script" id=3]
 [ext_resource path="res://assets/font/thaleah_fat.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://scripts/game_menu/initial_screen.gd" type="Script" id=5]
 [ext_resource path="res://scenes/env/dawn_mask.tscn" type="PackedScene" id=6]
@@ -13,6 +13,10 @@
 [ext_resource path="res://resources/purple_char.tres" type="Texture" id=11]
 [ext_resource path="res://scripts/game_menu/initial_container.gd" type="Script" id=12]
 [ext_resource path="res://scripts/game_menu/select_character.gd" type="Script" id=13]
+[ext_resource path="res://assets/background/layer_3.png" type="Texture" id=14]
+[ext_resource path="res://assets/background/layer_4.png" type="Texture" id=15]
+[ext_resource path="res://assets/background/layer_2.png" type="Texture" id=16]
+[ext_resource path="res://assets/background/layer_1.png" type="Texture" id=17]
 
 [sub_resource type="DynamicFont" id=2]
 size = 32
@@ -318,8 +322,48 @@ cell_size = Vector2( 32, 32 )
 format = 1
 tile_data = PoolIntArray( 196615, 7, 0, 262145, 2, 0, 262147, 2, 0, 262149, 4, 0 )
 
-[node name="Background" parent="." instance=ExtResource( 3 )]
+[node name="Background" type="ParallaxBackground" parent="."]
+script = ExtResource( 3 )
 can_process = true
+layer_speed = [ 20, 15, 10, 5 ]
+
+[node name="Layer4" type="ParallaxLayer" parent="Background"]
+motion_scale = Vector2( 0.05, 1 )
+motion_mirroring = Vector2( 320, 180 )
+
+[node name="Texture" type="TextureRect" parent="Background/Layer4"]
+margin_right = 320.0
+margin_bottom = 180.0
+texture = ExtResource( 15 )
+
+[node name="Layer3" type="ParallaxLayer" parent="Background"]
+motion_scale = Vector2( 0.05, 1 )
+motion_mirroring = Vector2( 320, 0 )
+
+[node name="Texture" type="TextureRect" parent="Background/Layer3"]
+margin_right = 320.0
+margin_bottom = 180.0
+texture = ExtResource( 17 )
+
+[node name="Layer2" type="ParallaxLayer" parent="Background"]
+motion_scale = Vector2( 0.1, 1 )
+motion_mirroring = Vector2( 320, 0 )
+
+[node name="Texture" type="TextureRect" parent="Background/Layer2"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 16 )
+
+[node name="Layer1" type="ParallaxLayer" parent="Background"]
+motion_scale = Vector2( 0.2, 1 )
+motion_mirroring = Vector2( 320, 0 )
+
+[node name="Texture" type="TextureRect" parent="Background/Layer1"]
+margin_right = 320.0
+margin_bottom = 180.0
+texture = ExtResource( 14 )
+
+[node name="Mask" parent="Background" instance=ExtResource( 6 )]
 
 [node name="GameMenu" type="CanvasLayer" parent="."]
 

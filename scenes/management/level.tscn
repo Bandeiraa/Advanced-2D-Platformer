@@ -153,6 +153,24 @@ position = Vector2( 586, 285 )
 [node name="Light2" parent="LevelDesign/Light" instance=ExtResource( 18 )]
 position = Vector2( 1642, 123 )
 
+[node name="Light3" parent="LevelDesign/Light" instance=ExtResource( 18 )]
+position = Vector2( 1777, 130 )
+
+[node name="Light4" parent="LevelDesign/Light" instance=ExtResource( 18 )]
+position = Vector2( 1874, 130 )
+
+[node name="Light5" parent="LevelDesign/Light" instance=ExtResource( 18 )]
+position = Vector2( 198, 130 )
+
+[node name="Light6" parent="LevelDesign/Light" instance=ExtResource( 18 )]
+position = Vector2( -217, 130 )
+
+[node name="Light7" parent="LevelDesign/Light" instance=ExtResource( 18 )]
+position = Vector2( -601, 130 )
+
+[node name="Light8" parent="LevelDesign/Light" instance=ExtResource( 18 )]
+position = Vector2( -857, 130 )
+
 [node name="Env" type="WorldEnvironment" parent="LevelDesign"]
 environment = SubResource( 2 )
 

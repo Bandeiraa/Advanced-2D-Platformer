@@ -2,6 +2,9 @@ extends Sprite
 
 signal game_over
 
+var magic_attack: bool = false
+var normal_attack: bool = false
+
 var shield_off: bool = true
 var crouching_off: bool = true
 
@@ -51,9 +54,10 @@ func hit_behavior() -> void:
 func action_behavior() -> void:
 	if player_ref.next_to_wall():
 		animation.play("wall_slide")
-	elif player_ref.attacking:
+	elif player_ref.attacking and normal_attack:
 		animation.play("attack" + sufix)
-		#player_ref.set_physics_process(false)
+	elif player_ref.attacking and magic_attack:
+		animation.play("spell_attack")
 	elif player_ref.defending and shield_off:
 		shield_off = false
 		animation.play("shield")
@@ -100,9 +104,15 @@ func on_animation_finished(anim_name: String) -> void:
 			player_ref.set_physics_process(true)
 			
 		"attack_left":
+			normal_attack = false
 			player_ref.attacking = false
 			
 		"attack_right":
+			normal_attack = false
+			player_ref.attacking = false
+			
+		"spell_attack":
+			magic_attack = false
 			player_ref.attacking = false
 			
 		"hit":

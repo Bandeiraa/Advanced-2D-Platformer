@@ -62,6 +62,10 @@ func attack() -> void:
 	var attack_condition: bool = not attacking and not crouching and not defending
 	if Input.is_action_just_pressed("attack") and attack_condition and is_on_floor():
 		attacking = true
+		player_sprite.normal_attack = true
+	elif Input.is_action_just_pressed("magic_attack") and attack_condition and is_on_floor():
+		attacking = true
+		player_sprite.magic_attack = true
 		
 		
 func crouch() -> void:

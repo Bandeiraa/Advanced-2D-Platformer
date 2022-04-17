@@ -17,4 +17,5 @@ func on_body_exited(body):
 		
 func _process(_delta: float) -> void:
 	if player_ref != null and player_ref.crouching:
+		yield(get_tree().create_timer(0.3), "timeout")
 		physics_collision.set_deferred("disabled", true)
