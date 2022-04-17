@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scenes/player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/env/background.tscn" type="PackedScene" id=2]
@@ -16,6 +16,8 @@
 [ext_resource path="res://scenes/interactable/checkpoint.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scripts/interactable/initial/initial_checkpoint.gd" type="Script" id=15]
 [ext_resource path="res://scenes/env/enemy_spawner.tscn" type="PackedScene" id=16]
+[ext_resource path="res://scenes/env/dawn_mask.tscn" type="PackedScene" id=17]
+[ext_resource path="res://scenes/env/animated_light.tscn" type="PackedScene" id=18]
 
 [sub_resource type="TileSet" id=1]
 0/name = "grass_3"
@@ -60,6 +62,11 @@
 2/shape_one_way_margin = 0.0
 2/shapes = [  ]
 2/z_index = 0
+
+[sub_resource type="Environment" id=2]
+background_mode = 4
+glow_enabled = true
+glow_hdr_threshold = 1.5
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 11 )
@@ -138,6 +145,17 @@ list = [ "This is a Checkpoint... Basically, if you interact with one of them...
 position = Vector2( 1648, 140 )
 checkpoint_spawn_position = Vector2( 1648, 140 )
 
+[node name="Light" type="Node2D" parent="LevelDesign"]
+
+[node name="Light1" parent="LevelDesign/Light" instance=ExtResource( 18 )]
+position = Vector2( 586, 285 )
+
+[node name="Light2" parent="LevelDesign/Light" instance=ExtResource( 18 )]
+position = Vector2( 1642, 123 )
+
+[node name="Env" type="WorldEnvironment" parent="LevelDesign"]
+environment = SubResource( 2 )
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( -882, 132 )
 
@@ -164,3 +182,6 @@ can_respawn = true
 
 [node name="LevelLimit" type="Node2D" parent="."]
 position = Vector2( 0, 1100 )
+
+[node name="Mask" parent="." instance=ExtResource( 17 )]
+color = Color( 0.176471, 0.176471, 0.176471, 1 )
