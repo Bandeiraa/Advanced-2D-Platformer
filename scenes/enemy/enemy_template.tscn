@@ -15,6 +15,7 @@ script = ExtResource( 1 )
 script = ExtResource( 3 )
 animation = NodePath("../Animation")
 enemy_ref = NodePath("..")
+attack_area_collision = NodePath("../AttackArea/Collision")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 

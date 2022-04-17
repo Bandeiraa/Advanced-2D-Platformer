@@ -707,6 +707,7 @@ vframes = 11
 script = ExtResource( 2 )
 animation = NodePath("../Animation")
 player_ref = NodePath("..")
+attack_area_collision = NodePath("../AttackArea/Collision")
 
 [node name="Animation" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 1 )

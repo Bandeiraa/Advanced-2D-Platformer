@@ -3,6 +3,7 @@ class_name EnemyTexture
 
 export(NodePath) onready var animation = get_node(animation) as AnimationPlayer
 export(NodePath) onready var enemy_ref = get_node(enemy_ref) as KinematicBody2D
+export(NodePath) onready var attack_area_collision = get_node(attack_area_collision) as CollisionShape2D
 
 func animate(_velocity: Vector2) -> void:
 	pass

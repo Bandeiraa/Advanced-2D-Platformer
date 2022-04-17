@@ -13,10 +13,12 @@ func action_behavior() -> void:
 		animation.play("dead")
 		enemy_ref.can_hit = false
 		enemy_ref.can_attack = false
+		attack_area_collision.set_deferred("disabled", true)
 		
 	elif enemy_ref.can_hit:
 		animation.play("hit")
 		enemy_ref.can_attack = false
+		attack_area_collision.set_deferred("disabled", true)
 		
 	elif enemy_ref.can_attack:
 		animation.play("attack" + enemy_ref.attack_animation_suffix)

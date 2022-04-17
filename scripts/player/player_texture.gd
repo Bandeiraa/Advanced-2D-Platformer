@@ -9,6 +9,7 @@ var sufix: String = "_right"
 
 export(NodePath) onready var animation = get_node(animation) as AnimationPlayer
 export(NodePath) onready var player_ref = get_node(player_ref) as KinematicBody2D
+export(NodePath) onready var attack_area_collision = get_node(attack_area_collision) as CollisionShape2D
 
 func _ready() -> void:
 	define_initial_texture()
@@ -39,6 +40,7 @@ func animate(velocity: Vector2) -> void:
 		
 		
 func hit_behavior() -> void:
+	attack_area_collision.set_deferred("disabled", true)
 	player_ref.set_physics_process(false)
 	if player_ref.dead:
 		animation.play("dead")
