@@ -256,6 +256,7 @@ shape = SubResource( 21 )
 [node name="FireBall2" parent="." instance=ExtResource( 1 )]
 material = SubResource( 5 )
 emitting = false
+amount = 8
 one_shot = true
 process_material = SubResource( 6 )
 texture = SubResource( 7 )
@@ -263,6 +264,7 @@ texture = SubResource( 7 )
 [node name="FireBall3" parent="." instance=ExtResource( 2 )]
 material = SubResource( 8 )
 emitting = false
+amount = 8
 one_shot = true
 process_material = SubResource( 11 )
 texture = SubResource( 12 )
@@ -270,6 +272,7 @@ texture = SubResource( 12 )
 [node name="FireBall1" parent="." instance=ExtResource( 3 )]
 material = SubResource( 13 )
 emitting = false
+amount = 8
 one_shot = true
 process_material = SubResource( 16 )
 texture = SubResource( 17 )
@@ -289,7 +292,7 @@ anims/light_strength = SubResource( 20 )
 
 [node name="ExplosionParticles" parent="." instance=ExtResource( 6 )]
 z_index = 10
-amount = 32
+amount = 16
 lifetime = 2.5
 local_coords = false
 

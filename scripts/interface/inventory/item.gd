@@ -73,9 +73,6 @@ func update_item(item: String, item_image: StreamTexture, item_info: Array) -> v
 	item_amount.text = str(amount)
 	item_texture.texture = item_image
 	
-	#print("Sell price: " + str(sell_price))
-	#print("Item Amount: " + str(amount))
-	
 	DataManagement.data_dictionary["inventory"][item_index] = item_name
 	DataManagement.data_dictionary["aux_inventory"][item_index] = [
 		item_name, 

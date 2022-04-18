@@ -18,7 +18,6 @@ func _ready() -> void:
 	var file = File.new()
 	if file.file_exists(DataManagement.save_path) and not DataManagement.data_dictionary["consumable_container"].empty():
 		var list: Array = DataManagement.data_dictionary["consumable_container"]
-		print(list)
 		var serialized_texture: StreamTexture = load(list[0])
 		var serialized_list: Array = [list[0], list[1], list[2], list[3], list[4], list[5]]
 		update_consumable_slot(serialized_texture, serialized_list)
