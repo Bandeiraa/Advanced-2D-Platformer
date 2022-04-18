@@ -27,13 +27,16 @@ func on_timer_timeout() -> void:
 		
 func spawn_enemy() -> void:
 	enemy_count += 1
-	var random_enemy_index: int = randi() % enemies_list.size()
-	var enemy_list: Array = enemies_list[random_enemy_index]
-	var enemy = load(enemy_list[0]).instance()
-	enemy.connect("kill", self, "on_enemy_killed")
-	enemy.global_position = Vector2(spawn_position(), enemy_list[1])
-	add_child(enemy)
-	
+	var random_number: int = randi() % 100 + 1
+	print(random_number)
+	for enemy in enemies_list:
+		if enemy[2] <= random_number and enemy[3] >= random_number:
+			var enemy_instance = load(enemy[0]).instance()
+			enemy_instance.connect("kill", self, "on_enemy_killed")
+			enemy_instance.global_position = Vector2(spawn_position(), enemy[1])
+			add_child(enemy_instance)
+			
+			
 	if enemy_count < enemy_amount:
 		spawn_timer.start(spawn_cooldown)
 		

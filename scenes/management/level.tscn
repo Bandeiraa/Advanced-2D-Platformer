@@ -181,7 +181,7 @@ position = Vector2( -882, 132 )
 
 [node name="EnemySpawner" parent="EnemiesSpawnerList" instance=ExtResource( 16 )]
 position = Vector2( 48, 160 )
-enemies_list = [ [ "res://scenes/enemy/whale.tscn", -11.5 ] ]
+enemies_list = [ [ "res://scenes/enemy/whale.tscn", -11.5, 1, 100 ] ]
 spawn_cooldown = 2.0
 enemy_amount = 1
 left_gap_position = -108
@@ -189,7 +189,7 @@ right_gap_position = 125
 
 [node name="EnemySpawner3" parent="EnemiesSpawnerList" instance=ExtResource( 16 )]
 position = Vector2( 1308, 704 )
-enemies_list = [ [ "res://scenes/enemy/whale.tscn", -11.5 ], [ "res://scenes/enemy/crabby.tscn", -11.5 ] ]
+enemies_list = [ [ "res://scenes/enemy/whale.tscn", -11.5, 1, 65 ], [ "res://scenes/enemy/crabby.tscn", -11.5, 66, 100 ] ]
 spawn_cooldown = 3.5
 enemy_amount = 1
 left_gap_position = -150
@@ -198,7 +198,7 @@ can_respawn = true
 
 [node name="EnemySpawner4" parent="EnemiesSpawnerList" instance=ExtResource( 16 )]
 position = Vector2( 2314, 896 )
-enemies_list = [ [ "res://scenes/enemy/whale.tscn", -11.5 ], [ "res://scenes/enemy/crabby.tscn", -11.5 ] ]
+enemies_list = [ [ "res://scenes/enemy/whale.tscn", -11.5, 1, 40 ], [ "res://scenes/enemy/crabby.tscn", -11.5, 41, 100 ] ]
 spawn_cooldown = 2.0
 enemy_amount = 3
 left_gap_position = -600
