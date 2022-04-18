@@ -42,6 +42,9 @@ export(NodePath) onready var stats_ref = get_node(stats_ref) as Node
 func _ready() -> void:
 	var file = File.new()
 	if file.file_exists("user://save.dat"):
+		if DataManagement.data_dictionary["checkpoint"]:
+			print("Posição do último checkpoint salvo: " + str(DataManagement.data_dictionary["player_position"]))
+			
 		position = DataManagement.data_dictionary["player_position"]
 		
 		

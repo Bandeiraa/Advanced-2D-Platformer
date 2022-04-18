@@ -28,7 +28,6 @@ func on_timer_timeout() -> void:
 func spawn_enemy() -> void:
 	enemy_count += 1
 	var random_number: int = randi() % 100 + 1
-	print(random_number)
 	for enemy in enemies_list:
 		if enemy[2] <= random_number and enemy[3] >= random_number:
 			var enemy_instance = load(enemy[0]).instance()

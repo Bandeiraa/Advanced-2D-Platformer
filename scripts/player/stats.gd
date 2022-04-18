@@ -70,6 +70,11 @@ func persist_data() -> void:
 	DataManagement.load_data()
 	level = DataManagement.data_dictionary["level"]
 	current_exp = DataManagement.data_dictionary["current_exp"]
+	
+	print("Nível atual: " + str(level))
+	print("Ouro atual: " + str(DataManagement.data_dictionary["player_gold"]))
+	print("Exp atual: " + str(current_exp) + "/" + str(level_dict[str(level)]))
+	
 	get_tree().call_group("bar_container", "reset_exp_bar", level_dict[str(level)], current_exp)
 	
 	if not DataManagement.data_dictionary["base_stats"].empty():
@@ -84,6 +89,9 @@ func persist_data() -> void:
 		
 		current_mana = DataManagement.data_dictionary["current_mana"]
 		current_health = DataManagement.data_dictionary["current_health"]
+		
+		print("Vida atual: " + str(current_health))
+		print("Mana atual: " + str(current_mana))
 		
 		get_tree().call_group("bar_container", "increase_max_value", "Mana", max_mana, current_mana)
 		get_tree().call_group("bar_container", "increase_max_value", "Health", max_health, current_health)

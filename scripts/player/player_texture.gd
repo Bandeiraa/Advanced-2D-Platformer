@@ -23,7 +23,8 @@ func define_initial_texture() -> void:
 	if file.file_exists("user://save.dat"):
 		DataManagement.load_data()
 		texture = load(DataManagement.data_dictionary["player_texture"])
-		print("Skin carregada: " + DataManagement.data_dictionary["player_texture"])
+		print("------------ Dados carregados ------------")
+		print("Skin: " + DataManagement.data_dictionary["player_texture"])
 		
 		
 func animate(velocity: Vector2) -> void:
