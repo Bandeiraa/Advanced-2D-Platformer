@@ -46,7 +46,7 @@ func _ready() -> void:
 		
 		"Whale Mask": [
 			"res://assets/item/equipment/whale_mask.png",
-			3,
+			3, 
 			"Equipment",
 			{
 				"Mana": 5,

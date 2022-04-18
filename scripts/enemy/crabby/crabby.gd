@@ -51,7 +51,7 @@ func _ready() -> void:
 		
 		"Crabby Axe": [
 			"res://assets/item/equipment/crabby_axe.png",
-			2, 
+			2,
 			"Weapon",
 			{
 				"Attack": 3,
