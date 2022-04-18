@@ -15,6 +15,7 @@ var spell_offset: Vector2 = Vector2(100, -50)
 
 var direction: int = 1
 var jump_count: int = 0
+var magic_attack_cost: int = 5
 
 var dead: bool = false
 var on_hit: bool = false
@@ -66,9 +67,10 @@ func attack() -> void:
 	if Input.is_action_just_pressed("attack") and attack_condition and is_on_floor():
 		attacking = true
 		player_sprite.normal_attack = true
-	elif Input.is_action_just_pressed("magic_attack") and attack_condition and is_on_floor():
+	elif Input.is_action_just_pressed("magic_attack") and attack_condition and is_on_floor() and stats.current_mana >= magic_attack_cost:
 		attacking = true
 		player_sprite.magic_attack = true
+		stats.update_mana("Decrease", magic_attack_cost)
 		
 		
 func crouch() -> void:
