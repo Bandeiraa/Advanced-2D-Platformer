@@ -1,25 +1,26 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scenes/enemy/enemy_template.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/enemy/crabby/idle.png" type="Texture" id=2]
-[ext_resource path="res://assets/enemy/crabby/run.png" type="Texture" id=3]
-[ext_resource path="res://assets/enemy/crabby/hit.png" type="Texture" id=4]
-[ext_resource path="res://assets/enemy/crabby/dead.png" type="Texture" id=5]
-[ext_resource path="res://assets/enemy/crabby/attack.png" type="Texture" id=6]
-[ext_resource path="res://scripts/enemy/crabby/crabby_texture.gd" type="Script" id=7]
-[ext_resource path="res://scripts/enemy/crabby/crabby.gd" type="Script" id=8]
+[ext_resource path="res://assets/enemy/pink_star/idle.png" type="Texture" id=2]
+[ext_resource path="res://assets/enemy/pink_star/run.png" type="Texture" id=3]
+[ext_resource path="res://assets/enemy/pink_star/hit.png" type="Texture" id=4]
+[ext_resource path="res://assets/enemy/pink_star/dead.png" type="Texture" id=5]
+[ext_resource path="res://assets/enemy/pink_star/attack_anticipation.png" type="Texture" id=6]
+[ext_resource path="res://assets/enemy/pink_star/attack.png" type="Texture" id=7]
+[ext_resource path="res://scripts/enemy/pink_star/pink_star.gd" type="Script" id=8]
+[ext_resource path="res://scripts/enemy/pink_star/pink_star_texture.gd" type="Script" id=9]
 
-[sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 10, 8.5 )
-
-[sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 150, 15.5 )
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 9, 12 )
 
 [sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 11, 11.5 )
+extents = Vector2( 83, 13.5 )
 
 [sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 34, 6.5 )
+extents = Vector2( 9, 12 )
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 11, 12 )
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -45,7 +46,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 9 ]
+"values": [ 8 ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Texture:frame")
@@ -60,7 +61,7 @@ tracks/2/keys = {
 "values": [ 0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("AttackArea/Collision:disabled")
+tracks/3/path = NodePath(".:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -69,10 +70,10 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ true ]
+"values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("AttackArea:position")
+tracks/4/path = NodePath("Light:texture_scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -81,10 +82,10 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"values": [ 0.4 ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath(".:modulate")
+tracks/5/path = NodePath("Light:energy")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -93,10 +94,10 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
+"values": [ 0.5 ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Light:texture_scale")
+tracks/6/path = NodePath("AttackArea/Collision:shape")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -105,10 +106,10 @@ tracks/6/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 0.4 ]
+"values": [ SubResource( 12 ) ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("Light:energy")
+tracks/7/path = NodePath("AttackArea/Collision:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -117,11 +118,64 @@ tracks/7/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 0.5 ]
+"values": [ Vector2( 1, 2 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("AttackArea/Collision:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=6]
+resource_name = "attack_anticipation"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 6 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+
+[sub_resource type="Animation" id=7]
 resource_name = "attack_left"
+length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Texture:texture")
 tracks/0/interp = 1
@@ -132,7 +186,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 6 ) ]
+"values": [ ExtResource( 7 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Texture:hframes")
@@ -159,19 +213,19 @@ tracks/2/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("AttackArea/Collision:disabled")
+tracks/3/path = NodePath("AttackArea/Collision:shape")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ false, true ]
+"values": [ SubResource( 12 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("AttackArea:position")
+tracks/4/path = NodePath("AttackArea/Collision:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -180,25 +234,24 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"values": [ Vector2( 1, 2 ) ]
 }
-tracks/5/type = "method"
-tracks/5/path = NodePath("Texture")
+tracks/5/type = "value"
+tracks/5/path = NodePath("AttackArea/Collision:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "spawn_attack_effect"
-} ]
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=13]
 resource_name = "attack_right"
+length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Texture:texture")
 tracks/0/interp = 1
@@ -209,7 +262,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 6 ) ]
+"values": [ ExtResource( 7 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Texture:hframes")
@@ -236,19 +289,19 @@ tracks/2/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("AttackArea/Collision:disabled")
+tracks/3/path = NodePath("AttackArea/Collision:shape")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ false, true ]
+"values": [ SubResource( 12 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("AttackArea:position")
+tracks/4/path = NodePath("AttackArea/Collision:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -257,21 +310,19 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -4, 0 ) ]
+"values": [ Vector2( -1, 2 ) ]
 }
-tracks/5/type = "method"
-tracks/5/path = NodePath("Texture")
+tracks/5/type = "value"
+tracks/5/path = NodePath("AttackArea/Collision:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "spawn_attack_effect"
-} ]
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -384,7 +435,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id=2]
 resource_name = "idle"
-length = 2.0
+length = 1.2
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Texture:texture")
@@ -408,7 +459,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 9 ]
+"values": [ 8 ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Texture:frame")
@@ -417,13 +468,13 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=11]
 resource_name = "kill"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Texture:texture")
@@ -459,7 +510,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 0 ]
+"values": [ 3 ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath(".:modulate")
@@ -539,66 +590,68 @@ tracks/2/keys = {
 "values": [ 0, 1, 2, 3, 4, 5 ]
 }
 
-[node name="Crabby" instance=ExtResource( 1 )]
-scale = Vector2( 0.8, 0.8 )
+[node name="PinkStar" instance=ExtResource( 1 )]
 collision_layer = 8
 script = ExtResource( 8 )
-damage = 6
-speed = 55
-enemy_exp = 5
-gravity_speed = 350
-proximity_threshold = 20
+damage = 3
+speed = 80
+enemy_exp = 7
+gravity_speed = 250
+proximity_threshold = 10
 raycast_default_position = -16
-attack_cooldown = 1.0
+attack_cooldown = 0.4
 
 [node name="Texture" parent="." index="0"]
 texture = ExtResource( 2 )
-hframes = 9
-script = ExtResource( 7 )
+hframes = 8
+script = ExtResource( 9 )
 
 [node name="Collision" parent="." index="1"]
 visible = false
-position = Vector2( 1, 4.5 )
-shape = SubResource( 6 )
+position = Vector2( 0, 2 )
+shape = SubResource( 9 )
+
+[node name="DetectionArea" parent="." index="2"]
+visible = false
 
 [node name="Collision" parent="DetectionArea" index="0"]
-visible = false
-position = Vector2( 0, -2.5 )
-shape = SubResource( 7 )
+position = Vector2( 0, 0.5 )
+shape = SubResource( 8 )
 
 [node name="CollisionArea" parent="." index="3"]
-health = 8
-invulnerability_timer = 1.2
+health = 22
+invulnerability_timer = 1.0
 
 [node name="Collision" parent="CollisionArea" index="0"]
 visible = false
-position = Vector2( 1, 1.5 )
-shape = SubResource( 8 )
+position = Vector2( 0, 2 )
+shape = SubResource( 10 )
 
 [node name="Collision" parent="AttackArea" index="0"]
-position = Vector2( 2, 5.5 )
-shape = SubResource( 10 )
+visible = false
+position = Vector2( 1, 2 )
+shape = SubResource( 12 )
 disabled = true
 
 [node name="Animation" parent="." index="5"]
 anims/RESET = SubResource( 1 )
-anims/attack_left = SubResource( 9 )
-anims/attack_right = SubResource( 11 )
+anims/attack_anticipation = SubResource( 6 )
+anims/attack_left = SubResource( 7 )
+anims/attack_right = SubResource( 13 )
 anims/dead = SubResource( 5 )
 anims/hit = SubResource( 4 )
 anims/idle = SubResource( 2 )
-anims/kill = SubResource( 12 )
+anims/kill = SubResource( 11 )
 anims/run = SubResource( 3 )
 
 [node name="FloorRay" parent="." index="6"]
-visible = false
 position = Vector2( -16, 0 )
 enabled = true
 cast_to = Vector2( 0, 20 )
 
 [node name="EnemyBar" parent="." index="7"]
-margin_left = -22.5
-margin_top = -30.0
-margin_right = -22.5
-margin_bottom = -30.0
-rect_scale = Vector2( 0.7, 0.7 )
+margin_left = -17.0
+margin_top = -25.0
+margin_right = -17.0
+margin_bottom = -25.0
+rect_scale = Vector2( 0.5, 0.5 )

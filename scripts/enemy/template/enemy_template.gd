@@ -26,6 +26,8 @@ export(int) var gravity_speed
 export(int) var proximity_threshold
 export(int) var raycast_default_position
 
+export(float) var attack_cooldown
+
 func _physics_process(delta: float) -> void:
 	gravity(delta)
 	move_behavior()

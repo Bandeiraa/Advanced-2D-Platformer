@@ -205,7 +205,7 @@ can_respawn = true
 
 [node name="EnemySpawner4" parent="EnemiesSpawnerList" instance=ExtResource( 16 )]
 position = Vector2( 2314, 896 )
-enemies_list = [ [ "res://scenes/enemy/whale.tscn", -11.5, 1, 40 ], [ "res://scenes/enemy/crabby.tscn", -11.5, 41, 100 ] ]
+enemies_list = [ [ "res://scenes/enemy/whale.tscn", -11.5, 1, 40 ], [ "res://scenes/enemy/crabby.tscn", -11.5, 41, 80 ], [ "res://scenes/enemy/pink_star.tscn", -11.5, 81, 100 ] ]
 spawn_cooldown = 2.0
 enemy_amount = 3
 left_gap_position = -600

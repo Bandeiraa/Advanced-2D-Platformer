@@ -939,7 +939,6 @@ drag_margin_v_enabled = true
 
 [node name="Stats" type="Node" parent="." groups=["player_stats"]]
 script = ExtResource( 3 )
-invencibility_time = 1.0
 floating_text = ExtResource( 4 )
 collision_area = NodePath("../CollisionArea")
 player_ref = NodePath("..")

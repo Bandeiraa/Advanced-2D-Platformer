@@ -38,8 +38,6 @@ var level_dict: Dictionary = {
 	"9": 356
 }
 
-export(float) var invencibility_time
-
 export(PackedScene) var floating_text
 
 export(NodePath) onready var collision_area = get_node(collision_area) as Area2D
@@ -311,7 +309,7 @@ func on_collision_area_entered(area):
 		var enemy_ref: KinematicBody2D = area.get_parent()
 		update_health("Decrease", enemy_ref.damage)
 		collision_area.set_deferred("monitoring", false)
-		invencibility_timer.start(invencibility_time)
+		invencibility_timer.start(area.get_parent().attack_cooldown)
 		
 		
 func on_invencibility_timer_timeout() -> void:
