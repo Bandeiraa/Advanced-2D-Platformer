@@ -478,10 +478,9 @@ tracks/2/keys = {
 "values": [ 0, 1, 2, 3, 4, 5 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=23]
 resource_name = "jump"
 length = 0.4
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Texture:hframes")
 tracks/0/interp = 1
@@ -918,7 +917,7 @@ anims/dead = SubResource( 11 )
 anims/fall = SubResource( 7 )
 anims/hit = SubResource( 10 )
 anims/idle = SubResource( 2 )
-anims/jump = SubResource( 6 )
+anims/jump = SubResource( 23 )
 anims/landing = SubResource( 9 )
 anims/run_left = SubResource( 22 )
 anims/run_right = SubResource( 4 )
