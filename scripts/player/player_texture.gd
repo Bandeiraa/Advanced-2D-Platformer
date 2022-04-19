@@ -76,7 +76,7 @@ func vertical_behavior(velocity: Vector2) -> void:
 		
 func horizontal_behavior(velocity: Vector2) -> void:
 	if velocity.x != 0:
-		animation.play("run")
+		animation.play("run" + sufix)
 	else:
 		animation.play("idle")
 		

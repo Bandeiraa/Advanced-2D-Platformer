@@ -163,9 +163,12 @@ func reset(state: bool) -> void:
 	crouching = false
 	
 	
-func spawn_effect(effect_path: String, offset: Vector2) -> void:
+func spawn_effect(effect_path: String, offset: Vector2, is_flipped: bool) -> void:
 	var effect_instance = load(effect_path).instance()
 	get_tree().root.call_deferred("add_child", effect_instance)
+	if is_flipped:
+		effect_instance.flip_h = true
+		
 	effect_instance.global_position = global_position + offset
 	effect_instance.play_effect()
 	
