@@ -1,6 +1,8 @@
 extends EnemyTexture
 class_name CrabbyTexture
 
+const ATTACK_EFFECT: PackedScene = preload("res://scenes/effect/crabby_attack_effect.tscn")
+
 func animate(velocity: Vector2) -> void:
 	if enemy_ref.can_attack or enemy_ref.can_hit or enemy_ref.can_die:
 		action_behavior()
@@ -52,3 +54,10 @@ func on_animation_finished(anim_name: String) -> void:
 			
 		"kill":
 			enemy_ref.queue_free()
+			
+			
+func spawn_attack_effect() -> void:
+	var effect = ATTACK_EFFECT.instance()
+	get_tree().root.call_deferred("add_child", effect)
+	effect.global_position = global_position
+	effect.play_effect()
