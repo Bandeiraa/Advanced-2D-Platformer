@@ -14,7 +14,7 @@ func _ready() -> void:
 	
 func on_game_over() -> void:
 	interface.hide_containers()
-	TransitionScreen.fade_in(current_level_path)
+	TransitionScreen.fade_in(current_level_path, false)
 	
 	
 func _process(_delta: float) -> void:
@@ -27,5 +27,5 @@ func _process(_delta: float) -> void:
 		DataManagement.data_dictionary["current_mana"] = player.stats.base_mana
 		DataManagement.save_data()
 		
-		TransitionScreen.fade_in(current_level_path)
+		TransitionScreen.fade_in(current_level_path, false)
 		can_process_height = false

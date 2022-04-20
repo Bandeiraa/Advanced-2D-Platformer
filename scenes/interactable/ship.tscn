@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/interactable/interactable_template.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/interactable/ship/ship_bottom.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://scripts/interactable/general/ship.gd" type="Script" id=4]
 [ext_resource path="res://assets/interactable/ship/transition_run_flag.png" type="Texture" id=5]
 [ext_resource path="res://assets/interactable/ship/running_flag.png" type="Texture" id=6]
+[ext_resource path="res://scenes/env/animated_light.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 31.5, 25 )
@@ -205,6 +206,7 @@ tracks/2/keys = {
 
 [node name="Ship" instance=ExtResource( 1 )]
 script = ExtResource( 4 )
+target_level = "res://scenes/management/level.tscn"
 
 [node name="Texture" parent="." index="0"]
 texture = ExtResource( 2 )
@@ -225,7 +227,7 @@ anims/RESET = SubResource( 2 )
 anims/bottom_ship = SubResource( 1 )
 
 [node name="DialogIcon" parent="." index="3"]
-frame = 3
+frame = 1
 
 [node name="AuxAnimation" type="AnimationPlayer" parent="." index="4"]
 autoplay = "idle"
@@ -234,7 +236,10 @@ anims/idle = SubResource( 3 )
 anims/run = SubResource( 6 )
 anims/transition_run = SubResource( 5 )
 
-[node name="Notifier2D" type="VisibilityNotifier2D" parent="." index="5"]
+[node name="Camera" type="Camera2D" parent="." index="5"]
+limit_bottom = 1032
 
-[connection signal="animation_finished" from="AuxAnimation" to="." method="on_animation_finished"]
-[connection signal="screen_exited" from="Notifier2D" to="." method="on_screen_exited"]
+[node name="Tween" type="Tween" parent="." index="6"]
+
+[node name="Light" parent="." index="7" instance=ExtResource( 7 )]
+position = Vector2( -7, -17 )

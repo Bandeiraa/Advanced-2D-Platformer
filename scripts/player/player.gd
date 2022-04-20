@@ -5,6 +5,7 @@ const SPELL: PackedScene = preload("res://scenes/player/fire_spell.tscn")
 
 onready var stats: Stats = get_node("Stats")
 onready var wall_ray: RayCast2D = get_node("WallRay")
+onready var camera: Camera2D = get_node("LevelCamera")
 onready var player_sprite: Sprite = get_node("Texture")
 onready var collision_area: Area2D = get_node("CollisionArea")
 
@@ -26,6 +27,7 @@ var attacking: bool = false
 var defending: bool = false
 var crouching: bool = false
 
+var can_hide: bool = false
 var dialog_on: bool = false
 var not_on_wall: bool = true
 var can_track_input: bool = true
@@ -179,3 +181,9 @@ func spawn_spell() -> void:
 	spell.spell_damage = stats.base_magic_attack + stats.bonus_magic_attack
 	spell.global_position = global_position + spell_offset
 	get_tree().root.call_deferred("add_child", spell)
+	
+	
+func hide_player() -> void:
+	camera.drag_margin_h_enabled = false
+	camera.drag_margin_v_enabled = false
+	can_hide = true

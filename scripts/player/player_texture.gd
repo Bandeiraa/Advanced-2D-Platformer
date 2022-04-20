@@ -30,7 +30,7 @@ func define_initial_texture() -> void:
 func animate(velocity: Vector2) -> void:
 	verify_position(velocity)
 	
-	if player_ref.on_hit or player_ref.dead:
+	if player_ref.on_hit or player_ref.dead or player_ref.can_hide:
 		hit_behavior()
 	elif (player_ref.attacking or player_ref.defending or player_ref.crouching or player_ref.next_to_wall()) != false:
 		action_behavior()
@@ -46,7 +46,9 @@ func animate(velocity: Vector2) -> void:
 func hit_behavior() -> void:
 	attack_area_collision.set_deferred("disabled", true)
 	player_ref.set_physics_process(false)
-	if player_ref.dead:
+	if player_ref.can_hide:
+		animation.play("hide")
+	elif player_ref.dead:
 		animation.play("dead")
 	elif player_ref.on_hit:
 		animation.play("hit")

@@ -59,4 +59,4 @@ func start_game(player_skin: String) -> void:
 	DataManagement.data_dictionary["player_texture"] = player_skin
 	DataManagement.save_data()
 	
-	TransitionScreen.fade_in(target_level_path)
+	TransitionScreen.fade_in(target_level_path, false)
