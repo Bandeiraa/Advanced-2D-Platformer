@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scenes/player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/env/background.tscn" type="PackedScene" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://scenes/env/dawn_mask.tscn" type="PackedScene" id=17]
 [ext_resource path="res://scenes/env/animated_light.tscn" type="PackedScene" id=18]
 [ext_resource path="res://scripts/env/level_limit.gd" type="Script" id=19]
+[ext_resource path="res://scenes/interactable/ship.tscn" type="PackedScene" id=20]
 
 [sub_resource type="TileSet" id=1]
 0/name = "grass_3"
@@ -150,6 +151,9 @@ checkpoint_spawn_position = Vector2( 1648, 140 )
 position = Vector2( 3184, 876 )
 checkpoint_spawn_position = Vector2( 3184, 876 )
 
+[node name="Ship" parent="LevelDesign/Interactable" instance=ExtResource( 20 )]
+position = Vector2( 3305, 990 )
+
 [node name="Light" type="Node2D" parent="LevelDesign"]
 
 [node name="Light1" parent="LevelDesign/Light" instance=ExtResource( 18 )]
@@ -218,7 +222,7 @@ can_respawn = true
 [node name="Interface" parent="." instance=ExtResource( 10 )]
 
 [node name="LevelLimit" type="Node2D" parent="."]
-position = Vector2( 0, 1100 )
+position = Vector2( 0, 1000 )
 script = ExtResource( 19 )
 left_gap = -2000
 right_gap = 4000

@@ -195,6 +195,11 @@ _global_script_classes=[ {
 "path": "res://scripts/interface/sell_container/sell_item_container.gd"
 }, {
 "base": "InteractableTemplate",
+"class": "Ship",
+"language": "GDScript",
+"path": "res://scripts/interactable/general/ship.gd"
+}, {
+"base": "InteractableTemplate",
 "class": "Shopping",
 "language": "GDScript",
 "path": "res://scripts/interactable/general/shop.gd"
@@ -292,6 +297,7 @@ _global_script_class_icons={
 "SelectCharacter": "",
 "SellContainer": "",
 "SellItemContainer": "",
+"Ship": "",
 "Shopping": "",
 "ShoppingContainer": "",
 "Sign": "",
