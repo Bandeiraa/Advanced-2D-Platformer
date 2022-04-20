@@ -56,6 +56,7 @@ func reset(button: Button) -> void:
 		
 		
 func start_game(player_skin: String) -> void:
+	DataManagement.data_dictionary["current_level_path"] = target_level_path
 	DataManagement.data_dictionary["player_texture"] = player_skin
 	DataManagement.save_data()
 	

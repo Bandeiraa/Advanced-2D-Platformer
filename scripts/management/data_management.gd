@@ -21,7 +21,8 @@ var data_dictionary = {
 	"sign_checkpoint": false,
 	"checkpoint": false,
 	"player_texture": "",
-	"player_position": Vector2(-882, 132)
+	"player_position": Vector2(-882, 132),
+	"current_level_path": ""
 }
 
 func save_data() -> void:

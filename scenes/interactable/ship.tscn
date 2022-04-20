@@ -226,9 +226,6 @@ autoplay = "bottom_ship"
 anims/RESET = SubResource( 2 )
 anims/bottom_ship = SubResource( 1 )
 
-[node name="DialogIcon" parent="." index="3"]
-frame = 1
-
 [node name="AuxAnimation" type="AnimationPlayer" parent="." index="4"]
 autoplay = "idle"
 anims/RESET = SubResource( 4 )

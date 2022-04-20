@@ -33,7 +33,8 @@ func on_button_pressed(button: Button) -> void:
 				reset(button)
 				var file = File.new()
 				if file.file_exists(DataManagement.save_path):
-					TransitionScreen.fade_in(target_level_path, false)
+					DataManagement.load_data()
+					TransitionScreen.fade_in(DataManagement.data_dictionary["current_level_path"], false)
 				else:
 					animation.play("character_select")
 					
