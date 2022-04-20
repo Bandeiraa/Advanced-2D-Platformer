@@ -594,8 +594,8 @@ tracks/2/keys = {
 collision_layer = 8
 script = ExtResource( 8 )
 damage = 3
-speed = 80
-enemy_exp = 7
+speed = 70
+enemy_exp = 9
 gravity_speed = 250
 proximity_threshold = 10
 raycast_default_position = -16
@@ -619,7 +619,7 @@ position = Vector2( 0, 0.5 )
 shape = SubResource( 8 )
 
 [node name="CollisionArea" parent="." index="3"]
-health = 22
+health = 29
 invulnerability_timer = 1.0
 
 [node name="Collision" parent="CollisionArea" index="0"]

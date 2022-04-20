@@ -144,6 +144,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/env/level_camera.gd"
 }, {
+"base": "Node2D",
+"class": "LevelLimit",
+"language": "GDScript",
+"path": "res://scripts/env/level_limit.gd"
+}, {
 "base": "RigidBody2D",
 "class": "PhysicItem",
 "language": "GDScript",
@@ -229,6 +234,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/interface/stats/right_container.gd"
 }, {
+"base": "InteractableTemplate",
+"class": "Water",
+"language": "GDScript",
+"path": "res://scripts/interactable/general/water.gd"
+}, {
 "base": "TextureRect",
 "class": "WeaponContainer",
 "language": "GDScript",
@@ -272,6 +282,7 @@ _global_script_class_icons={
 "ItemContainer": "",
 "LeftSellContainer": "",
 "LevelCamera": "",
+"LevelLimit": "",
 "PhysicItem": "",
 "PinkStar": "",
 "PinkStarTexture": "",
@@ -289,6 +300,7 @@ _global_script_class_icons={
 "StatsInfo": "",
 "StatsLeftContainer": "",
 "StatsRightContainer": "",
+"Water": "",
 "WeaponContainer": "",
 "Whale": "",
 "WhaleTexture": ""

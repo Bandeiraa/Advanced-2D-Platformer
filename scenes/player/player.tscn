@@ -934,6 +934,7 @@ collision_mask = 2
 [node name="LevelCamera" type="Camera2D" parent="."]
 current = true
 limit_top = 0
+limit_bottom = 1132
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
 
