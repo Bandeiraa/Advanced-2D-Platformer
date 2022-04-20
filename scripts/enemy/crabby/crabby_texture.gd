@@ -1,7 +1,7 @@
 extends EnemyTexture
 class_name CrabbyTexture
 
-const ATTACK_EFFECT: PackedScene = preload("res://scenes/effect/crabby_attack_effect.tscn")
+const ATTACK_EFFECT: PackedScene = preload("res://scenes/effect/general_effect/crabby_attack_effect.tscn")
 
 func animate(velocity: Vector2) -> void:
 	if enemy_ref.can_attack or enemy_ref.can_hit or enemy_ref.can_die:

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/layer_4.png-020597091574e96a8976fe8bc8d04230.stex"
+path="res://.import/water_splash_1.png-99402747d8a83bb3bacd30e8c67b0275.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/background/layer_4.png"
-dest_files=[ "res://.import/layer_4.png-020597091574e96a8976fe8bc8d04230.stex" ]
+source_file="res://assets/effect/water/water_splash_1.png"
+dest_files=[ "res://.import/water_splash_1.png-99402747d8a83bb3bacd30e8c67b0275.stex" ]
 
 [params]
 

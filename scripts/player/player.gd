@@ -120,7 +120,7 @@ func vertical_movement_env() -> void:
 		
 	if Input.is_action_just_pressed("ui_select") and jump_count < 2 and can_track_input and not attacking:
 		jump_count += 1
-		spawn_effect("res://scenes/effect/jump_effect.tscn", Vector2(0, 18), flipped)
+		spawn_effect("res://scenes/effect/dust/jump_effect.tscn", Vector2(0, 18), flipped)
 		if next_to_wall() and not is_on_floor():
 			velocity.y = wall_jump_speed
 			velocity.x += wall_impulse_speed * direction

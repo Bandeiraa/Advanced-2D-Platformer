@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/potion_effect.png-5dcbf7b87aa58e8256783ce43334a7ad.stex"
+path="res://.import/water_splash_2.png-1bf2347381c61cb2485fadd78fce5b7a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/effect/potion_effect.png"
-dest_files=[ "res://.import/potion_effect.png-5dcbf7b87aa58e8256783ce43334a7ad.stex" ]
+source_file="res://assets/effect/water/water_splash_2.png"
+dest_files=[ "res://.import/water_splash_2.png-1bf2347381c61cb2485fadd78fce5b7a.stex" ]
 
 [params]
 

@@ -2,8 +2,8 @@ extends InteractableTemplate
 class_name Water
 
 onready var splash_effect_list: Array = [
-	preload("res://scenes/effect/water_splash_1.tscn"),
-	preload("res://scenes/effect/water_splash_2.tscn")
+	preload("res://scenes/effect/water/water_splash_1.tscn"),
+	preload("res://scenes/effect/water/water_splash_2.tscn")
 ]
 
 func on_body_entered(body: Player) -> void:

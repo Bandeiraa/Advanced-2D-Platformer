@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/water_splash_2.png-da24f565d58ee49685d0c293755ba067.stex"
+path="res://.import/jump_particles.png-d2d183c090ee6fa4a5bc6f966665dfc0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/effect/water_splash_2.png"
-dest_files=[ "res://.import/water_splash_2.png-da24f565d58ee49685d0c293755ba067.stex" ]
+source_file="res://assets/effect/dust/jump_particles.png"
+dest_files=[ "res://.import/jump_particles.png-d2d183c090ee6fa4a5bc6f966665dfc0.stex" ]
 
 [params]
 

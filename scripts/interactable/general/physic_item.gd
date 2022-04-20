@@ -1,7 +1,7 @@
 extends RigidBody2D
 class_name PhysicItem
 
-const COLLECT_EFFECT: PackedScene = preload("res://scenes/effect/collect_item.tscn")
+const COLLECT_EFFECT: PackedScene = preload("res://scenes/effect/general_effect/collect_item.tscn")
 
 onready var sprite: Sprite = get_node("ItemTexture")
 

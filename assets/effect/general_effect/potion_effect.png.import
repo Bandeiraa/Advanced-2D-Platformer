@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/collect_item_effect.png-0399e7c659fc8ff43f726a7708c31673.stex"
+path="res://.import/potion_effect.png-72a59ce6042ce13a4adcad058bc616bd.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/effect/collect_item_effect.png"
-dest_files=[ "res://.import/collect_item_effect.png-0399e7c659fc8ff43f726a7708c31673.stex" ]
+source_file="res://assets/effect/general_effect/potion_effect.png"
+dest_files=[ "res://.import/potion_effect.png-72a59ce6042ce13a4adcad058bc616bd.stex" ]
 
 [params]
 

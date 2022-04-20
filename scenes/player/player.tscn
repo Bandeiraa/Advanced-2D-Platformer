@@ -595,7 +595,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0.1 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ "res://scenes/effect/dust_effect.tscn", Vector2( 0, 18 ), false ],
+"args": [ "res://scenes/effect/dust/dust_effect.tscn", Vector2( 0, 18 ), false ],
 "method": "spawn_effect"
 } ]
 }
@@ -650,10 +650,10 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
-"args": [ "res://scenes/effect/run_particles.tscn", Vector2( 0, 18 ), true ],
+"args": [ "res://scenes/effect/dust/run_particles.tscn", Vector2( 0, 18 ), true ],
 "method": "spawn_effect"
 }, {
-"args": [ "res://scenes/effect/run_particles.tscn", Vector2( 0, 18 ), true ],
+"args": [ "res://scenes/effect/dust/run_particles.tscn", Vector2( 0, 18 ), true ],
 "method": "spawn_effect"
 } ]
 }
@@ -708,10 +708,10 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
-"args": [ "res://scenes/effect/run_particles.tscn", Vector2( 0, 18 ), false ],
+"args": [ "res://scenes/effect/dust/run_particles.tscn", Vector2( 0, 18 ), false ],
 "method": "spawn_effect"
 }, {
-"args": [ "res://scenes/effect/run_particles.tscn", Vector2( 0, 18 ), false ],
+"args": [ "res://scenes/effect/dust/run_particles.tscn", Vector2( 0, 18 ), false ],
 "method": "spawn_effect"
 } ]
 }
