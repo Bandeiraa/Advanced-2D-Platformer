@@ -4,7 +4,12 @@ class_name Player
 const SPELL: PackedScene = preload("res://scenes/player/fire_spell.tscn")
 
 onready var stats: Stats = get_node("Stats")
+
+onready var left_top_ray: RayCast2D = get_node("LeftTopRay")
+onready var right_top_ray: RayCast2D = get_node("RightTopRay")
+
 onready var wall_ray: RayCast2D = get_node("WallRay")
+
 onready var camera: Camera2D = get_node("LevelCamera")
 onready var player_sprite: Sprite = get_node("Texture")
 onready var collision_area: Area2D = get_node("CollisionArea")
@@ -124,10 +129,8 @@ func vertical_movement_env() -> void:
 		if next_to_wall() and not is_on_floor():
 			velocity.y = wall_jump_speed
 			velocity.x += wall_impulse_speed * direction
-			landing = true
 		else:
 			velocity.y = jump_speed
-			landing = true
 			
 			
 func gravity(delta: float) -> void:
@@ -143,6 +146,9 @@ func gravity(delta: float) -> void:
 			
 			
 func next_to_wall() -> bool:
+	if (left_top_ray.is_colliding() or right_top_ray.is_colliding()) and not is_on_floor():
+		landing = false
+		
 	if wall_ray.is_colliding() and not is_on_floor():
 		if not_on_wall:
 			velocity.y = 0

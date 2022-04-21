@@ -960,6 +960,18 @@ enabled = true
 cast_to = Vector2( 5.2, 0 )
 collision_mask = 2
 
+[node name="LeftTopRay" type="RayCast2D" parent="."]
+position = Vector2( -8, 0 )
+enabled = true
+cast_to = Vector2( 0, -10 )
+collision_mask = 3
+
+[node name="RightTopRay" type="RayCast2D" parent="."]
+position = Vector2( 4, 0 )
+enabled = true
+cast_to = Vector2( 0, -10 )
+collision_mask = 3
+
 [node name="LevelCamera" type="Camera2D" parent="."]
 current = true
 limit_top = 0
