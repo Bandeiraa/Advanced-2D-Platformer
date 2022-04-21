@@ -6,6 +6,7 @@ onready var camera: Camera2D = get_node("Camera")
 onready var tween: Tween = get_node("Tween")
 
 export(String) var target_level
+export(Vector2) var player_position
 
 func _ready() -> void:
 	set_physics_process(false)
@@ -36,6 +37,10 @@ func interpolate_camera(player_camera: Camera2D) -> void:
 	var _start: bool = tween.start()
 	
 	yield(tween, "tween_all_completed")
+	
+	DataManagement.data_dictionary["current_level_path"] = target_level
+	DataManagement.data_dictionary["player_position"] = player_position
+	DataManagement.save_data()
 	
 	get_tree().call_group("hud", "hide_containers")
 	set_physics_process(true)
