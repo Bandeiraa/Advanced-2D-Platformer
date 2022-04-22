@@ -60,6 +60,7 @@ func reset() -> void:
 	armor_price = 0
 	
 	armor_item.texture = null
+	
 	get_tree().call_group("stats_hud", "update_bonus_stats", armor_dictionary, true)
 	
 	armor_dictionary = {}

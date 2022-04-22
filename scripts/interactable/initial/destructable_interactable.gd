@@ -1,6 +1,7 @@
 extends Area2D
 class_name DestructableInteractable
 
+const PHYSIC_ITEM: PackedScene = preload("res://scenes/interactable/physic_item.tscn")
 const FLOATING_TEXT: PackedScene = preload("res://scenes/env/floating_text.tscn")
 const SLICE: PackedScene = preload("res://scenes/env/slice.tscn")
 

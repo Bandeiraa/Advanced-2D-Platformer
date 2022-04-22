@@ -88,6 +88,12 @@ func persist_data() -> void:
 		current_mana = DataManagement.data_dictionary["current_mana"]
 		current_health = DataManagement.data_dictionary["current_health"]
 		
+		if current_health > max_health:
+			current_health = max_health
+			
+		if current_mana > max_mana:
+			current_mana = max_mana
+			
 		print("Vida atual: " + str(current_health))
 		print("Mana atual: " + str(current_mana))
 		
@@ -132,13 +138,8 @@ func update_bonus_stats(stat: String, value: int, reset: bool) -> void:
 		"Health":
 			if reset:
 				bonus_health -= value
-				if current_health >= value:
-					current_health -= value
-					
 			else:
 				bonus_health += value
-				if current_health >= value:
-					current_health += bonus_health
 				
 			max_health = bonus_health + base_health
 			get_tree().call_group("bar_container", "increase_max_value", "Health", max_health, current_health)
@@ -146,13 +147,9 @@ func update_bonus_stats(stat: String, value: int, reset: bool) -> void:
 		"Mana":
 			if reset:
 				bonus_mana -= value
-				if current_mana >= value:
-					current_mana -= value
-					
+				
 			else:
 				bonus_mana += value
-				if current_mana >= value:
-					current_mana += bonus_mana
 				
 			max_mana = bonus_mana + base_mana
 			get_tree().call_group("bar_container", "increase_max_value", "Mana", max_mana, current_mana)
