@@ -364,7 +364,6 @@ margin_bottom = 180.0
 texture = ExtResource( 14 )
 
 [node name="Mask" parent="Background" instance=ExtResource( 6 )]
-color = Color( 0.333333, 0.333333, 0.333333, 1 )
 
 [node name="GameMenu" type="CanvasLayer" parent="."]
 
@@ -681,7 +680,6 @@ text = "- Version 0.1"
 valign = 1
 
 [node name="Mask" parent="." instance=ExtResource( 6 )]
-color = Color( 0.333333, 0.333333, 0.333333, 1 )
 
 [node name="Light" parent="." instance=ExtResource( 7 )]
 position = Vector2( 234, 123 )
