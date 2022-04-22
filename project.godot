@@ -45,6 +45,11 @@ _global_script_classes=[ {
 "path": "res://scripts/enemy/crabby/crabby_texture.gd"
 }, {
 "base": "Area2D",
+"class": "DestructableInteractable",
+"language": "GDScript",
+"path": "res://scripts/interactable/initial/destructable_interactable.gd"
+}, {
+"base": "Area2D",
 "class": "DetectionArea",
 "language": "GDScript",
 "path": "res://scripts/enemy/template/detection_area.gd"
@@ -214,6 +219,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/interactable/general/sign.gd"
 }, {
+"base": "RigidBody2D",
+"class": "Slice",
+"language": "GDScript",
+"path": "res://scripts/env/slice.gd"
+}, {
 "base": "Node",
 "class": "Stats",
 "language": "GDScript",
@@ -267,6 +277,7 @@ _global_script_class_icons={
 "ConsumableContainer": "",
 "Crabby": "",
 "CrabbyTexture": "",
+"DestructableInteractable": "",
 "DetectionArea": "",
 "DialogContainer": "",
 "EffectTemplate": "",
@@ -301,6 +312,7 @@ _global_script_class_icons={
 "Shopping": "",
 "ShoppingContainer": "",
 "Sign": "",
+"Slice": "",
 "Stats": "",
 "StatsContainer": "",
 "StatsInfo": "",

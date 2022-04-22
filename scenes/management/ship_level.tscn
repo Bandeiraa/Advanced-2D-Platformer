@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://resources/tile/ship_terrain.tres" type="TileSet" id=1]
 [ext_resource path="res://resources/tile/ship_background.tres" type="TileSet" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://scenes/decoration/window.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/decoration/big_chain.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/decoration/small_chain.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/interactable/barrel.tscn" type="PackedScene" id=13]
 
 [node name="ShipLevel" type="Node2D"]
 
@@ -38,11 +39,11 @@ tile_data = PoolIntArray( 1, 0, 4, 2, 0, 196609, 3, 0, 196609, 4, 0, 196609, 5, 
 
 [node name="SmallChain" parent="LevelDesign/Decoration" instance=ExtResource( 12 )]
 position = Vector2( 255, 251 )
-frame = 0
+frame = 4
 
 [node name="SmallChain2" parent="LevelDesign/Decoration" instance=ExtResource( 12 )]
 position = Vector2( 276, 251 )
-frame = 0
+frame = 4
 
 [node name="Candle" parent="LevelDesign/Decoration" instance=ExtResource( 9 )]
 position = Vector2( 400, 228 )
@@ -54,18 +55,26 @@ frame = 4
 
 [node name="Window" parent="LevelDesign/Decoration" instance=ExtResource( 10 )]
 position = Vector2( 266, 234 )
-frame = 1
+frame = 17
 
 [node name="BigChain" parent="LevelDesign/Decoration" instance=ExtResource( 11 )]
 position = Vector2( 198, 260 )
+frame = 6
 
 [node name="BigChain2" parent="LevelDesign/Decoration" instance=ExtResource( 11 )]
 position = Vector2( 208, 260 )
-frame = 1
+frame = 6
 
 [node name="BigChain3" parent="LevelDesign/Decoration" instance=ExtResource( 11 )]
 position = Vector2( 217, 260 )
-frame = 1
+frame = 6
+
+[node name="Interactable" type="Node2D" parent="LevelDesign"]
+
+[node name="Barrel" parent="LevelDesign/Interactable" instance=ExtResource( 13 )]
+position = Vector2( 358, 275 )
+health = 30
+invulnerability_timer = 1.0
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 103, 260 )
