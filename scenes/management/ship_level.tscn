@@ -39,35 +39,32 @@ tile_data = PoolIntArray( 1, 0, 4, 2, 0, 196609, 3, 0, 196609, 4, 0, 196609, 5, 
 
 [node name="SmallChain" parent="LevelDesign/Decoration" instance=ExtResource( 12 )]
 position = Vector2( 255, 251 )
-frame = 5
+frame = 3
 
 [node name="SmallChain2" parent="LevelDesign/Decoration" instance=ExtResource( 12 )]
 position = Vector2( 276, 251 )
-frame = 5
+frame = 3
 
 [node name="Candle" parent="LevelDesign/Decoration" instance=ExtResource( 9 )]
 position = Vector2( 400, 228 )
-frame = 4
+frame = 0
 
 [node name="Candle2" parent="LevelDesign/Decoration" instance=ExtResource( 9 )]
 position = Vector2( 140, 228 )
-frame = 3
+frame = 5
 
 [node name="Window" parent="LevelDesign/Decoration" instance=ExtResource( 10 )]
 position = Vector2( 266, 234 )
-frame = 30
+frame = 66
 
 [node name="BigChain" parent="LevelDesign/Decoration" instance=ExtResource( 11 )]
 position = Vector2( 198, 260 )
-frame = 6
 
 [node name="BigChain2" parent="LevelDesign/Decoration" instance=ExtResource( 11 )]
 position = Vector2( 208, 260 )
-frame = 6
 
 [node name="BigChain3" parent="LevelDesign/Decoration" instance=ExtResource( 11 )]
 position = Vector2( 217, 260 )
-frame = 6
 
 [node name="Interactable" type="Node2D" parent="LevelDesign"]
 

@@ -59,9 +59,9 @@ func _ready() -> void:
 		
 	update_stats_hud()
 	
-	DataManagement.data_dictionary["current_mana"] = current_mana
-	DataManagement.data_dictionary["current_health"] = current_health
-	DataManagement.save_data()
+	#DataManagement.data_dictionary["current_mana"] = current_mana
+	#DataManagement.data_dictionary["current_health"] = current_health
+	#DataManagement.save_data()
 	
 	
 func persist_data() -> void:
@@ -142,6 +142,10 @@ func update_bonus_stats(stat: String, value: int, reset: bool) -> void:
 				bonus_health += value
 				
 			max_health = bonus_health + base_health
+			if DataManagement.data_dictionary["current_health"] > current_health:
+				current_health = DataManagement.data_dictionary["current_health"]
+				
+			DataManagement.data_dictionary["current_health"] = current_health
 			get_tree().call_group("bar_container", "increase_max_value", "Health", max_health, current_health)
 			
 		"Mana":
@@ -152,6 +156,10 @@ func update_bonus_stats(stat: String, value: int, reset: bool) -> void:
 				bonus_mana += value
 				
 			max_mana = bonus_mana + base_mana
+			if DataManagement.data_dictionary["current_mana"] > current_mana:
+				current_mana = DataManagement.data_dictionary["current_mana"]
+				
+			DataManagement.data_dictionary["current_mana"] = current_mana
 			get_tree().call_group("bar_container", "increase_max_value", "Mana", max_mana, current_mana)
 			
 		"Attack":
@@ -205,7 +213,13 @@ func update_stats_hud() -> void:
 	
 	DataManagement.save_data()
 	
-	
+	if current_health > max_health:
+		current_health = max_health
+			
+	if current_mana > max_mana:
+		current_mana = max_mana
+			
+			
 func update_exp(value: int) -> void:
 	current_exp += value
 	spawn_floating_text("+", "Exp", value)
@@ -266,6 +280,7 @@ func update_health(type: String, value: int) -> void:
 				player_ref.on_hit = true
 				player_ref.attacking = false
 				
+	print(current_health)
 	if not player_ref.dead:
 		DataManagement.data_dictionary["current_health"] = current_health
 		DataManagement.save_data()
