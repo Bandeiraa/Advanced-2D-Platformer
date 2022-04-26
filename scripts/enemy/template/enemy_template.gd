@@ -10,6 +10,8 @@ onready var texture: Sprite = get_node("Texture")
 onready var floor_ray: RayCast2D = get_node("FloorRay")
 onready var animation: AnimationPlayer = get_node("Animation")
 
+var drop_bonus: int
+
 var can_die: bool = false
 var can_hit: bool = false
 var can_attack: bool = false
@@ -85,9 +87,25 @@ func kill_enemy() -> void:
 	
 	
 func spawn_item_probability() -> void:
+	get_tree().call_group("hud", "spawn_dice", self)
+	
+	
+func get_dice_value(dice: int) -> void:
+	print("Dice Value: " + str(dice))
+	
+	if dice <= 6:
+		drop_bonus = 1
+	elif dice >= 7 and dice <= 13:
+		drop_bonus = 2
+	else:
+		drop_bonus = 3
+		
+	print("Drop Multiplier: " + str(drop_bonus))
+	
 	for key in drop_list.keys():
 		var random_number: int = randi() % 100 + 1
-		if random_number <= drop_list[key][1]:
+		print(drop_list[key][1] * drop_bonus)
+		if random_number <= drop_list[key][1] * drop_bonus:
 			var item_texture: StreamTexture = load(drop_list[key][0])
 			var item_info: Array = [drop_list[key][0], drop_list[key][2], drop_list[key][3], drop_list[key][4], 1]
 			spawn_physic_item(key, item_texture, item_info)

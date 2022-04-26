@@ -7,6 +7,7 @@ onready var bar_container: Control = get_node("BarContainer")
 
 var can_show_container: bool = true
 
+export(PackedScene) var dice_scene
 export(PackedScene) var dialog_container
 export(PackedScene) var shopping_container
 export(PackedScene) var sell_shopping_container
@@ -30,6 +31,12 @@ func spawn_sell_shop(interactable) -> void:
 	var sell_shop: SellContainer = sell_shopping_container.instance()
 	var _closed: bool = sell_shop.connect("closed", interactable, "on_shop_closed")
 	add_child(sell_shop)
+	
+	
+func spawn_dice(enemy) -> void:
+	var dice: Dice = dice_scene.instance()
+	var _finished: bool = dice.connect("finished", enemy, "get_dice_value")
+	add_child(dice)
 	
 	
 func _process(_delta: float) -> void:
